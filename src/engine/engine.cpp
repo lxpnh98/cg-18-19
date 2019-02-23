@@ -16,6 +16,7 @@ using std::vector;
 namespace engine {
 	
 	void engine::drawFrame() {
+
 		// teste piramide
 
 		glBegin(GL_TRIANGLES);
