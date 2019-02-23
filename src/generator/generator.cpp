@@ -32,7 +32,8 @@ void getPlane(float width, string fileName) {
 
 	if (out != NULL) {
 		
-		std::vector<Point> vertices; // Vector to store the vertices
+		// Vector to store the vertices
+		std::vector<Point> vertices;
 
 		//T1
 		vertices.push_back(Point(width/2, 0.0, -width/2));
@@ -64,7 +65,8 @@ void getBox(float x, float y, float z, int nrDivisions, string fileName) {
 
 	if (out != NULL) {
 
-		std::vector<Point> vertices; // Vector to store the vertices
+		// Vector to store the vertices
+		std::vector<Point> vertices;
 
 		// TODO
 
@@ -88,7 +90,8 @@ void getSphere(float r, int slices, int stacks, string fileName) {
 
 	if (out != NULL) {
 
-		std::vector<Point> vertices; // Vector to store the vertices
+		// Vector to store the vertices
+		std::vector<Point> vertices;
 
 		// TODO
 
@@ -112,7 +115,8 @@ void getCone(float r, float height, int slices, int stacks, string fileName) {
 
 	if (out != NULL) {
 
-		std::vector<Point> vertices; // Vector to store the vertices
+		// Vector to store the vertices
+		std::vector<Point> vertices;
 
 		// TODO
 
@@ -136,7 +140,8 @@ void getPyramid(float length, float height, float width, string fileName) {
 
 	if (out != NULL) {
 
-		std::vector<Point> vertices; // Vector to store the vertices
+		// Vector to store the vertices
+		std::vector<Point> vertices; 
 
 		// Triângulo da Frente
 		vertices.push_back(Point(0.0, height, 0.0));
@@ -190,7 +195,8 @@ void getCylinder(float r, float height, int stacks, int slices, string fileName)
 
 	if (out != NULL) {
 
-		std::vector<Point> vertices; // Vector to store the vertices
+		// Vector to store the vertices
+		std::vector<Point> vertices;
 
 		// TODO
 
@@ -238,7 +244,7 @@ int main(int argc, char** argv) {
 
 			int nrDivisions = std::stoi(argv[5]);
 
-			std::string file = argv[5];
+			std::string file = argv[6];
 
 			// Call box function
 			getBox(x, y, z, nrDivisions, file);
