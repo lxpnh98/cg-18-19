@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.6)
 PROJECT(CG1819)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
