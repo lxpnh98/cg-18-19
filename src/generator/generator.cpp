@@ -45,9 +45,9 @@ void getPlane(float width, string fileName) {
 		vertices.push_back(Point(-width/2, 0.0, width/2));
 
 		// Sending vertices to .3d file
-		for (int nVert = 0; nVert < vertices.size(); nVert++) {
+		for (int i = 0; i < vertices.size(); i++) {
 
-			fprintf(out, "%f %f %f \n", vertices[nVert].getX(), vertices[nVert].getY(), vertices[nVert].getZ());
+			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
 		}
 	}
 
@@ -69,9 +69,9 @@ void getBox(float x, float y, float z, int nrDivisions, string fileName) {
 		// TODO
 
 		// Sending vertices to .3d file
-		for (int nVert = 0; nVert < vertices.size(); nVert++) {
+		for (int i = 0; i < vertices.size(); i++) {
 
-			fprintf(out, "%f %f %f \n", vertices[nVert].getX(), vertices[nVert].getY(), vertices[nVert].getZ());
+			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
 		}
 	}
 
@@ -93,9 +93,9 @@ void getSphere(float r, int slices, int stacks, string fileName) {
 		// TODO
 
 		// Sending vertices to .3d file
-		for (int nVert = 0; nVert < vertices.size(); nVert++) {
+		for (int i = 0; i < vertices.size(); i++) {
 
-			fprintf(out, "%f %f %f \n", vertices[nVert].getX(), vertices[nVert].getY(), vertices[nVert].getZ());
+			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
 		}
 	}
 
@@ -117,9 +117,9 @@ void getCone(float r, float height, int slices, int stacks, string fileName) {
 		// TODO
 
 		// Sending vertices to .3d file
-		for (int nVert = 0; nVert < vertices.size(); nVert++) {
+		for (int i = 0; i < vertices.size(); i++) {
 
-			fprintf(out, "%f %f %f \n", vertices[nVert].getX(), vertices[nVert].getY(), vertices[nVert].getZ());
+			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
 		}
 	}
 
@@ -171,9 +171,9 @@ void getPyramid(float length, float height, float width, string fileName) {
 		vertices.push_back(Point(-length, 0.0, -width));
 
 		// Sending vertices to .3d file
-		for (int nVert = 0; nVert < vertices.size(); nVert++) {
+		for (int i = 0; i < vertices.size(); i++) {
 
-			fprintf(out, "%f %f %f \n", vertices[nVert].getX(), vertices[nVert].getY(), vertices[nVert].getZ());
+			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
 		}
 	}
 
@@ -195,9 +195,9 @@ void getCylinder(float r, float height, int stacks, int slices, string fileName)
 		// TODO
 
 		// Sending vertices to .3d file
-		for (int nVert = 0; nVert < vertices.size(); nVert++) {
+		for (int i = 0; i < vertices.size(); i++) {
 
-			fprintf(out, "%f %f %f \n", vertices[nVert].getX(), vertices[nVert].getY(), vertices[nVert].getZ());
+			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
 		}
 	}
 
