@@ -11,12 +11,8 @@ using namespace tinyxml2;
 using std::string;
 using std::ifstream;
 
-/**
- * Loads an XML file containing various references
- * to .3d files, which in turn contain vertices.
- * Returns a vector of models, which in turn are a vector of vertices.
- */
-std::vector<engine::model> parser::loadSceneXML(const char* path) {
+// Loads an XML file containing various references to .3d files
+std::vector<engine::model> parser::loadXML(const char* path) {
 
 	// Load XML document
 	XMLDocument file;
@@ -24,14 +20,14 @@ std::vector<engine::model> parser::loadSceneXML(const char* path) {
 
 	if (result != XML_SUCCESS) {
 
-		throw std::runtime_error("O documento XML não foi carregado com sucesso.\n");
+		throw std::runtime_error("Erro no carregamento do ficheiro XML.\n");
 	}
 
 	XMLNode *scene = file.FirstChildElement("scene");
 
 	if (scene == nullptr) {
 
-		throw std::runtime_error("Erro ao procurar elemento \"scene\" no XML.\n");
+		throw std::runtime_error("Não encontrou scene no ficheiro.\n");
 	}
 
 	// vector to save paths to models

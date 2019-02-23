@@ -8,7 +8,7 @@
 
 namespace parser {
 
-	std::vector<engine::model> loadSceneXML(const char* path);
+	std::vector<engine::model> loadXML(const char* path);
 };
 
 #endif
