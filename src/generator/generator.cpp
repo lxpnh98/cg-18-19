@@ -217,10 +217,10 @@ int main(int argc, char** argv) {
 
 	if (argv[1] != NULL) { // Checks if program receives nothing to process
 
-		std::string form = argv[1];
+		std::string primitive = argv[1];
 
 		// PLANE
-		if (form.compare("plane") == 0 && argc == 4) {
+		if (primitive.compare("plane") == 0 && argc == 4) {
 
 			std::cout << "Queres criar um plano." << std::endl;
 
@@ -232,7 +232,7 @@ int main(int argc, char** argv) {
 			getPlane(width, file);
 		}
 
-		else if (form.compare("box") == 0 && argc == 7) {
+		else if (primitive.compare("box") == 0 && argc == 7) {
 
 			std::cout << "Queres criar um cubo." << std::endl;
 
@@ -250,7 +250,7 @@ int main(int argc, char** argv) {
 			getBox(x, y, z, nrDivisions, file);
 		}
 
-		else if (form.compare("sphere") == 0 && argc == 6) {
+		else if (primitive.compare("sphere") == 0 && argc == 6) {
 
 			std::cout << "Queres criar uma esfera." << std::endl;
 		
@@ -266,7 +266,7 @@ int main(int argc, char** argv) {
 			getSphere(radius, slices, stacks, file);
 		}
 
-		else if (form.compare("cone") == 0 && argc == 7) {
+		else if (primitive.compare("cone") == 0 && argc == 7) {
 
 			std::cout << "Queres criar um cone." << std::endl;
 
@@ -285,7 +285,7 @@ int main(int argc, char** argv) {
 
 		}
 
-		else if (form.compare("pyramid") == 0 && argc == 6) {
+		else if (primitive.compare("pyramid") == 0 && argc == 6) {
 
 			std::cout << "Queres criar uma pirâmide." << std::endl;
 
@@ -302,7 +302,7 @@ int main(int argc, char** argv) {
 
 		}
 
-		else if (form.compare("cilinder") == 0 && argc == 7) {
+		else if (primitive.compare("cilinder") == 0 && argc == 7) {
 
 			std::cout << "Queres criar um cilindro." << std::endl;
 
@@ -326,7 +326,6 @@ int main(int argc, char** argv) {
 			std::cout << argv[1] << " não é um sólido válido." << std::endl;
 		}
 	}
-
 
 	return 0;
 }
