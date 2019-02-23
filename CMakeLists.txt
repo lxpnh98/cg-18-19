@@ -17,7 +17,7 @@ add_subdirectory(src/engine)
 target_link_libraries(CG1819 engine)
 
 file(GLOB GENERATORSOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/generator/*.cpp)
-add_executable(generator ${GENERATORSOURCE_FILES})
+add_executable(generator ${GENERATORSOURCE_FILES} ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/tinyxml2.cpp)
 
 if(NOT OPENGL_FOUND)
     message(ERROR " OPENGL not found!")

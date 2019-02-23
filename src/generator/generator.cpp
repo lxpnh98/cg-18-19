@@ -7,6 +7,9 @@
 
 #include "point.h"
 
+#include "../engine/tinyxml2.h"
+using namespace tinyxml2;
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -211,6 +214,42 @@ void getCylinder(float r, float height, int stacks, int slices, string fileName)
 
 }
 
+void writeToXML(string fileName) {
+
+	tinyxml2::XMLDocument doc;
+
+	if (doc.LoadFile("scene.xml") != tinyxml2::XML_SUCCESS) {
+
+		XMLNode * pRoot = doc.NewElement("scene");
+
+		doc.InsertFirstChild(pRoot);
+
+		tinyxml2::XMLElement* newElement = doc.NewElement("model");
+
+		newElement->SetAttribute("file", fileName.c_str());
+
+		pRoot->InsertFirstChild(newElement);
+
+		doc.SaveFile("scene.xml");
+
+	}
+	
+	else {
+
+		XMLElement * pRoot = doc.FirstChildElement("scene");
+
+		tinyxml2::XMLElement* newElement = doc.NewElement("model");
+
+		newElement->SetAttribute("file", "sphere.3d");
+
+		pRoot->InsertFirstChild(newElement);
+
+		doc.SaveFile("scene.xml");
+
+	}
+
+}
+
 int main(int argc, char** argv) {
 
 	SetConsoleOutputCP(CP_UTF8); // UTF-8 mode for Windows console
@@ -230,6 +269,9 @@ int main(int argc, char** argv) {
 
 			// Call triangle function
 			getPlane(width, file);
+
+			// writes to scene.xml
+			writeToXML(file);
 		}
 
 		else if (primitive.compare("box") == 0 && argc == 7) {
@@ -264,6 +306,9 @@ int main(int argc, char** argv) {
 
 			// Call sphere function
 			getSphere(radius, slices, stacks, file);
+
+			// writes to scene.xml
+			writeToXML(file);
 		}
 
 		else if (primitive.compare("cone") == 0 && argc == 7) {
@@ -283,6 +328,8 @@ int main(int argc, char** argv) {
 			// Call cone function
 			getCone(radius, height, slices, stacks, file);
 
+			// writes to scene.xml
+			writeToXML(file);
 		}
 
 		else if (primitive.compare("pyramid") == 0 && argc == 6) {
@@ -300,6 +347,8 @@ int main(int argc, char** argv) {
 			// Call pyramid function
 			getPyramid(height, width, length, file);
 
+			// writes to scene.xml
+			writeToXML(file);
 		}
 
 		else if (primitive.compare("cilinder") == 0 && argc == 7) {
@@ -319,6 +368,8 @@ int main(int argc, char** argv) {
 			// Call cilinder function
 			getCylinder(radius, height, slices, stacks, file);
 
+			// writes to scene.xml
+			writeToXML(file);
 		}
 
 		else {
