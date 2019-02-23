@@ -17,50 +17,27 @@ namespace engine {
 	
 	void engine::drawFrame() {
 
-		// teste piramide
-
-		glBegin(GL_TRIANGLES);
-
-		// Triângulo da Frente
-		glColor3f(1.0f, 1.0f, 0.0f); // yellow
-		glVertex3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(-1.0f, 0.0f, 1.0f);
-		glVertex3f(1.0f, 0.0f, 1.0f);
-
-		// Right
-		glColor3f(1.0f, 0.0f, 0.0f); // Red
-		glVertex3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(1.0f, 0.0f, 1.0f);
-		glVertex3f(1.0f, 0.0f, -1.0f);
-
-		// Back
-		glColor3f(1.0f, 0.0f, 1.0f); // pink
-		glVertex3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(1.0f, 0.0f, -1.0f);
-		glVertex3f(-1.0f, 0.0f, -1.0f);
-
-		// Left
-		glColor3f(0.0f, 0.0f, 1.0f); // blue      
-		glVertex3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(-1.0f, 0.0f, -1.0f);
-		glVertex3f(-1.0f, 0.0f, 1.0f);
-
-		// ponteiro dos relógios
-
-		// Debaixo
-		glColor3f(0.0f, 0.0f, 1.0f); // blue      
-		glVertex3f(-1.0f, 0.0f, -1.0f);
-		glVertex3f(1.0f, 0.0f, 1.0f);
-		glVertex3f(-1.0f, 0.0f, 1.0f);
-
-		// Debaixo
-		glColor3f(1.0f, 0.0f, 1.0f); // pink      
-		glVertex3f(1.0f, 0.0f, -1.0f);
-		glVertex3f(1.0f, 0.0f, 1.0f);
-		glVertex3f(-1.0f, 0.0f, -1.0f);
-
-		glEnd();
+		vector<model>::iterator i;
 
 		// Iterate over models
+
+		for (i = scene.begin(); i != scene.end(); i++) {
+
+			std::vector<vertex> vertices = i->vertices;
+
+			glBegin(GL_TRIANGLES);
+
+			// Iterate over vertices
+			std::vector<vertex>::iterator j;
+
+			for (j = vertices.begin(); j != vertices.end(); j++) {
+
+				glVertex3f(j->x, j->y, j->z);
+			}
+
+			glEnd();
+
+		}
+
 	}
 }
