@@ -252,8 +252,6 @@ void writeToXML(string fileName) {
 
 int main(int argc, char** argv) {
 
-	SetConsoleOutputCP(CP_UTF8); // UTF-8 mode for Windows console
-
 	if (argv[1] != NULL) { // Checks if program receives nothing to process
 
 		std::string primitive = argv[1];

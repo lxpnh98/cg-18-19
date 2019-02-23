@@ -12,10 +12,16 @@
 #endif
 
 using std::vector;
+using engine::model;
+using engine::vertex;
 
-namespace engine {
-	
-	void engine::drawFrame() {
+vector<model> engine::scene;
+
+void engine::loadScene(vector<model> scene) {
+	engine::scene = scene;
+}
+
+void engine::drawFrame() {
 
 		vector<model>::iterator i;
 
@@ -39,5 +45,4 @@ namespace engine {
 
 		}
 
-	}
 }

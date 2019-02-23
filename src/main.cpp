@@ -1,4 +1,5 @@
 #include "engine/engine.h"
+#include "engine/parser.h"
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -102,7 +103,12 @@ int main(int argc, char **argv) {
 // OpenGL settings 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
-	glClearColor(0.0f,0.0f,0.0f,0.0f);
+
+	// Load scene XML
+	std::vector<engine::model> scene = parser::loadSceneXML("scene.xml");
+
+	// Send scene models to engine
+	engine::loadScene(scene);
 
 // enter GLUT's main loop
 	glutMainLoop();
