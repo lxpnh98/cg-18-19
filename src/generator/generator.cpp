@@ -103,7 +103,7 @@ void getSphere(float r, int slices, int stacks, string fileName) {
 
 }
 
-void getCone(float r, int slices, int stacks, string fileName) {
+void getCone(float r, float height, int slices, int stacks, string fileName) {
 
 	FILE *out;
 
@@ -222,7 +222,7 @@ int main(int argc, char** argv) {
 
 			std::string file = argv[3];
 
-			// Call triangle criation function
+			// Call triangle function
 			getPlane(width, file);
 		}
 
@@ -240,34 +240,83 @@ int main(int argc, char** argv) {
 
 			std::string file = argv[5];
 
-			// Call box criation function
+			// Call box function
 			getBox(x, y, z, nrDivisions, file);
 		}
 
-		else if (form.compare("sphere") == 0 && argc == 7) {
+		else if (form.compare("sphere") == 0 && argc == 6) {
 
 			std::cout << "Queres criar uma esfera." << std::endl;
 		
+			float radius = std::stof(argv[2]);
+
+			int slices = std::stoi(argv[3]);
+
+			int stacks = std::stoi(argv[4]);
+
+			std::string file = argv[5];
+
+			// Call sphere function
+			getSphere(radius, slices, stacks, file);
 		}
 
 		else if (form.compare("cone") == 0 && argc == 7) {
 
 			std::cout << "Queres criar um cone." << std::endl;
 
+			float radius = std::stof(argv[2]);
+
+			float height = std::stof(argv[3]);
+
+			int slices = std::stoi(argv[4]);
+
+			int stacks = std::stoi(argv[5]);
+
+			std::string file = argv[6];
+
+			// Call cone function
+			getCone(radius, height, slices, stacks, file);
+
 		}
 
-		else if (form.compare("pyramid") == 0 && argc == 7) {
+		else if (form.compare("pyramid") == 0 && argc == 6) {
 
 			std::cout << "Queres criar uma pirâmide." << std::endl;
+
+			float height = std::stof(argv[2]);
+
+			float width = std::stof(argv[3]);
+
+			float length = std::stof(argv[4]);
+
+			std::string file = argv[5];
+
+			// Call pyramid function
+			getPyramid(height, width, length, file);
 
 		}
 
 		else if (form.compare("cilinder") == 0 && argc == 7) {
 
 			std::cout << "Queres criar um cilindro." << std::endl;
+
+			float radius = std::stof(argv[2]);
+
+			float height = std::stof(argv[3]);
+
+			int slices = std::stoi(argv[4]);
+
+			int stacks = std::stoi(argv[5]);
+
+			std::string file = argv[6];
+
+			// Call cilinder function
+			getCylinder(radius, height, slices, stacks, file);
+
 		}
 
 		else {
+
 			std::cout << argv[1] << " não é um sólido válido." << std::endl;
 		}
 	}
