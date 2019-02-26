@@ -210,7 +210,7 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
 
 			// bottom
-			vertices.push_back(Point(0.0f, -height / 2, 0.0f);
+			vertices.push_back(Point(0.0f, -height / 2, 0.0f));
 			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
 			vertices.push_back(Point(r* cos(a * i + t), -height / 2, r * sin(a * i + t)));
 
