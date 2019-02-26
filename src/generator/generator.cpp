@@ -21,12 +21,9 @@ TODO:
 - Box (requires X, Y and Z dimensions, and optionally the number of divisions)
 - Sphere (requires radius, slices and stacks)
 - Cone (requires bottom radius, height, slices and stacks)
-- EXTRA: 
-	pyramid (height, width)
-	cylinder (radius, height, length, slices)
 */
 
-void getPlane(float width, string fileName) {
+void drawPlane(float width, string fileName) {
 
 	FILE *out;
 
@@ -59,7 +56,7 @@ void getPlane(float width, string fileName) {
 
 }
 
-void getBox(float x, float y, float z, int nrDivisions, string fileName) {
+void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
 	FILE *out;
 
@@ -84,7 +81,7 @@ void getBox(float x, float y, float z, int nrDivisions, string fileName) {
 
 }
 
-void getSphere(float r, int slices, int stacks, string fileName) {
+void drawSphere(float r, int slices, int stacks, string fileName) {
 
 	FILE *out;
 
@@ -109,7 +106,7 @@ void getSphere(float r, int slices, int stacks, string fileName) {
 
 }
 
-void getCone(float r, float height, int slices, int stacks, string fileName) {
+void drawCone(float r, float height, int slices, int stacks, string fileName) {
 
 	FILE *out;
 
@@ -134,7 +131,7 @@ void getCone(float r, float height, int slices, int stacks, string fileName) {
 
 }
 
-void getPyramid(float length, float height, float width, string fileName) {
+void drawPyramid(float length, float height, float width, string fileName) {
 
 	FILE *out;
 
@@ -189,7 +186,7 @@ void getPyramid(float length, float height, float width, string fileName) {
 
 }
 
-void getCylinder(float r, float height, int stacks, int slices, string fileName) {
+void drawCylinder(float r, float height, int slices, string fileName) {
 
 	FILE *out;
 
@@ -201,7 +198,33 @@ void getCylinder(float r, float height, int stacks, int slices, string fileName)
 		// Vector to store the vertices
 		std::vector<Point> vertices;
 
-		// TODO
+		float a = (2 * M_PI) / slices;
+
+		for (int i = 0; i < slices; i++) {
+
+			float t = a + a;
+
+			// top
+			vertices.push_back(Point(0.0f, height / 2, 0.0f));
+			vertices.push_back(Point(r* cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
+
+			// bottom
+			vertices.push_back(Point(0.0f, -height / 2, 0.0f);
+			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
+			vertices.push_back(Point(r* cos(a * i + t), -height / 2, r * sin(a * i + t)));
+
+			// side 1
+			vertices.push_back(Point(r*cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r*cos(a * i), -height / 2, r * sin(a * i)));
+			vertices.push_back(Point(r*cos(a * i), height / 2, r * sin(a * i)));
+
+			// side 2
+			vertices.push_back(Point(r*cos(a * i + t), -height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r*cos(a * i), -height / 2, r * sin(a * i)));
+			vertices.push_back(Point(r*cos(a * i + t), height / 2, r * sin(a * i + t)));
+
+		}
 
 		// Sending vertices to .3d file
 		for (int i = 0; i < vertices.size(); i++) {
@@ -266,7 +289,7 @@ int main(int argc, char** argv) {
 			std::string file = argv[3];
 
 			// Call triangle function
-			getPlane(width, file);
+			drawPlane(width, file);
 
 			// writes to scene.xml
 			writeToXML(file);
@@ -287,7 +310,7 @@ int main(int argc, char** argv) {
 			std::string file = argv[6];
 
 			// Call box function
-			getBox(x, y, z, nrDivisions, file);
+			drawBox(x, y, z, nrDivisions, file);
 		}
 
 		else if (primitive.compare("sphere") == 0 && argc == 6) {
@@ -303,7 +326,7 @@ int main(int argc, char** argv) {
 			std::string file = argv[5];
 
 			// Call sphere function
-			getSphere(radius, slices, stacks, file);
+			drawSphere(radius, slices, stacks, file);
 
 			// writes to scene.xml
 			writeToXML(file);
@@ -324,7 +347,7 @@ int main(int argc, char** argv) {
 			std::string file = argv[6];
 
 			// Call cone function
-			getCone(radius, height, slices, stacks, file);
+			drawCone(radius, height, slices, stacks, file);
 
 			// writes to scene.xml
 			writeToXML(file);
@@ -343,7 +366,7 @@ int main(int argc, char** argv) {
 			std::string file = argv[5];
 
 			// Call pyramid function
-			getPyramid(height, width, length, file);
+			drawPyramid(height, width, length, file);
 
 			// writes to scene.xml
 			writeToXML(file);
@@ -359,12 +382,10 @@ int main(int argc, char** argv) {
 
 			int slices = std::stoi(argv[4]);
 
-			int stacks = std::stoi(argv[5]);
-
-			std::string file = argv[6];
+			std::string file = argv[5];
 
 			// Call cilinder function
-			getCylinder(radius, height, slices, stacks, file);
+			drawCylinder(radius, height, slices, file);
 
 			// writes to scene.xml
 			writeToXML(file);
