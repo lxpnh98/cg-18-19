@@ -23,26 +23,28 @@ void engine::loadScene(vector<model> scene) {
 
 void engine::drawFrame() {
 
-		vector<model>::iterator i;
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-		// Iterate over models
+	vector<model>::iterator i;
 
-		for (i = scene.begin(); i != scene.end(); i++) {
+	// Iterate over models
 
-			std::vector<vertex> vertices = i->vertices;
+	for (i = scene.begin(); i != scene.end(); i++) {
 
-			glBegin(GL_TRIANGLES);
+		std::vector<vertex> vertices = i->vertices;
 
-			// Iterate over vertices
-			std::vector<vertex>::iterator j;
+		glBegin(GL_TRIANGLES);
 
-			for (j = vertices.begin(); j != vertices.end(); j++) {
+		// Iterate over vertices
 
-				glVertex3f(j->x, j->y, j->z);
-			}
+		for (j = vertices.begin(); j != vertices.end(); j++) {
 
-			glEnd();
+			glVertex3f(j->x, j->y, j->z);
 
 		}
+
+		glEnd();
+
+	}
 
 }

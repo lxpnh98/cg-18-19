@@ -372,7 +372,7 @@ int main(int argc, char** argv) {
 			writeToXML(file);
 		}
 
-		else if (primitive.compare("cilinder") == 0 && argc == 7) {
+		else if (primitive.compare("cylinder") == 0 && argc == 6) {
 
 			std::cout << "Queres criar um cilindro." << std::endl;
 
