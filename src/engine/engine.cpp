@@ -36,6 +36,7 @@ void engine::drawFrame() {
 		glBegin(GL_TRIANGLES);
 
 		// Iterate over vertices
+		std::vector<vertex>::iterator j;
 
 		for (j = vertices.begin(); j != vertices.end(); j++) {
 
