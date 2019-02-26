@@ -3,7 +3,8 @@
 ## How-To
 - Criar uma pasta build;
 - Copiar glut32.dll para dentro da pasta build;
-- Configurar cmake da seguinte forma:
-- Os executáveis (CG1819.exe e generator.exe) vão para a pasta bin.
+- Configurar cmake como na imagem em baixo;
+- Os executáveis (CG1819.exe e generator.exe) vão para a pasta bin;
+- Mudar o Working Directory do projeto CG1819 para /bin/Release.
 
 ![alt text](https://i.ibb.co/z5hNcJN/git.png)
