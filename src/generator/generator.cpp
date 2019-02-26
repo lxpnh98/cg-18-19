@@ -206,23 +206,23 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 
 			// top
 			vertices.push_back(Point(0.0f, height / 2, 0.0f));
-			vertices.push_back(Point(r* cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * i + t), height / 2, r * sin(a * i + t)));
 			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
 
 			// bottom
 			vertices.push_back(Point(0.0f, -height / 2, 0.0f));
 			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r* cos(a * i + t), -height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * i + t), -height / 2, r * sin(a * i + t)));
 
 			// side 1
-			vertices.push_back(Point(r*cos(a * i + t), height / 2, r * sin(a * i + t)));
-			vertices.push_back(Point(r*cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r*cos(a * i), height / 2, r * sin(a * i)));
+			vertices.push_back(Point(r * cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
+			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
 
 			// side 2
-			vertices.push_back(Point(r*cos(a * i + t), -height / 2, r * sin(a * i + t)));
-			vertices.push_back(Point(r*cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r*cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * i + t), -height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
+			vertices.push_back(Point(r * cos(a * i + t), height / 2, r * sin(a * i + t)));
 
 		}
 
