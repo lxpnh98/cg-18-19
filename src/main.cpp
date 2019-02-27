@@ -58,7 +58,7 @@ void renderScene(void) {
 
 	// set the camera
 	glLoadIdentity();
-	gluLookAt(0.0,0.0,5.0, 
+	gluLookAt(0.0,0.0,20.0, 
 		      0.0,0.0,-1.0,
 			  0.0f,1.0f,0.0f);
 
@@ -67,7 +67,7 @@ void renderScene(void) {
 
 // put drawing instructions here
 
-	engine::drawFrame();
+	engine::drawScene();
 
 	// End of frame
 	glutSwapBuffers();

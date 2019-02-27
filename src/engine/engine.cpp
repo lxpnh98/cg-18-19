@@ -18,10 +18,11 @@ using engine::vertex;
 vector<model> engine::scene;
 
 void engine::loadScene(vector<model> scene) {
+
 	engine::scene = scene;
 }
 
-void engine::drawFrame() {
+void engine::drawScene() {
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
