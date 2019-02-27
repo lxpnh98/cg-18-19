@@ -218,7 +218,7 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
 
 }
 
-void drawCone(float r, float height, int slices, int stacks, string fileName) {
+void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
 	FILE *out;
 
@@ -430,14 +430,15 @@ void writeToXML(string fileName) {
 
 int main(int argc, char** argv) {
 
-	if (argv[1] != NULL) { // Checks if program receives nothing to process
+	// Checks if program receives something to process
+	if (argv[1] != NULL) { 
 
 		std::string primitive = argv[1];
 
 		// PLANE
 		if (primitive.compare("plane") == 0 && argc == 4) {
 
-			std::cout << "Queres criar um plano." << std::endl;
+			std::cout << "A criar um plano..." << std::endl;
 
 			float width = std::stof(argv[2]);
 
@@ -446,13 +447,17 @@ int main(int argc, char** argv) {
 			// Call triangle function
 			drawPlane(width, file);
 
+			std::cout << "Plano criado com sucesso." << std::endl;
+
 			// writes to scene.xml
 			writeToXML(file);
+
+			std::cout << "Path do plano escrita no scene.xml com sucesso" << std::endl;
 		}
 
 		else if (primitive.compare("box") == 0 && argc == 7) {
 
-			std::cout << "Queres criar um cubo." << std::endl;
+			std::cout << "A criar uma caixa..." << std::endl;
 
 			float x, y, z;
 
@@ -466,11 +471,18 @@ int main(int argc, char** argv) {
 
 			// Call box function
 			drawBox(x, y, z, nrDivisions, file);
+
+			std::cout << "Caixa criada com sucesso." << std::endl;
+
+			// writes to scene.xml
+			writeToXML(file);
+
+			std::cout << "Path da caixa escrita no scene.xml com sucesso" << std::endl;
 		}
 
 		else if (primitive.compare("sphere") == 0 && argc == 6) {
 
-			std::cout << "Queres criar uma esfera." << std::endl;
+			std::cout << "A criar uma esfera..." << std::endl;
 		
 			float radius = std::stof(argv[2]);
 
@@ -483,13 +495,17 @@ int main(int argc, char** argv) {
 			// Call sphere function
 			drawSphere(radius, slices, stacks, file);
 
+			std::cout << "Esfera criada com sucesso." << std::endl;
+
 			// writes to scene.xml
 			writeToXML(file);
+
+			std::cout << "Path da esfera escrita no scene.xml com sucesso" << std::endl;
 		}
 
 		else if (primitive.compare("cone") == 0 && argc == 7) {
 
-			std::cout << "Queres criar um cone." << std::endl;
+			std::cout << "A criar um cone..." << std::endl;
 
 			float radius = std::stof(argv[2]);
 
@@ -504,13 +520,17 @@ int main(int argc, char** argv) {
 			// Call cone function
 			drawCone(radius, height, slices, stacks, file);
 
+			std::cout << "Cone criado com sucesso." << std::endl;
+
 			// writes to scene.xml
 			writeToXML(file);
+
+			std::cout << "Path do cone escrita no scene.xml com sucesso" << std::endl;
 		}
 
 		else if (primitive.compare("pyramid") == 0 && argc == 6) {
 
-			std::cout << "Queres criar uma pirâmide." << std::endl;
+			std::cout << "A criar uma pirâmide..." << std::endl;
 
 			float height = std::stof(argv[2]);
 
@@ -523,13 +543,17 @@ int main(int argc, char** argv) {
 			// Call pyramid function
 			drawPyramid(height, width, length, file);
 
+			std::cout << "Pirâmide criada com sucesso." << std::endl;
+
 			// writes to scene.xml
 			writeToXML(file);
+
+			std::cout << "Path da pirâmide escrita no scene.xml com sucesso" << std::endl;
 		}
 
 		else if (primitive.compare("cylinder") == 0 && argc == 6) {
 
-			std::cout << "Queres criar um cilindro." << std::endl;
+			std::cout << "A criar um cilindro..." << std::endl;
 
 			float radius = std::stof(argv[2]);
 
@@ -542,8 +566,12 @@ int main(int argc, char** argv) {
 			// Call cilinder function
 			drawCylinder(radius, height, slices, file);
 
+			std::cout << "Cilindro criado." << std::endl;
+
 			// writes to scene.xml
 			writeToXML(file);
+
+			std::cout << "Path do cilindro escrita no scene.xml com sucesso" << std::endl;
 		}
 
 		else {
