@@ -311,7 +311,7 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
 }
 
-void drawPyramid(float length, float height, float width, string fileName) {
+void drawPyramid(float height, float width, float length, string fileName) {
 
 	FILE *out;
 
