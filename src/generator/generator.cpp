@@ -209,32 +209,37 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
 		float beta = -M_PI/2;
 
 		float a_step = ((2 * M_PI) / slices);
-		float b_step = (M_PI/stacks);
+		float b_step = (M_PI / stacks);
 
 		float angulo_a1 = 0;
 		float angulo_b1 = 0;
 
-		for (int i = 0; i<stacks; i++) {
+		for (int i = 0; i < stacks; i++) {
 			
 			alpha = 0;
 			angulo_b1 = beta + b_step;
-			for(int j = 0; j<slices; j++) {
+
+			for(int j = 0; j < slices; j++) {
+
 				angulo_a1 = alpha + a_step; 
 
-				vertices.push_back(Point(r*cos(beta)*sin(alpha)         ,r*sin(beta)     ,r*cos(beta)*cos(alpha)));
-				vertices.push_back(Point(r*cos(beta)*sin(angulo_a1)     ,r*sin(beta)     ,r*cos(beta)*cos(angulo_a1)));
-				vertices.push_back(Point(r*cos(angulo_b1)*sin(alpha)    ,r*sin(angulo_b1),r*cos(angulo_b1)*cos(alpha)));
+				vertices.push_back(Point(r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha)));
+				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1)));
+				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha)));
 
-				vertices.push_back(Point(r*cos(beta)*sin(angulo_a1)     ,r*sin(beta)     ,r*cos(beta)*cos(angulo_a1)));
-				vertices.push_back(Point(r*cos(angulo_b1)*sin(angulo_a1),r*sin(angulo_b1),r*cos(angulo_b1)*cos(angulo_a1)));
-				vertices.push_back(Point(r*cos(angulo_b1)*sin(alpha)    ,r*sin(angulo_b1),r*cos(angulo_b1)*cos(alpha)));
+				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1)));
+				vertices.push_back(Point(r * cos(angulo_b1) * sin(angulo_a1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_a1)));
+				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha)));
+
 				alpha += a_step;
 			}
+
 			beta += b_step;
 		}
 
 		// Sending vertices to .3d file
 		for (int i = 0; i < vertices.size(); i++) {
+
 			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
 		}
 	}
