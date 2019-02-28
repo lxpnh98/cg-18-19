@@ -278,7 +278,7 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 			vertices.push_back(Point(r * cos(a * i + t), 0, r * sin(a * i + t)));
 
 			// sides
-			for (int j = 0; j < stacks; j++) {
+			for (int j = 0; j <= stacks; j++) {
 
 				float newHeight = h / stacks * j;
 				float newRadius = (h - newHeight) * r / h;
@@ -297,12 +297,6 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 				oldHeight = newHeight;
 
 			}
-
-			// ponta do triangulo??? não sei se está bem
-			vertices.push_back(Point(0.0, h, 0.0));
-			vertices.push_back(Point(oldRadius * sin(a * i), oldHeight, oldRadius * cos(a * i)));
-			vertices.push_back(Point(oldRadius * sin(a * i + t), oldHeight, oldRadius * cos(a * i + t)));
-
 		}
 
 		// Sending vertices to .3d file
