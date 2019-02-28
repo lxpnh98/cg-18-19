@@ -72,9 +72,9 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 		float incY = y / nrDivisions;
 		float incZ = z / nrDivisions;
 
-		int xDiv = 0;
-		int yDiv = 0;
-		int zDiv = 0;
+		float xDiv = 0;
+		float yDiv = 0;
+		float zDiv = 0;
 
 		// base e topo em que o Y é fixo
 		while (zDiv < z) {
