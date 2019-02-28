@@ -1,5 +1,5 @@
 ﻿#include <stdio.h>
-#include <windows.h>
+//#include <windows.h>
 #include <iostream>
 #include <fstream>
 #include <vector> 
@@ -28,7 +28,7 @@ void drawPlane(float width, string fileName) {
 	FILE *out;
 
 	// open to write (cleans if file already exists or creates it if not)
-	fopen_s(&out, fileName.c_str(), "w");
+	out = fopen(fileName.c_str(), "w");
 
 	if (out != NULL) {
 		
@@ -61,7 +61,7 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 	FILE *out;
 
 	// open to write (cleans if file already exists or creates it if not)
-	fopen_s(&out, fileName.c_str(), "w");
+	out = fopen(fileName.c_str(), "w");
 
 	if (out != NULL) {
 
@@ -198,7 +198,7 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
 	FILE *out;
 
 	// open to write (cleans if file already exists or creates it if not)
-	fopen_s(&out, fileName.c_str(), "w");
+	out = fopen(fileName.c_str(), "w");
 
 	if (out != NULL) {
 
@@ -253,7 +253,7 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 	FILE *out;
 
 	// open to write (cleans if file already exists or creates it if not)
-	fopen_s(&out, fileName.c_str(), "w");
+	out = fopen(fileName.c_str(), "w");
 
 	if (out != NULL) {
 
@@ -315,7 +315,7 @@ void drawPyramid(float length, float height, float width, string fileName) {
 	FILE *out;
 
 	// open to write (cleans if file already exists or creates it if not)
-	fopen_s(&out, fileName.c_str(), "w");
+	out = fopen(fileName.c_str(), "w");
 
 	if (out != NULL) {
 
@@ -370,7 +370,7 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 	FILE *out;
 
 	// open to write (cleans if file already exists or creates it if not)
-	fopen_s(&out, fileName.c_str(), "w");
+	out = fopen(fileName.c_str(), "w");
 
 	if (out != NULL) {
 
@@ -381,27 +381,25 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 
 		for (int i = 0; i < slices; i++) {
 
-			float t = a + a;
-
 			// top
 			vertices.push_back(Point(0, height / 2, 0));
-			vertices.push_back(Point(r * cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), height / 2, r * sin(a * (i + 1))));
 			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
 
 			// bottom
 			vertices.push_back(Point(0, -height / 2, 0));
 			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * i + t), -height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), -height / 2, r * sin(a * (i + 1))));
 
 			// side 1
-			vertices.push_back(Point(r * cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), height / 2, r * sin(a * (i + 1))));
 			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
 			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
 
 			// side 2
-			vertices.push_back(Point(r * cos(a * i + t), -height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), -height / 2, r * sin(a * (i + 1))));
 			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * i + t), height / 2, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), height / 2, r * sin(a * (i + 1))));
 
 		}
 
