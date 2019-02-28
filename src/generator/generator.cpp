@@ -56,6 +56,7 @@ void drawPlane(float width, string fileName) {
 
 }
 
+// pôr o centro da caixa na origem?
 void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
 	FILE *out;
@@ -262,36 +263,36 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
 		float a = (2 * M_PI) / slices;
 
-		float hStack = h / stacks;
-		float rStack = ((h - hStack) * r) / h;
-
-		float oldRadius = r;
-		float oldHeight = 0;
+		//float hStack = h / stacks;
+		//float rStack = ((h - hStack) * r) / h;
 
 		for (int i = 0; i < slices; i++) {
 
-			float t = a + a;
-
+            // triangulos da base rodados (0.5 * step) angulos para alinhar com
+            // os triangulos dos lados
 			// base
 			vertices.push_back(Point(0, 0, 0));
-			vertices.push_back(Point(r * cos(a * i), 0, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * i + t), 0, r * sin(a * i + t)));
+			vertices.push_back(Point(r * cos(a * (i + 0.5)), 0, r * sin(a * (i + 0.5))));
+			vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)), 0, r * sin(a * (i + 1 + 0.5))));
+
+            float oldRadius = r;
+            float oldHeight = 0;
 
 			// sides
-			for (int j = 0; j <= stacks; j++) {
+			for (int j = 0; j < stacks; j++) {
 
-				float newHeight = h / stacks * j;
+				float newHeight = h / stacks * (j+1);
 				float newRadius = (h - newHeight) * r / h;
 
 				// triangle1
 				vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
-				vertices.push_back(Point(oldRadius * sin(a * i + t), oldHeight, oldRadius * cos(a * i + t)));
 				vertices.push_back(Point(oldRadius * sin(a * i), oldHeight, oldRadius * cos(a * i)));
+				vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
 
 				// triangle 2
 				vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
-				vertices.push_back(Point(newRadius * sin(a * i + t), newHeight, newRadius * cos(a * i + t)));
-				vertices.push_back(Point(oldRadius * sin(a * i + t), oldHeight, oldRadius * cos(a * i + t)));
+				vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
+				vertices.push_back(Point(newRadius * sin(a * (i + 1)), newHeight, newRadius * cos(a * (i + 1))));
 
 				oldRadius = newRadius;
 				oldHeight = newHeight;
