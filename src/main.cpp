@@ -12,6 +12,26 @@
 
 float rotateX = 0;
 float rotateY = 0;
+float rotateZ = 0;
+
+//Variáveis de câmera
+float cPosX = 0.0f, cPosY = 0.0f, cPosZ = 20.0f;
+float Zoom = 8.0f, zoomMin = 4.0f;
+
+//Método de calculo da posição da câmera
+void cameraCalc() {
+	cPosX = Zoom * cos(0.0f) * sin(0.0f);
+	cPosY = Zoom * sin(0.0f);
+	cPosZ = Zoom * cos(0.0f) * cos(0.0f);
+}
+
+void processKeys(unsigned char key, int xx, int yy) {
+
+	switch (key) {
+		case '+': Zoom = Zoom - 0.1f; break;
+		case '-': Zoom = Zoom + 0.1f; break;
+	}
+}
 
 void keyBoardHandler(int key, int x, int y) {
 
@@ -21,10 +41,10 @@ void keyBoardHandler(int key, int x, int y) {
 		case GLUT_KEY_DOWN: rotateX += 10; break;
 		case GLUT_KEY_LEFT: rotateY -= 10; break;
 		case GLUT_KEY_RIGHT: rotateY += 10; break;
+		case GLUT_KEY_PAGE_UP: rotateZ -= 10; break;
+		case GLUT_KEY_PAGE_DOWN: rotateZ += 10; break;
 	}
-
 }
-
 
 void changeSize(int w, int h) {
 
@@ -58,12 +78,15 @@ void renderScene(void) {
 
 	// set the camera
 	glLoadIdentity();
-	gluLookAt(0.0,0.0,20.0, 
-		      0.0,0.0,-1.0,
-			  0.0f,1.0f,0.0f);
+	// Cálculo da posição da câmera
+	cameraCalc();
+	gluLookAt(cPosX,cPosY,cPosZ,
+			  0.0f, 0.0f, -1.0f,
+			  0.0f, 1.0f, 0.0f);
 
 	glRotatef(rotateY, 0.0, 1.0, 0.0);
 	glRotatef(rotateX, 1.0, 0.0, 0.0);
+	glRotatef(rotateZ, 0.0, 0.0, 1.0);
 
 // put drawing instructions here
 
@@ -88,6 +111,7 @@ int main(int argc, char **argv) {
 	glutCreateWindow("CG@DI");
 
 	glutSpecialFunc(keyBoardHandler);
+	glutKeyboardFunc(processKeys);
 
 // put callback registration here
 
