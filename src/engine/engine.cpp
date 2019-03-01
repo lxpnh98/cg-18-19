@@ -12,12 +12,12 @@
 #endif
 
 using std::vector;
-using engine::model;
+using engine::figure;
 using engine::vertex;
 
-vector<model> engine::scene;
+vector<figure> engine::scene;
 
-void engine::loadScene(vector<model> scene) {
+void engine::loadScene(vector<figure> scene) {
 
 	engine::scene = scene;
 }
@@ -26,7 +26,7 @@ void engine::drawScene() {
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-	vector<model>::iterator i;
+	vector<figure>::iterator i;
 
 	// Iterate over models
 
