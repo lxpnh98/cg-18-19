@@ -131,7 +131,7 @@ int main(int argc, char **argv) {
 	glEnable(GL_CULL_FACE);
 
 	// Load scene XML
-	std::vector<engine::model> scene = parser::loadXML("scene.xml");
+	std::vector<engine::figure> scene = parser::loadXML("scene.xml");
 
 	// Send scene models to engine
 	engine::loadScene(scene);

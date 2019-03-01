@@ -12,7 +12,7 @@ using std::string;
 using std::ifstream;
 
 // Loads an XML file containing various references to .3d files
-std::vector<engine::model> parser::loadXML(const char* path) {
+std::vector<engine::figure> parser::loadXML(const char* path) {
 
 	// Load XML document
 	XMLDocument file;
@@ -49,13 +49,13 @@ std::vector<engine::model> parser::loadXML(const char* path) {
 
 	// Loop through model paths and load models
 
-	std::vector<engine::model> loadedModels;
+	std::vector<engine::figure> loadedModels;
 
 	for (auto p : modelPaths) {
 
 		ifstream modelFile;
 		modelFile.open(p);
-		engine::model newModel;
+		engine::figure newModel;
 
 		while (!modelFile.eof()) {
 
