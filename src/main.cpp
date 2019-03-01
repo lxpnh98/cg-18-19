@@ -30,6 +30,9 @@ void processKeys(unsigned char key, int xx, int yy) {
 	switch (key) {
 		case '+': Zoom = Zoom - 0.1f; break;
 		case '-': Zoom = Zoom + 0.1f; break;
+		case '1': glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  break;
+		case '2': glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  break;
+		case '3': glPolygonMode(GL_FRONT_AND_BACK, GL_POINT); break;
 	}
 }
 
@@ -89,7 +92,6 @@ void renderScene(void) {
 	glRotatef(rotateZ, 0.0, 0.0, 1.0);
 
 // put drawing instructions here
-
 	engine::drawScene();
 
 	// End of frame
