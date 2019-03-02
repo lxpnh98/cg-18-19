@@ -15,14 +15,6 @@ using namespace tinyxml2;
 
 using namespace std;
 
-/*
-TODO:
-- Plane (a square in the XZ plane, centred in the origin, made with 2 triangles)
-- Box (requires X, Y and Z dimensions, and optionally the number of divisions)
-- Sphere (requires radius, slices and stacks)
-- Cone (requires bottom radius, height, slices and stacks)
-*/
-
 void drawPlane(float width, string fileName) {
 
 	FILE *out;

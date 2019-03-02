@@ -49,6 +49,17 @@ void keyBoardHandler(int key, int x, int y) {
 	}
 }
 
+void drawCoordinates() {
+
+	glBegin(GL_LINES);
+	glColor3f(1, 0, 0); glVertex3f(0, 0, 0); glVertex3f(10, 0, 0);
+	glColor3f(0, 1, 0); glVertex3f(0, 0, 0); glVertex3f(0, 10, 0);
+	glColor3f(0, 0, 1); glVertex3f(0, 0, 0); glVertex3f(0, 0, 10);
+	glEnd();
+
+	glFlush();
+}
+
 void changeSize(int w, int h) {
 
 	// Prevent a divide by zero, when window is too short
@@ -75,7 +86,6 @@ void changeSize(int w, int h) {
 }
 
 void renderScene(void) {
-
 	// clear buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -92,11 +102,11 @@ void renderScene(void) {
 	glRotatef(rotateZ, 0.0, 0.0, 1.0);
 
 // put drawing instructions here
+	drawCoordinates();
 	engine::drawScene();
 
 	// End of frame
 	glutSwapBuffers();
-
 }
 
 int main(int argc, char **argv) {
@@ -115,7 +125,7 @@ int main(int argc, char **argv) {
 	glutSpecialFunc(keyBoardHandler);
 	glutKeyboardFunc(processKeys);
 
-// put callback registration here
+	// put callback registration here
 
 	// The callback function responsible for redrawing the window’s contents. 
 	glutDisplayFunc(renderScene);
@@ -126,7 +136,7 @@ int main(int argc, char **argv) {
 	// This makes it particularly suitable for situations where repeated redraw is required, for instance in continuous animations.
 	glutIdleFunc(renderScene);
 
-// OpenGL settings 
+	// OpenGL settings 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 
@@ -136,7 +146,7 @@ int main(int argc, char **argv) {
 	// Send scene models to engine
 	engine::loadScene(scene);
 
-// enter GLUT's main loop
+	// enter GLUT's main loop
 	glutMainLoop();
 	
 	return 1;
