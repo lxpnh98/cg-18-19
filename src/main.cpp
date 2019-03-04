@@ -10,26 +10,25 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-float rotateX = 0;
-float rotateY = 0;
-float rotateZ = 0;
-
 //Variáveis de câmera
 float cPosX = 0.0f, cPosY = 0.0f, cPosZ = 20.0f;
+float cDirX = 0.0f, cDirY = 0.0f, cDirZ = 0.0f;
+float cTiltX = 0.0f, cTiltY = 1.0f, cTiltZ = 0.0f;
 float Zoom = 8.0f, zoomMin = 4.0f;
+float cAngleA = 0.0f, cAngleB = 0.0f;
 
 //Método de calculo da posição da câmera
 void cameraCalc() {
-	cPosX = Zoom * cos(0.0f) * sin(0.0f);
-	cPosY = Zoom * sin(0.0f);
-	cPosZ = Zoom * cos(0.0f) * cos(0.0f);
+	cPosX = Zoom * cos(cAngleB) * sin(cAngleA);
+	cPosY = Zoom * sin(cAngleB);
+	cPosZ = Zoom * cos(cAngleB) * cos(cAngleA);
 }
 
 void processKeys(unsigned char key, int xx, int yy) {
 
 	switch (key) {
 		case '+': Zoom = Zoom - 0.1f; break;
-		case '-': Zoom = Zoom + 0.1f; break;
+		case '-': if (Zoom > zoomMin){ Zoom = Zoom + 0.1f; } break;
 		case '1': glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  break;
 		case '2': glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  break;
 		case '3': glPolygonMode(GL_FRONT_AND_BACK, GL_POINT); break;
@@ -40,12 +39,10 @@ void keyBoardHandler(int key, int x, int y) {
 
 	switch (key) {
 
-		case GLUT_KEY_UP: rotateX -= 10; break;
-		case GLUT_KEY_DOWN: rotateX += 10; break;
-		case GLUT_KEY_LEFT: rotateY -= 10; break;
-		case GLUT_KEY_RIGHT: rotateY += 10; break;
-		case GLUT_KEY_PAGE_UP: rotateZ -= 10; break;
-		case GLUT_KEY_PAGE_DOWN: rotateZ += 10; break;
+		case GLUT_KEY_UP: if (cAngleB > -M_PI / 2) { cAngleB = (cAngleB - 0.1f); } break;
+		case GLUT_KEY_DOWN: if (cAngleB < M_PI / 2) { cAngleB = cAngleB + 0.1f; } break;
+		case GLUT_KEY_LEFT: cAngleA = cAngleA + 0.05f; break;
+		case GLUT_KEY_RIGHT: cAngleA = cAngleA - 0.05f; break;
 	}
 }
 
@@ -93,13 +90,9 @@ void renderScene(void) {
 	glLoadIdentity();
 	// Cálculo da posição da câmera
 	cameraCalc();
-	gluLookAt(cPosX,cPosY,cPosZ,
-			  0.0f, 0.0f, -1.0f,
-			  0.0f, 1.0f, 0.0f);
-
-	glRotatef(rotateY, 0.0, 1.0, 0.0);
-	glRotatef(rotateX, 1.0, 0.0, 0.0);
-	glRotatef(rotateZ, 0.0, 0.0, 1.0);
+	gluLookAt(cPosX, cPosY, cPosZ,
+		   	  cDirX, cDirY, cDirZ,
+			  cTiltX, cTiltY, cTiltZ);
 
 // put drawing instructions here
 	drawCoordinates();

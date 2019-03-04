@@ -37,6 +37,16 @@ void drawPlane(float width, string fileName) {
 		vertices.push_back(Point(-width/2, 0.0, -width/2));
 		vertices.push_back(Point(-width/2, 0.0, width/2));
 
+		// T11
+		vertices.push_back(Point(width / 2, 0.0, width / 2));
+		vertices.push_back(Point(-width / 2, 0.0, width / 2));
+		vertices.push_back(Point(width / 2, 0.0, -width / 2));
+
+		// T21
+		vertices.push_back(Point(-width / 2, 0.0, width / 2));
+		vertices.push_back(Point(-width / 2, 0.0, -width / 2));
+		vertices.push_back(Point(width / 2, 0.0, -width / 2)); 
+
 		// Sending vertices to .3d file
 		for (int i = 0; i < vertices.size(); i++) {
 
