@@ -79,10 +79,11 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 		float yDiv = 0;
 		float zDiv = 0;
 
+        int xx, yy, zz;
 		// base e topo em que o Y é fixo
-		while (zDiv < z) {
+		for (zz = 0; zz < nrDivisions; zz++) {
 
-			while (xDiv < x) {
+			for (xx = 0; xx < nrDivisions; xx++) {
 
 				// base
 				vertices.push_back(Point(xDiv, 0, zDiv));
@@ -117,9 +118,9 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 		zDiv = 0;
 
 		// lados em que o x é fixo
-		while (zDiv < z) {
+		for (zz = 0; zz < nrDivisions; zz++) {
 
-			while (yDiv < y) {
+			for (yy = 0; yy < nrDivisions; yy++) {
 
 				// lado esquerdo
 				vertices.push_back(Point(x, yDiv, zDiv));
@@ -153,9 +154,9 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 		zDiv = 0;
 
 		// lados em que o z é fixo
-		while (xDiv < x) {
+		for (xx = 0; xx < nrDivisions; xx++) {
 
-			while (yDiv < y) {
+			for (yy = 0; yy < nrDivisions; yy++) {
 
 				// frente
 				vertices.push_back(Point(xDiv + incX, yDiv + incY, z));
