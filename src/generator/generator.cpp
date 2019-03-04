@@ -314,38 +314,41 @@ void drawPyramid(float height, float width, float length, string fileName) {
 
 		// Vector to store the vertices
 		std::vector<Point> vertices; 
+		
+		float largura = width/2;
+		float comprimento = length/2;
 
 		// Triângulo da Frente
 		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(-length, 0.0, width));
-		vertices.push_back(Point(length, 0.0, width));
+		vertices.push_back(Point(-comprimento, 0.0, largura));
+		vertices.push_back(Point(comprimento, 0.0, largura));
 
 		// Right
 		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(length, 0.0, width));
-		vertices.push_back(Point(length, 0.0, -width));
+		vertices.push_back(Point(comprimento, 0.0, largura));
+		vertices.push_back(Point(comprimento, 0.0, -largura));
 
 		// Back
 		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(length, 0.0, -width));
-		vertices.push_back(Point(-length, 0.0, -width));
+		vertices.push_back(Point(comprimento, 0.0, -largura));
+		vertices.push_back(Point(-comprimento, 0.0, -largura));
 
 		// Left 
 		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(-length, 0.0, -width));
-		vertices.push_back(Point(-length, 0.0, width));
+		vertices.push_back(Point(-comprimento, 0.0, -largura));
+		vertices.push_back(Point(-comprimento, 0.0, largura));
 
 		// ponteiro dos relógios
 
 		// Debaixo    
-		vertices.push_back(Point(-length, 0.0, -width));
-		vertices.push_back(Point(length, 0.0, width));
-		vertices.push_back(Point(-length, 0.0, width));
+		vertices.push_back(Point(-comprimento, 0.0, -largura));
+		vertices.push_back(Point(comprimento, 0.0, largura));
+		vertices.push_back(Point(-comprimento, 0.0, largura));
 
 		// Debaixo      
-		vertices.push_back(Point(length, 0.0, -width));
-		vertices.push_back(Point(length, 0.0, width));
-		vertices.push_back(Point(-length, 0.0, -width));
+		vertices.push_back(Point(comprimento, 0.0, -largura));
+		vertices.push_back(Point(comprimento, 0.0, largura));
+		vertices.push_back(Point(-comprimento, 0.0, -largura));
 
 		// Sending vertices to .3d file
 		for (int i = 0; i < vertices.size(); i++) {
@@ -371,28 +374,29 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 		std::vector<Point> vertices;
 
 		float a = (2 * M_PI) / slices;
+		float altura = height / 2;
 
 		for (int i = 0; i < slices; i++) {
 
 			// top
-			vertices.push_back(Point(0, height / 2, 0));
-			vertices.push_back(Point(r * cos(a * (i + 1)), height / 2, r * sin(a * (i + 1))));
-			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
+			vertices.push_back(Point(0, altura, 0));
+			vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
+			vertices.push_back(Point(r * cos(a * i), altura, r * sin(a * i)));
 
 			// bottom
-			vertices.push_back(Point(0, -height / 2, 0));
-			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * (i + 1)), -height / 2, r * sin(a * (i + 1))));
+			vertices.push_back(Point(0, -altura, 0));
+			vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), -altura, r * sin(a * (i + 1))));
 
 			// side 1
-			vertices.push_back(Point(r * cos(a * (i + 1)), height / 2, r * sin(a * (i + 1))));
-			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * i), height / 2, r * sin(a * i)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
+			vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
+			vertices.push_back(Point(r * cos(a * i), altura, r * sin(a * i)));
 
 			// side 2
-			vertices.push_back(Point(r * cos(a * (i + 1)), -height / 2, r * sin(a * (i + 1))));
-			vertices.push_back(Point(r * cos(a * i), -height / 2, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * (i + 1)), height / 2, r * sin(a * (i + 1))));
+			vertices.push_back(Point(r * cos(a * (i + 1)), -altura, r * sin(a * (i + 1))));
+			vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
+			vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
 
 		}
 
