@@ -39,10 +39,10 @@ void keyBoardHandler(int key, int x, int y) {
 
 	switch (key) {
 
-		case GLUT_KEY_UP: if (cAngleB > -M_PI / 2) { cAngleB = (cAngleB - 0.1f); } break;
-		case GLUT_KEY_DOWN: if (cAngleB < M_PI / 2) { cAngleB = cAngleB + 0.1f; } break;
-		case GLUT_KEY_LEFT: cAngleA = cAngleA + 0.05f; break;
-		case GLUT_KEY_RIGHT: cAngleA = cAngleA - 0.05f; break;
+		case GLUT_KEY_UP: if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.1f); } break;
+		case GLUT_KEY_DOWN: if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.1f; } break;
+		case GLUT_KEY_LEFT: cAngleA = cAngleA - 0.05f; break;
+		case GLUT_KEY_RIGHT: cAngleA = cAngleA + 0.05f; break;
 	}
 }
 
