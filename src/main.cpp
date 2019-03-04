@@ -96,6 +96,7 @@ void renderScene(void) {
 
 // put drawing instructions here
 	drawCoordinates();
+    glColor3f(1, 1, 1);
 	engine::drawScene();
 
 	// End of frame
