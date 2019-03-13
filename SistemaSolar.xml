@@ -1,0 +1,87 @@
+<scene>
+	<group>
+		<models>
+			<model file="sol.3d" />
+		</models>
+		<group>
+			<translate x=1 y=0 z=0 />
+			<rotate angle=45 axisX=0 axisY=0 axisZ=1 />
+			<scale sX=1 sY=1 sZ=1 />
+			<models> 
+				<model file="planeta.3d" />
+			</models>
+				<group>
+				<translate x=1 y=0 z=0 />
+				<rotate angle=45 axisX=0 axisY=0 axisZ=1 />
+				<scale sX=1 sY=1 sZ=1 />
+				<models>
+					<model file="lua.3d" />
+				</models>
+			</group>
+		</group>
+		<group>
+			<translate x= y= z= />
+			<rotate angle= axisX= axisY= axisZ= />
+			<scale sX= sY= sZ= />
+			<models>
+				<model file="planeta.3d" />
+			</models>
+			<group>
+				<translate x= y= z= />
+				<rotate angle= axisX= axisY= axisZ= />
+				<scale sX= sY= sZ= />
+				<models>
+					<model file="lua.3d" />
+				</models>
+			</group>
+		</group>
+		<group>
+			<translate x= y= z= />
+			<rotate angle= axisX= axisY= axisZ= />
+			<scale sX= sY= sZ= />
+			<models>
+				<model file="planeta.3d" />
+			</models>
+		</group>
+		<group>
+			<translate x= y= z= />
+			<rotate angle= axisX= axisY= axisZ= />
+			<scale sX= sY= sZ= />
+			<models>
+				<model file="planeta.3d" />
+			</models>
+		</group>
+		<group>
+			<translate x= y= z= />
+			<rotate angle= axisX= axisY= axisZ= />
+			<scale sX= sY= sZ= />
+			<models>
+				<model file="planeta.3d" />
+			</models>
+		</group>
+		<group>
+			<translate x= y= z= />
+			<rotate angle= axisX= axisY= axisZ= />
+			<scale sX= sY= sZ= />
+			<models>
+				<model file="planeta.3d" />
+			</models>
+		</group>
+		<group>
+			<translate x= y= z= />
+			<rotate angle= axisX= axisY= axisZ= />
+			<scale sX= sY= sZ= />
+			<models>
+				<model file="planeta.3d" />
+			</models>
+		</group>
+		<group>
+			<translate x= y= z= />
+			<rotate angle= axisX= axisY= axisZ= />
+			<scale sX= sY= sZ= />
+			<models>
+				<model file="planeta.3d" />
+			</models>
+		</group>
+	</group>
+</scene>
