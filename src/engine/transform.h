@@ -3,34 +3,37 @@
 
 using namespace std;
 
-class Transform {};
+class Transform {
+    public:
+    Transform();
+};
 
 class Rotate : public Transform {
     private:
-        float angle;
-        float x;
-        float y;
-        float z;
+        double angle;
+        double x;
+        double y;
+        double z;
     public:
-        //gets
+        Rotate(double, double, double, double);
 };
 
 class Translate : public Transform {
     private:
-        float x;
-        float y;
-        float z;
+        double x;
+        double y;
+        double z;
     public:
-        //gets
+        Translate(double, double, double);
 };
 
 class Scale : public Transform {
     private:
-        float x;
-        float y;
-        float z;
+        double x;
+        double y;
+        double z;
     public:
-        //gets
+        Scale(double, double, double);
 };
 
 #endif //TRANSFORM

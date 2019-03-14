@@ -135,10 +135,10 @@ int main(int argc, char **argv) {
 	glEnable(GL_CULL_FACE);
 
 	// Load scene XML
-	std::vector<engine::figure> scene = parser::loadXML((argc > 1 ? argv[1] : "scene.xml"));
+	std::vector<engine::figure> *scene = parser::loadXML((argc > 1 ? argv[1] : "scene.xml"));
 
 	// Send scene models to engine
-	engine::loadScene(scene);
+	engine::loadScene(*scene);
 
 	// enter GLUT's main loop
 	glutMainLoop();
