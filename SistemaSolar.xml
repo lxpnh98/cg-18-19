@@ -4,65 +4,65 @@
 			<model file="sol.3d" />
 		</models>
 		<group>
-			<translate x=12.499597 y=0 z=0 />
-			<rotate angle=0.01 axisX=0 axisY=0 axisZ=1 />
-			<scale sX=0.206575 sY=0.206575 sZ=0.206575 />
+			<translate x="12.499597" y=0 z=0 />
+			<rotate angle="0.01" axisX=0 axisY=0 axisZ=1 />
+			<scale sX="0.206575" sY="0.206575" sZ="0.206575" />
 			<models> 
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate x=13.401546 y=0 z=0 />
-			<rotate angle=177.3 axisX=0 axisY=0 axisZ=1 />
-			<scale sX=0.283283 sY=0.283283 sZ=0.283283 />
+			<translate x="13.401546" y=0 z=0 />
+			<rotate angle="177.3" axisX=0 axisY=0 axisZ=1 />
+			<scale sX="0.283283" sY="0.283283" sZ="0.283283" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate x=13.868822 y=0 z=0 />
-			<rotate angle=23.26 axisX=0 axisY=0 axisZ=1 />
-			<scale sX=0.289358 sY=0.289358 sZ=0.289358 />
+			<translate x="13.868822" y=0 z=0 />
+			<rotate angle="23.26" axisX=0 axisY=0 axisZ=1 />
+			<scale sX="0.289358" sY="0.289358" sZ="0.289358" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate x=14.476366 y=0 z=0 />
-			<rotate angle=25.19 axisX=0 axisY=0 axisZ=1 />
-			<scale sX=0.229023 sY=0.229023 sZ=0.229023 />
+			<translate x="14.476366" y=0 z=0 />
+			<rotate angle="25.19" axisX=0 axisY=0 axisZ=1 />
+			<scale sX="0.229023" sY="0.229023" sZ="0.229023" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate x=16.248243 y=0 z=0 />
-			<rotate angle=3.13 axisX=0 axisY=0 axisZ=1 />
+			<translate x="16.248243" y=0 z=0 />
+			<rotate angle="3.13" axisX=0 axisY=0 axisZ=1 />
 			<scale sX=1 sY=1 sZ=1 />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate x=17.122343 y=0 z=0 />
-			<rotate angle=26.73 axisX=0 axisY=0 axisZ=1 />
-			<scale sX=0.930233 sY=0.930233 sZ=0.930233 />
+			<translate x="17.122343" y=0 z=0 />
+			<rotate angle="26.73" axisX=0 axisY=0 axisZ=1 />
+			<scale sX="0.930233" sY="0.930233" sZ="0.930233" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate x=18.131179 y=0 z=0 />
-			<rotate angle=97.77 axisX=0 axisY=0 axisZ=1 />
-			<scale sX=0.683597 sY=0.683597 sZ=0.683597 />
+			<translate x="18.131179" y=0 z=0 />
+			<rotate angle="97.77" axisX=0 axisY=0 axisZ=1 />
+			<scale sX="0.683597" sY="0.683597" sZ="0.683597" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate x=18.779004 y=0 z=0 />
-			<rotate angle=28.32 axisX=0 axisY=0 axisZ=1 />
-			<scale sX=0.664199 sY=0.664199 sZ=0.664199 />
+			<translate x="18.779004" y=0 z=0 />
+			<rotate angle="28.32" axisX=0 axisY=0 axisZ=1 />
+			<scale sX="0.664199" sY="0.664199" sZ="0.664199" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
