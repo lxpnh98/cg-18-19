@@ -49,9 +49,11 @@ void keyBoardHandler(int key, int x, int y) {
 void drawCoordinates() {
 
 	glBegin(GL_LINES);
+    glPushMatrix();
 	glColor3f(1, 0, 0); glVertex3f(0, 0, 0); glVertex3f(10, 0, 0);
 	glColor3f(0, 1, 0); glVertex3f(0, 0, 0); glVertex3f(0, 10, 0);
 	glColor3f(0, 0, 1); glVertex3f(0, 0, 0); glVertex3f(0, 0, 10);
+    glPopMatrix();
 	glEnd();
 
 	glFlush();
@@ -135,10 +137,10 @@ int main(int argc, char **argv) {
 	glEnable(GL_CULL_FACE);
 
 	// Load scene XML
-	std::vector<engine::figure> scene = parser::loadXML((argc > 1 ? argv[1] : "scene.xml"));
+	std::vector<engine::figure> *scene = parser::loadXML((argc > 1 ? argv[1] : "scene.xml"));
 
 	// Send scene models to engine
-	engine::loadScene(scene);
+	engine::loadScene(*scene);
 
 	// enter GLUT's main loop
 	glutMainLoop();

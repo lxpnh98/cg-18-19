@@ -3,6 +3,7 @@
 #define ENGINE_H
 
 #include <vector>
+#include "transform.h"
 
 namespace engine {
 
@@ -12,6 +13,7 @@ namespace engine {
 
 	// A model is a collection of vertices
 	struct figure {
+        std::vector<Transform *> *transforms;
 		std::vector<vertex> vertices;
 	};
 
