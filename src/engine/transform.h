@@ -5,7 +5,8 @@ using namespace std;
 
 class Transform {
     public:
-    Transform();
+        Transform();
+        virtual void apply();
 };
 
 class Rotate : public Transform {
@@ -16,6 +17,7 @@ class Rotate : public Transform {
         double z;
     public:
         Rotate(double, double, double, double);
+        void apply();
 };
 
 class Translate : public Transform {
@@ -25,6 +27,7 @@ class Translate : public Transform {
         double z;
     public:
         Translate(double, double, double);
+        void apply();
 };
 
 class Scale : public Transform {
@@ -34,6 +37,7 @@ class Scale : public Transform {
         double z;
     public:
         Scale(double, double, double);
+        void apply();
 };
 
 #endif //TRANSFORM

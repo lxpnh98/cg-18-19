@@ -14,6 +14,7 @@ using std::string;
 using std::ifstream;
 
 Group *makeGroup(XMLNode *scene);
+std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upT);
 
 // Loads an XML file containing various references to .3d files
 std::vector<engine::figure> *parser::loadXML(const char* path) {
@@ -38,25 +39,7 @@ std::vector<engine::figure> *parser::loadXML(const char* path) {
     Group *g = makeGroup(scene);
 
 	// Loop through model paths and load models
-
-	std::vector<string> *modelPaths = g->getModels();
-    std::vector<engine::figure> *loadedModels = new std::vector<engine::figure>();
-
-	for (auto p : *modelPaths) {
-
-		ifstream modelFile;
-		modelFile.open(p);
-		engine::figure newModel;
-
-		while (!modelFile.eof()) {
-
-			engine::vertex vertex;
-			modelFile >> vertex.x >> vertex.y >> vertex.z;
-			newModel.vertices.push_back(vertex);
-		}
-
-		loadedModels->push_back(newModel);
-	}
+    std::vector<engine::figure> *loadedModels = loadModels(g, new std::vector<Transform*>());
 
 	return loadedModels;
 }
@@ -66,28 +49,26 @@ Group *makeGroup(XMLNode *scene) {
 
     XMLNode *tag = scene->FirstChild();
 
-	while (scene != nullptr) {
+	while (tag != nullptr) {
 
         string tagName = tag->Value();
         XMLElement *tagElement = tag->ToElement();
 
         if (strcmp(tagName.c_str(), "translate") == 0) {
-            
             g->addTransform(new Translate(tagElement->DoubleAttribute("X"),
                                           tagElement->DoubleAttribute("Y"),
                                           tagElement->DoubleAttribute("Z")));
-        }
-        if (strcmp(tagName.c_str(), "rotate") == 0) {
+        } else if (strcmp(tagName.c_str(), "rotate") == 0) {
             g->addTransform(new Rotate(tagElement->DoubleAttribute("angle"),
                                        tagElement->DoubleAttribute("axisX"), 
                                        tagElement->DoubleAttribute("axisY"),
                                        tagElement->DoubleAttribute("axisZ")));
-        }
-        if (strcmp(tagName.c_str(), "scale") == 0) {
-            g->addTransform(new Scale(tagElement->DoubleAttribute("X"), tagElement->DoubleAttribute("Y"), tagElement->DoubleAttribute("Z")));
-        }
-        if (strcmp(tagName.c_str(), "models") == 0) {
-            XMLNode *models = scene->FirstChild();
+        } else if (strcmp(tagName.c_str(), "scale") == 0) {
+            g->addTransform(new Scale(tagElement->DoubleAttribute("X"),
+                                      tagElement->DoubleAttribute("Y"),
+                                      tagElement->DoubleAttribute("Z")));
+        } else if (strcmp(tagName.c_str(), "models") == 0) {
+            XMLNode *models = tag->FirstChild();
             XMLElement *modelsElement;
             while (models != nullptr) {
                 modelsElement = models->ToElement();
@@ -100,15 +81,55 @@ Group *makeGroup(XMLNode *scene) {
                 // next
                 models = models->NextSibling(); // Get next model
             }
-        }
-        if (strcmp(tagName.c_str(), "group") == 0) {
-            Group *subGroup = makeGroup(scene);
+        } else if (strcmp(tagName.c_str(), "group") == 0) {
+            Group *subGroup = makeGroup(tag->DeepClone(nullptr));
             subGroup->setUp(g);
             g->addSubGroup(subGroup);
+        } else {
+            printf("invalid tag\n");
         }
 
         // next
-        scene = scene->NextSibling();
+        tag = tag->NextSibling();
 	}
     return g;
 }
+
+// upTs - tranforms from ascendent groups (initially empty)
+std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs) {
+    std::vector<engine::figure> *loadedModels = new std::vector<engine::figure>();
+
+    // transforms from current group
+    std::vector<Transform*> *newTs = g->getTransforms();
+    std::vector<Transform*> *Ts = new std::vector<Transform*>();
+    Ts->insert(Ts->end(), upTs->begin(), upTs->end()); // concat upTs
+    Ts->insert(Ts->end(), newTs->begin(), newTs->end()); // concat newTs
+
+	std::vector<string> *modelPaths = g->getModels();
+	for (auto p : *modelPaths) {
+
+		ifstream modelFile;
+		modelFile.open(p);
+		engine::figure newModel;
+
+        // copy transforms to figure
+        newModel.transforms = new std::vector<Transform*>();
+        newModel.transforms->insert(newModel.transforms->end(), Ts->begin(), Ts->end());
+        // load vertices
+		while (!modelFile.eof()) {
+			engine::vertex vertex;
+			modelFile >> vertex.x >> vertex.y >> vertex.z;
+			newModel.vertices.push_back(vertex);
+		}
+		loadedModels->push_back(newModel);
+	}
+
+    // load models in subgroups
+    for (auto subGroup : *g->getSubGroups()) {
+        std::vector<engine::figure> *subModels = loadModels(subGroup, Ts);
+        loadedModels->insert(loadedModels->end(), subModels->begin(), subModels->end()); 
+    }
+
+    return loadedModels;
+}
+

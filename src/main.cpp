@@ -49,9 +49,11 @@ void keyBoardHandler(int key, int x, int y) {
 void drawCoordinates() {
 
 	glBegin(GL_LINES);
+    glPushMatrix();
 	glColor3f(1, 0, 0); glVertex3f(0, 0, 0); glVertex3f(10, 0, 0);
 	glColor3f(0, 1, 0); glVertex3f(0, 0, 0); glVertex3f(0, 10, 0);
 	glColor3f(0, 0, 1); glVertex3f(0, 0, 0); glVertex3f(0, 0, 10);
+    glPopMatrix();
 	glEnd();
 
 	glFlush();
