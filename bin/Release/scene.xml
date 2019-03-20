@@ -1,0 +1,20 @@
+<scene>
+    <model file="planeta2.3d"/>
+    <model file="sol2.3d"/>
+    <group>
+        <translate X="0.0" Y="0.0" Z="0.0"/>
+        <scale X="0.3" Y="0.3" Z="0.3"/>
+        <models>
+            <model file="s"/>
+        </models>
+        <group>
+            <rotate angle="-45.0" axisX="0.0" axisY="1.0" axisZ="0.0"/>
+            <rotate angle="0.0" axisX="0.0" axisY="0.0" axisZ="1.0"/>
+            <translate X="10.0" Y="0.0" Z="0.0"/>
+            <scale X="0.5" Y="0.5" Z="0.5"/>
+            <models>
+                <model file="s"/>
+            </models>
+        </group>
+    </group>
+</scene>

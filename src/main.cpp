@@ -30,11 +30,13 @@ void processKeys(unsigned char key, int xx, int yy) {
 	switch (key) {
 		case '+': Zoom = Zoom * 0.95f; break;
 		case '-': Zoom = Zoom * 1.05f; break;
-		case '1': glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  break;
-		case '2': glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  break;
+		case '1': glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); break;
+		case '2': glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); break;
 		case '3': glPolygonMode(GL_FRONT_AND_BACK, GL_POINT); break;
-        case 'a': cDirX += 5.0f; break;
-        case 'd': cDirX -= 5.0f; break;
+        case 'a': cDirX -= 5.0f; break;
+        case 'd': cDirX += 5.0f; break;
+		case 'w': cDirZ -= 5.0f; break;
+		case 's': cDirZ += 5.0f; break;
 	}
 }
 

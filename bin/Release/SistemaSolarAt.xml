@@ -1,70 +1,71 @@
+
 <scene>
 	<group>
 		<models>
-			<model file="sol.3d" />
+			<model file="sol2.3d" />
 		</models>
 		<group>
-			<translate X="12.499597" Y="0.0" Z="0.0" />
+			<translate X="23.1640" Y="0.0" Z="0.0" />
 			<rotate angle="0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.206575" Y="0.206575" Z="0.206575" />
 			<models> 
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="15.401546" Y="0.0" Z="0.0" />
+			<translate X="43.2840" Y="0.0" Z="0.0" />
 			<rotate angle="177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.283283" Y="0.283283" Z="0.283283" />
 			<models>
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="17.868822" Y="0.0" Z="0.0" />
+			<translate X="59.8400" Y="0.0" Z="0.0" />
 			<rotate angle="23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.289358" Y="0.289358" Z="0.289358" />
 			<models>
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="19.476366" Y="0.0" Z="0.0" />
+			<translate X="91.1760" Y="0.0" Z="0.0" />
 			<rotate angle="25.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.229023" Y="0.229023" Z="0.229023" />
 			<models>
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="36.248243" Y="0.0" Z="0.0" />
+			<translate X="155.682" Y="0.0" Z="0.0" />
 			<rotate angle="3.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="1.0" Y="1.0" Z="1.0" />
 			<models>
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="56.122343" Y="0.0" Z="0.0" />
+			<translate X="237.6867" Y="0.0" Z="0.0" />
 			<rotate angle="26.73" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.930233" Y="0.930233" Z="0.930233" />
 			<models>
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="68.131179" Y="0.0" Z="0.0" />
+			<translate X="478.4950" Y="0.0" Z="0.0" />
 			<rotate angle="97.77" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.683597" Y="0.683597" Z="0.683597" />
 			<models>
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="80.779004" Y="0.0" Z="0.0" />
+			<translate X="744.7083" Y="0.0" Z="0.0" />
 			<rotate angle="28.32" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.664199" Y="0.664199" Z="0.664199" />
 			<models>
-				<model file="planeta.3d" />
+				<model file="planeta2.3d" />
 			</models>
 		</group>
 	</group>
