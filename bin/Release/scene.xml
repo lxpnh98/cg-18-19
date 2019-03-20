@@ -1,4 +1,5 @@
 <scene>
+    <model file="lua2.3d"/>
     <model file="planeta2.3d"/>
     <model file="sol2.3d"/>
     <group>
