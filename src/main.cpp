@@ -28,15 +28,19 @@ void cameraCalc() {
 void processKeys(unsigned char key, int xx, int yy) {
 
 	switch (key) {
-		case '+': Zoom = Zoom * 0.95f; break;
-		case '-': Zoom = Zoom * 1.05f; break;
 		case '1': glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); break;
 		case '2': glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); break;
 		case '3': glPolygonMode(GL_FRONT_AND_BACK, GL_POINT); break;
-        case 'a': cDirX -= 5.0f; break;
-        case 'd': cDirX += 5.0f; break;
-		case 'w': cDirZ -= 5.0f; break;
-		case 's': cDirZ += 5.0f; break;
+        case 'a': cDirX -= 3.5f; break;
+        case 'd': cDirX += 3.5f; break;
+		case 'w': cDirZ -= 3.5f; break;
+		case 's': cDirZ += 3.5f; break;
+		case '+': Zoom = Zoom - 0.1f; break;
+		case '-': Zoom = Zoom + 0.1f; break;
+		case 'h': cAngleA = cAngleA - 0.005f; break;
+		case 'k': cAngleA = cAngleA + 0.005f; break;
+		case 'u': if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.005f); } break;
+		case 'j': if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.005f; } break;
 	}
 }
 
@@ -44,10 +48,10 @@ void keyBoardHandler(int key, int x, int y) {
 
 	switch (key) {
 
-		case GLUT_KEY_UP: if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.1f); } break;
-		case GLUT_KEY_DOWN: if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.1f; } break;
-		case GLUT_KEY_LEFT: cAngleA = cAngleA - 0.05f; break;
-		case GLUT_KEY_RIGHT: cAngleA = cAngleA + 0.05f; break;
+		case GLUT_KEY_UP: if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.07f); } break;
+		case GLUT_KEY_DOWN: if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.07f; } break;
+		case GLUT_KEY_LEFT: cAngleA = cAngleA - 0.02f; break;
+		case GLUT_KEY_RIGHT: cAngleA = cAngleA + 0.02f; break;
 	}
 }
 
