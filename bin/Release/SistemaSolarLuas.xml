@@ -1,189 +1,189 @@
 <scene>
 	<group>
 		<models>
-			<model file="sol2.3d" />
+			<model file="sol.3d" />
 		</models>
 		<group>
-			<translate X="23.1640" Y="0.0" Z="0.0" />
+			<translate X="44.5462" Y="0.0" Z="0.0" />
 			<rotate angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.206575" Y="0.206575" Z="0.206575" />
+			<scale X="0.2066" Y="0.2066" Z="0.2066" />
 			<models> 
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="43.2840" Y="0.0" Z="0.0" />
+			<translate X="83.2308" Y="0.0" Z="0.0" />
 			<rotate angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.283283" Y="0.283283" Z="0.283283" />
+			<scale X="0.2833" Y="0.2833" Z="0.2833" />
 			<models>
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group>
-			<translate X="59.8400" Y="0.0" Z="0.0" />
+			<translate X="115.3846" Y="0.0" Z="0.0" />
 			<rotate angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.289358" Y="0.289358" Z="0.289358" />
+			<scale X="0.2895" Y="0.2895" Z="0.2895" />
 			<models>
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 			<group>
 				<translate X="0.0" Y="10.0" Z="0.0" />
 				<rotate angle="30" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.6595" Y="1.0" Z="1.0" />
+				<scale X="0.6595" Y="0.6595" Z="0.6595" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 		</group>
 		<group>
-			<translate X="91.1760" Y="0.0" Z="0.0" />
+			<translate X="175.3077" Y="0.0" Z="0.0" />
 			<rotate angle="-25.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.229023" Y="0.229023" Z="0.229023" />
+			<scale X="0.2290" Y="0.2290" Z="0.2290" />
 			<models>
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 			<group>
 				<translate X="0.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.0023" Y="1.0" Z="1.0" />
+				<scale X="0.0023" Y="0.0023" Z="0.0023" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="0.0" Y="-20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.0044" Y="1.0" Z="1.0" />
+				<scale X="0.0044" Y="0.0044" Z="0.0044" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 		</group>
 		<group>
-			<translate X="155.682" Y="0.0" Z="0.0" />
+			<translate X="346" Y="0.0" Z="0.0" />
 			<rotate angle="-3.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="1.0" Y="1.0" Z="1.0" />
 			<models>
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 			<group>
 				<translate X="0.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="1.0" Y="1.0" Z="1.0" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="-20.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.6917" Y="1.0" Z="1.0" />
+				<scale X="0.6917" Y="0.6917" Z="0.6917" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="20.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.5924" Y="1.0" Z="1.0" />
+				<scale X="0.5924" Y="0.5924" Z="0.5924" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="0" Y="-20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.9150" Y="1.0" Z="1.0" />
+				<scale X="0.9150" Y="0.9150" Z="0.9150" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 		</group>
 		<group>
-			<translate X="237.6867" Y="0.0" Z="0.0" />
+			<translate X="637.3333" Y="0.0" Z="0.0" />
 			<rotate angle="-26.73" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.930233" Y="0.930233" Z="0.930233" />
+			<scale X="0.9300" Y="0.9300" Z="0.9300" />
 			<models>
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 			<group>
 				<translate X="-20.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.9774" Y="1.0" Z="1.0" />
+				<scale X="0.9774" Y="0.9774" Z="0.9774" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="0.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.2901" Y="1.0" Z="1.0" />
+				<scale X="0.2901" Y="0.2901" Z="0.2901\" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="20.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.2789" Y="1.0" Z="1.0" />
+				<scale X="0.2789" Y="0.2789" Z="0.2789" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 		</group>
 		<group>
-			<translate X="478.4950" Y="0.0" Z="0.0" />
+			<translate X="897.1875" Y="0.0" Z="0.0" />
 			<rotate angle="-97.77" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.683597" Y="0.683597" Z="0.683597" />
+			<scale X="0.6836" Y="0.6836" Z="0.6836" />
 			<models>
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 			<group>
 				<translate X="-20.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.2198" Y="1.0" Z="1.0" />
+				<scale X="0.2198" Y="0.2198" Z="0.2198" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="0.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.2219" Y="1.0" Z="1.0" />
+				<scale X="0.2219" Y="0.2219" Z="0.2219" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="20.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.2992" Y="1.0" Z="1.0" />
+				<scale X="0.2992" Y="0.2992" Z="0.2992" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 			<group>
 				<translate X="0.0" Y="-20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.2889" Y="1.0" Z="1.0" />
+				<scale X="0.2889" Y="0.2889" Z="0.2889" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 		</group>
 		<group>
-			<translate X="744.7083" Y="0.0" Z="0.0" />
+			<translate X="1404.6875" Y="0.0" Z="0.0" />
 			<rotate angle="-28.32" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.664199" Y="0.664199" Z="0.664199" />
+			<scale X="0.6642" Y="0.6642" Z="0.6642" />
 			<models>
-				<model file="planeta2.3d" />
+				<model file="planeta.3d" />
 			</models>
 			<group>
 				<translate X="0.0" Y="20.0" Z="0.0" />
 				<rotate angle="45" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.5137" Y="1.0" Z="1.0" />
+				<scale X="0.5137" Y="0.5137" Z="0.5137" />
 				<models>
-					<model file="lua2.3d" />
+					<model file="lua.3d" />
 				</models>
 			</group>
 		</group>

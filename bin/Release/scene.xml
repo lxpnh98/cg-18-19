@@ -1,7 +1,8 @@
 <scene>
-    <model file="lua2.3d"/>
-    <model file="planeta2.3d"/>
-    <model file="sol2.3d"/>
+    <model file="lua.3d"/>
+    <model file="lua.3d"/>
+    <model file="planeta.3d"/>
+    <model file="sol.3d"/>
     <group>
         <translate X="0.0" Y="0.0" Z="0.0"/>
         <scale X="0.3" Y="0.3" Z="0.3"/>
