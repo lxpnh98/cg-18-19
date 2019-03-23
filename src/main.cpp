@@ -31,27 +31,29 @@ void processKeys(unsigned char key, int xx, int yy) {
 		case '1': glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); break;
 		case '2': glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); break;
 		case '3': glPolygonMode(GL_FRONT_AND_BACK, GL_POINT); break;
-        case 'a': cDirX -= 3.5f; break;
-        case 'd': cDirX += 3.5f; break;
-		case 'w': cDirZ -= 3.5f; break;
-		case 's': cDirZ += 3.5f; break;
-		case '+': Zoom = Zoom - 0.1f; break;
-		case '-': Zoom = Zoom + 0.1f; break;
-		case 'h': cAngleA = cAngleA - 0.005f; break;
-		case 'k': cAngleA = cAngleA + 0.005f; break;
-		case 'u': if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.005f); } break;
-		case 'j': if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.005f; } break;
+        case 'a': cDirX -= 3.0f; break; // Camara move para a esquerda
+        case 'd': cDirX += 3.0f; break; // Camara move para a direita
+		case 'w': cDirZ -= 3.0f; break; // Camara move para a cima
+		case 's': cDirZ += 3.0f; break; // Camara move para a baixo
+
+		case '+': if (Zoom > zoomMin) Zoom = Zoom - 2.0f; break; // Zoom in
+		case '-': Zoom = Zoom + 2.0f;  break; // Zoom out
+		case 'h': cAngleA = cAngleA - 0.005f; break; // Roda a camara para a esquerda
+		case 'k': cAngleA = cAngleA + 0.005f; break; // Roda a camara para a direita
+		case 'u': if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.005f); } break; // Roda a camara para a cima
+		case 'j': if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.005f; } break; // Roda a camara para a baixo
 	}
 }
 
 void keyBoardHandler(int key, int x, int y) {
 
 	switch (key) {
-
-		case GLUT_KEY_UP: if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.07f); } break;
-		case GLUT_KEY_DOWN: if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.07f; } break;
-		case GLUT_KEY_LEFT: cAngleA = cAngleA - 0.02f; break;
-		case GLUT_KEY_RIGHT: cAngleA = cAngleA + 0.02f; break;
+		case GLUT_KEY_UP: if (cAngleB < M_PI / 2) { cAngleB = (cAngleB + 0.07f); } break; // Roda a camara para a cima
+		case GLUT_KEY_DOWN: if (cAngleB > -M_PI / 2) { cAngleB = cAngleB - 0.07f; } break; // Roda a camara para a baixo
+		case GLUT_KEY_LEFT: cAngleA = cAngleA - 0.02f; break; // Roda a camara para a esquerda
+		case GLUT_KEY_RIGHT: cAngleA = cAngleA + 0.02f; break; // Roda a camara para a direita
+		case GLUT_KEY_PAGE_UP: if (Zoom > zoomMin) Zoom = Zoom - 0.1f; break; // Zoom in
+		case GLUT_KEY_PAGE_DOWN: Zoom = Zoom + 0.1f; break; // Zoom out
 	}
 }
 
