@@ -1,11 +1,9 @@
 <scene>
-	<group>
-		<!-- SOL -->
+	<group nome="Sol">
 		<models>
 			<model file="sol.3d" />
 		</models>
-		<!-- Mercúrio -->
-		<group>
+		<group nome="Mercúrio">
 			<translate X="44.5462" Y="0.0" Z="0.0" />
 			<rotate angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.2066" Y="0.2066" Z="0.2066" />
@@ -13,8 +11,7 @@
 				<model file="planeta.3d" />
 			</models>
 		</group>
-		<!-- Venús -->
-		<group>
+		<group nome="Venús">
 			<translate X="83.2308" Y="0.0" Z="0.0" />
 			<rotate angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.2833" Y="0.2833" Z="0.2833" />
@@ -22,23 +19,19 @@
 				<model file="planeta.3d" />
 			</models>
 		</group>
-		<!-- Terra e lua  -->
-		<group>
+		<group nome="Terra e lua">
 			<translate X="115.3846" Y="0.0" Z="0.0" />
-			<!-- Terra -->
-			<group>
+			<group nome="Terra">
 				<rotate angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.2895" Y="0.2895" Z="0.2895" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
-			<!-- Grupo lua -->
-			<group>
+			<group nome="Grupo lua">
 				<rotate angle="5.14" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<translate X="19.2" Y="0.0" Z="0.0" />
-				<!-- Lua -->
-				<group>
+				<group nome="Lua">
 					<rotate angle="6.68" axisX="0.0" axisY="0.0" axisZ="1.0" />
 					<scale X="0.6595" Y="0.6595" Z="0.6595" />
 					<models>
@@ -47,35 +40,29 @@
 				</group>
 			</group>
 		</group>
-		<!-- Marte e os seus Satélites -->
-		<group>
+		<group nome="Marte e os seus Satélites">
 			<translate X="175.3077" Y="0.0" Z="0.0" />
-			<!-- Marte -->
-			<group>
+			<group nome="Marte">
 				<rotate angle="-25.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.2290" Y="0.2290" Z="0.2290" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
-			<!-- Grupo Deimos -->
-			<group>
+			<group nome="Grupo Deimos">
 				<rotate angle="0.93" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<translate X="7.82" Y="0.0" Z="0.0" />
-				<!-- Deimos -->
-				<group>
+				<group nome="Deimos">
 					<scale X="0.0023" Y="0.0023" Z="0.0023" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Fobos -->
-			<group>
+			<group nome="Grupo Fobos">
 				<rotate angle="1.09" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<translate X="3.13" Y="0.0" Z="0.0" />
-				<!-- Fobos -->
-				<group>
+				<group nome="Fobos">
 					<scale X="0.0044" Y="0.0044" Z="0.0044" />
 					<models>
 						<model file="lua.3d" />
@@ -83,23 +70,19 @@
 				</group>
 			</group>
 		</group>
-		<!-- Jupiter e os seus Satélites -->
-		<group>
+		<group nome="Jupiter e os seus Satélites">
 			<translate X="346" Y="0.0" Z="0.0" />
-			<!-- Júpiter -->
-			<group>
+			<group nome="Júpiter">
 				<rotate angle="-3.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="1.0" Y="1.0" Z="1.0" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
-			<!-- Grupo Ganimedes -->
-			<group>
+			<group nome="Grupo Ganimedes">
 				<translate X="53.52" Y="0.0" Z="0.0" />
 				<rotate angle="2.21" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Ganimedes -->
-				<group>
+				<group nome="Ganimedes">
 					<rotate angle="0.15" axisX="0.0" axisY="0.0" axisZ="1.0" />
 					<scale X="1.0" Y="1.0" Z="1.0" />
 					<models>
@@ -107,36 +90,30 @@
 					</models>
 				</group>
 			</group>
-			<!-- Grupo IO -->
-			<group>
+			<group nome="Grupo IO">
 				<translate X="135" Y="0.0" Z="0.0" />
 				<rotate angle="0.05" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- IO -->
-				<group>
+				<group nome="IO">
 					<scale X="0.6917" Y="0.6917" Z="0.6917" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Europa -->
-			<group>
+			<group nome="Grupo Europa">
 				<translate X="33.55" Y="0.0" Z="0.0" />
 				<rotate angle="0.47" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Europa -->
-				<group>
+				<group nome="Europa">
 					<scale X="0.5924" Y="0.5924" Z="0.5924" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Calisto -->
-			<group>
+			<group nome="Grupo Calisto">
 				<translate X="94.14" Y="0.0" Z="0.0" />
 				<rotate angle="0.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Calisto -->
-				<group>
+				<group nome="Calisto">
 					<rotate angle="1" axisX="0.0" axisY="0.0" axisZ="1.0" />			
 					<scale X="0.9150" Y="0.9150" Z="0.9150" />
 					<models>
@@ -145,47 +122,39 @@
 				</group>
 			</group>
 		</group>
-		<!-- Saturno e os seus Satélites -->
-		<group>
+		<group nome="Saturno e os seus Satélites">
 			<translate X="637.3333" Y="0.0" Z="0.0" />
-			<!-- Saturno -->
-			<group>
+			<group nome="Saturno">
 				<rotate angle="-26.73" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.9300" Y="0.9300" Z="0.9300" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
-			<!-- Grupo Titã -->
-			<group>
+			<group nome="Grupo Titã">
 				<translate X="61.1" Y="0.0" Z="0.0" />
 				<rotate angle="0.35" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Titã -->
-				<group>
+				<group nome="Titã">
 					<scale X="0.9774" Y="0.9774" Z="0.9774" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Reia -->
-			<group>
+			<group nome="Grupo Reia">
 				<translate X="26.4" Y="0.0" Z="0.0" />
 				<rotate angle="0.35" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Reia -->
-				<group>
+				<group nome="Reia">
 					<scale X="0.2901" Y="0.2901" Z="0.2901\" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Jápeto -->
-			<group>
+			<group nome="Grupo Jápeto">
 				<translate X="178.04" Y="0.0" Z="0.0" />
 				<rotate angle="15.47" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Grupo Jápeto -->
-				<group>
+				<group nome="Jápeto">
 					<scale X="0.2789" Y="0.2789" Z="0.2789" />
 					<models>
 						<model file="lua.3d" />
@@ -193,59 +162,49 @@
 				</group>
 			</group>
 		</group>
-		<!-- Urano e os seus Satélites -->
-		<group>
+		<group nome="Urano e os seus Satélites">
 			<translate X="897.1875" Y="0.0" Z="0.0" />
-			<!-- Urano -->
-			<group>
+			<group nome="Urano">
 				<rotate angle="-97.77" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.6836" Y="0.6836" Z="0.6836" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
-			<!-- Grupo Ariel -->
-			<group>
+			<group nome="Grupo Ariel">
 				<translate X="9.56" Y="0.0" Z="0.0" />
 				<rotate angle="0.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Ariel -->
-				<group>
+				<group nome="Ariel">
 					<scale X="0.2198" Y="0.2198" Z="0.2198" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Umbriel -->
-			<group>
+			<group nome="Grupo Umbriel">
 				<translate X="11.3" Y="0.0" Z="0.0" />
 				<rotate angle="0.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Umbriel -->
-				<group>
+				<group nome="Umbriel">
 					<scale X="0.2219" Y="0.2219" Z="0.2219" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Titânia  -->
-			<group>
+			<group nome="Grupo Titânia">
 				<translate X="21.8" Y="0.0" Z="0.0" />
 				<rotate angle="0.34" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Titânia  -->
-				<group>
+				<group nome="Titânia">
 					<scale X="0.2992" Y="0.2992" Z="0.2992" />
 					<models>
 						<model file="lua.3d" />
 					</models>
 				</group>
 			</group>
-			<!-- Grupo Uberon  -->
-			<group>
+			<group nome="Grupo Uberon ">
 				<translate X="39.18" Y="0.0" Z="0.0" />
 				<rotate angle="0.06" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Uberon  -->
-				<group>
+				<group nome="Uberon">
 					<scale X="0.2889" Y="0.2889" Z="0.2889" />
 					<models>
 						<model file="lua.3d" />
@@ -253,23 +212,19 @@
 				</group>
 			</group>
 		</group>
-		<!-- Neptuno e os seus Satélites -->
-		<group>
+		<group nome="Neptuno e os seus Satélites">
 			<translate X="1404.6875" Y="0.0" Z="0.0" />
-			<!-- Neptuno -->
-			<group>
+			<group nome="Neptuno">
 				<rotate angle="-28.32" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.6642" Y="0.6642" Z="0.6642" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
-			<!-- Grupo Tritao  -->
-			<group>
+			<group nome="Grupo Tritao">
 				<translate X="17.74" Y="0.0" Z="0.0" />
 				<rotate angle="0.40" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<!-- Tritao  -->
-				<group>
+				<group nome="Tritao">
 					<scale X="0.5137" Y="0.5137" Z="0.5137" />
 					<models>
 						<model file="lua.3d" />
