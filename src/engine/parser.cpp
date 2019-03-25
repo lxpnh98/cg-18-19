@@ -85,10 +85,7 @@ Group *makeGroup(XMLNode *scene) {
             Group *subGroup = makeGroup(tag->DeepClone(nullptr));
             subGroup->setUp(g);
             g->addSubGroup(subGroup);
-        } else {
-            printf("invalid tag\n");
         }
-
         // next
         tag = tag->NextSibling();
 	}
