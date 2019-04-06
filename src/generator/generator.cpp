@@ -6,6 +6,7 @@
 #include <string>
 
 #include "point.h"
+#include "drawBezierPatches.h"
 
 #include "../engine/tinyxml2.h"
 using namespace tinyxml2;
@@ -604,6 +605,25 @@ int main(int argc, char** argv) {
 			std::cout << "Path do cilindro escrita no scene.xml com sucesso" << std::endl;
 		}
 
+		else if (primitive.compare("bezier") == 0 && argc == 5) {
+
+			std::cout << "A criar um cilindro..." << std::endl;
+
+			std::string in_file = argv[2];
+
+			int tesselation = std::stoi(argv[3]);
+
+			std::string file = argv[4];
+
+			drawBezierPatches(in_file, tesselation, file);
+
+			std::cout << "Modelo de patches Bezier criado." << std::endl;
+
+			// writes to scene.xml
+			writeToXML(file);
+
+			std::cout << "Path do modelo escrita no scene.xml com sucesso" << std::endl;
+		}
 		else {
 
 			std::cout << argv[1] << " não é um sólido válido." << std::endl;
