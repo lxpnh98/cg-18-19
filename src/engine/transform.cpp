@@ -13,8 +13,9 @@ using namespace std;
 Transform::Transform() {}
 void Transform::apply() {}
 
-Rotate::Rotate(double angle, double x, double y, double z) {
-    this->angle = angle;
+Rotate::Rotate(double time, double angle, double x, double y, double z) {
+	this->time = time;
+	this->angle = angle;
     this->x = x;
     this->y = y;
     this->z = z;
@@ -25,8 +26,9 @@ void Rotate::apply() {
     glRotated(this->angle, this->x, this->y, this->z);
 }
 
-Translate::Translate(double x, double y, double z) {
-    this->x = x;
+Translate::Translate(double time, double x, double y, double z) {
+	this->time = time;
+	this->x = x;
     this->y = y;
     this->z = z;
 

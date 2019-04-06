@@ -55,11 +55,13 @@ Group *makeGroup(XMLNode *scene) {
         XMLElement *tagElement = tag->ToElement();
 
         if (strcmp(tagName.c_str(), "translate") == 0) {
-            g->addTransform(new Translate(tagElement->DoubleAttribute("X"),
+            g->addTransform(new Translate(tagElement->DoubleAttribute("time"),
+										  tagElement->DoubleAttribute("X"),
                                           tagElement->DoubleAttribute("Y"),
                                           tagElement->DoubleAttribute("Z")));
         } else if (strcmp(tagName.c_str(), "rotate") == 0) {
-            g->addTransform(new Rotate(tagElement->DoubleAttribute("angle"),
+            g->addTransform(new Rotate(tagElement->DoubleAttribute("time"),
+									   tagElement->DoubleAttribute("angle"),
                                        tagElement->DoubleAttribute("axisX"), 
                                        tagElement->DoubleAttribute("axisY"),
                                        tagElement->DoubleAttribute("axisZ")));

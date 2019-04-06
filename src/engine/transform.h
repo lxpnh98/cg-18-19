@@ -11,22 +11,24 @@ class Transform {
 
 class Rotate : public Transform {
     private:
+		double time;
         double angle;
         double x;
         double y;
         double z;
     public:
-        Rotate(double, double, double, double);
+        Rotate(double,double, double, double, double);
         void apply();
 };
 
 class Translate : public Transform {
     private:
+		double time;
         double x;
         double y;
         double z;
     public:
-        Translate(double, double, double);
+        Translate(double, double, double, double);
         void apply();
 };
 
