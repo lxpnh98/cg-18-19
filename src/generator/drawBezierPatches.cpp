@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -6,7 +7,6 @@
 #include "point.h"
 
 using namespace std;
-
 
 void drawBezierPatches(string patchesFile, int tesselation, string fileName) {
 	FILE *in;
@@ -21,9 +21,65 @@ void drawBezierPatches(string patchesFile, int tesselation, string fileName) {
 	if (out == NULL) return;
 		
     char line[1024]; 
-    while (fgets(line, 1023, in) != NULL) {
-        cout << line << '\n';
+
+    // number of patches
+    fgets(line, 1023, in);
+    int num_patches = atoi(line);
+
+    cout << num_patches << '\n';
+
+    // patch indexes
+    std::vector<int> patches[num_patches];
+    int tmp;
+    for (int i = 0; i < num_patches; i++) {
+        fgets(line, 1023, in);
+        stringstream ss(line);
+        while(ss >> tmp) {
+            patches[i].push_back(tmp);
+            if (ss.peek() == ',') {
+                ss.ignore();
+            }
+        }
     }
+
+    // number of control points
+    fgets(line, 1023, in);
+    int num_points = atoi(line);
+
+    // patch indexes
+    std::vector<Point *> control_points;
+    float x, y, z;
+    for (int i = 0; i < num_points; i++) {
+        fgets(line, 1023, in);
+        stringstream ss(line);
+        ss >> x;
+        if (ss.peek() == ',') {
+            ss.ignore();
+        }
+        ss >> y;
+        if (ss.peek() == ',') {
+            ss.ignore();
+        }
+        ss >> z;
+        if (ss.peek() == ',') {
+            ss.ignore();
+        }
+        control_points.push_back(new Point(x, y, z));
+    }
+
+    // print info
+    cout << num_patches << '\n';
+    for (int i = 0; i < num_patches; i++) {
+        for(auto n : patches[i]) {
+            cout << n << ", ";
+        }
+        cout << '\n';
+    }
+    cout << num_points << '\n';
+    for(auto p : control_points) {
+        cout << p->getX() << ", " << p->getY() << ", " << p->getZ() << '\n';
+    }
+    cout << '\n';
 
     // Vector to store the vertices
     std::vector<Point> vertices;
