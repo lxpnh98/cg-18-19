@@ -6,7 +6,6 @@
 #include "engine.h"
 #include "group.h"
 #include "transform.h"
-#include "point.h"
 
 #include "tinyxml2.h"
 
@@ -101,21 +100,21 @@ Group *makeGroup(XMLNode *scene) {
 			double time = 0;
 
 			if (tagElement->Attribute("angle")) {
-				angle = tagElement->DoubleAttribute("angle"));
+				angle = tagElement->DoubleAttribute("angle");
 			}
 
 			if (tagElement->Attribute("time")) {
-				time = tagElement->DoubleAttribute("time"));
+				time = tagElement->DoubleAttribute("time");
 			}
 
 			if (tagElement->Attribute("axisX")) {
-				axisx = tagElement->DoubleAttribute("axisX"));
+				axisx = tagElement->DoubleAttribute("axisX");
 			}
 			if (tagElement->Attribute("axisY")) {
-				axisy = tagElement->DoubleAttribute("axisY"));
+				axisy = tagElement->DoubleAttribute("axisY");
 			}
 			if (tagElement->Attribute("axisZ")) {
-				axisz = tagElement->DoubleAttribute("axisZ"));
+				axisz = tagElement->DoubleAttribute("axisZ");
 			}
 
 			Rotate* r = new Rotate(time, angle, axisx, axisy, axisz);

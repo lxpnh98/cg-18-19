@@ -1,3 +1,6 @@
+#ifndef POINT
+#define POINT
+
 using namespace std;
 
 class Point {
@@ -26,3 +29,5 @@ public:
 		return z;
 	}
 };
+
+#endif // POINT

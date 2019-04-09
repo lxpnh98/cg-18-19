@@ -1,7 +1,7 @@
 #ifndef TRANSFORM
 #define TRANSFORM
 
-#include "point.h"
+#include "../generator/point.h"
 #include <vector>
 
 using namespace std;

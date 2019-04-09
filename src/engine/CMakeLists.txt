@@ -1,7 +1,7 @@
 file(GLOB SOURCE_FILES *.cpp)
 file(GLOB HEADER_FILES *.h)
 
-add_library(engine ${SOURCE_FILES} ${HEADER_FILES})
+add_library(engine ${SOURCE_FILES} ${HEADER_FILES} ../generator/point.h)
 
 target_include_directories(engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

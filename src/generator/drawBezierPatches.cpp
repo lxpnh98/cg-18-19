@@ -79,11 +79,12 @@ void drawBezierPatches(string patchesFile, int tesselation, string fileName) {
     int num_patches = atoi(line);
 
     // patch indexes
-    std::vector<int> patches[num_patches];
+	std::vector<std::vector<int>> patches;
     int tmp;
     for (int i = 0; i < num_patches; i++) {
         fgets(line, 1023, in);
         stringstream ss(line);
+		patches.push_back(std::vector<int>());
         while(ss >> tmp) {
             patches[i].push_back(tmp);
             if (ss.peek() == ',') {
