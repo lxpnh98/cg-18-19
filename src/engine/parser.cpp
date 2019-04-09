@@ -77,9 +77,9 @@ Group *makeGroup(XMLNode *scene) {
 
         else if (strcmp(tagName.c_str(), "translate") == 0) {
 
-			double xT = tagElement->DoubleAttribute("X");
-			double yT = tagElement->DoubleAttribute("Y");
-			double zT = tagElement->DoubleAttribute("Z");
+			double xT = 0;
+			double yT = 0;
+			double zT = 0;
 			
 			double timeT = 10;
 
