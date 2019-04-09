@@ -6,6 +6,7 @@
 #include "engine.h"
 #include "group.h"
 #include "transform.h"
+#include "point.h"
 
 #include "tinyxml2.h"
 
@@ -55,20 +56,78 @@ Group *makeGroup(XMLNode *scene) {
         XMLElement *tagElement = tag->ToElement();
 
         if (strcmp(tagName.c_str(), "translate") == 0) {
-            g->addTransform(new Translate(tagElement->DoubleAttribute("time"),
-										  tagElement->DoubleAttribute("X"),
-                                          tagElement->DoubleAttribute("Y"),
-                                          tagElement->DoubleAttribute("Z")));
+
+			double xT = tagElement->DoubleAttribute("X");
+			double yT = tagElement->DoubleAttribute("Y");
+			double zT = tagElement->DoubleAttribute("Z");
+			
+			double timeT = 10;
+
+			if (tagElement->Attribute("time")) {
+
+				timeT = atoi(tagElement->Attribute("time"));
+			}
+
+			Translate* t = new Translate(timeT);
+
+			for (; tag; tag = tag->NextSibling()) {
+
+				XMLElement* pElement1 = tag->ToElement();
+
+				if (strcmp(pElement1->Name(), "point") == 0) {
+
+					if (pElement1->Attribute("X")) {
+						xT = tagElement->DoubleAttribute("X");
+					}
+					if (pElement1->Attribute("Y")) {
+						yT = tagElement->DoubleAttribute("Y");
+					}
+					if (pElement1->Attribute("Z")) {
+						zT = tagElement->DoubleAttribute("Z");
+					}
+
+					t->addPTranslate(new Point(xT, yT, zT));
+				}
+			}
+
+            g->addTransform(t);
+
         } else if (strcmp(tagName.c_str(), "rotate") == 0) {
-            g->addTransform(new Rotate(tagElement->DoubleAttribute("time"),
-									   tagElement->DoubleAttribute("angle"),
-                                       tagElement->DoubleAttribute("axisX"), 
-                                       tagElement->DoubleAttribute("axisY"),
-                                       tagElement->DoubleAttribute("axisZ")));
+
+			double angle = 0;
+			double axisx = 0;
+			double axisy = 0;
+			double axisz = 0;
+			double time = 0;
+
+			if (tagElement->Attribute("angle")) {
+				angle = tagElement->DoubleAttribute("angle"));
+			}
+
+			if (tagElement->Attribute("time")) {
+				time = tagElement->DoubleAttribute("time"));
+			}
+
+			if (tagElement->Attribute("axisX")) {
+				axisx = tagElement->DoubleAttribute("axisX"));
+			}
+			if (tagElement->Attribute("axisY")) {
+				axisy = tagElement->DoubleAttribute("axisY"));
+			}
+			if (tagElement->Attribute("axisZ")) {
+				axisz = tagElement->DoubleAttribute("axisZ"));
+			}
+
+			Rotate* r = new Rotate(time, angle, axisx, axisy, axisz);
+
+            g->addTransform(r);
+
         } else if (strcmp(tagName.c_str(), "scale") == 0) {
+
             g->addTransform(new Scale(tagElement->DoubleAttribute("X"),
                                       tagElement->DoubleAttribute("Y"),
                                       tagElement->DoubleAttribute("Z")));
+
         } else if (strcmp(tagName.c_str(), "models") == 0) {
             XMLNode *models = tag->FirstChild();
             XMLElement *modelsElement;

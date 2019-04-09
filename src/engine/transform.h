@@ -1,6 +1,9 @@
 #ifndef TRANSFORM
 #define TRANSFORM
 
+#include "point.h"
+#include <vector>
+
 using namespace std;
 
 class Transform {
@@ -16,6 +19,7 @@ class Rotate : public Transform {
         double x;
         double y;
         double z;
+		double rodar = 0;
     public:
         Rotate(double,double, double, double, double);
         void apply();
@@ -24,11 +28,21 @@ class Rotate : public Transform {
 class Translate : public Transform {
     private:
 		double time;
-        double x;
-        double y;
-        double z;
+		double Y[3] = { 0, 1, 0 };
+		int POINT_COUNT;
+		double **p;
+		double rodar = 0;
     public:
-        Translate(double, double, double, double);
+        Translate(double);
+		void addPTranslate(Point*);
+		void buildRotMatrix(double*, double*, double*, double*);
+		void cross(double*, double*, double*);
+		void normalize(double*);
+		double length(double*);
+		void multMatrixVector(double*, double*, double*);
+		void getCatmullRomPoint(double, double*, double*, double*, double*, double*, double*);
+		void getGlobalCatmullRomPoint(double, double*, double*);
+		void renderCatmullRomCurve();
         void apply();
 };
 
