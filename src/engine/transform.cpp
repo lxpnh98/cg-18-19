@@ -31,13 +31,16 @@ void Rotate::apply() {
 	double t;
 
 	if (time != 0) {
+			
+		float currentTime = glutGet(GLUT_ELAPSED_TIME);
+		float aux = fmod(currentTime, (float)(this->time * 1000)) / (this->time * 1000);
+		float angleTime = aux * 360;
 
-		t = glutGet(GLUT_ELAPSED_TIME) % (int)(time * 1000);
-		rodar = t / (time * 1000);
-		glRotated(rodar, this->x, this->y, this->z);
+		glRotated(angleTime, this->x, this->y, this->z);
+
 	}
 
-	glRotated(this->angle, this->x, this->y, this->z);
+	else glRotated(this->angle, this->x, this->y, this->z);
 }
 
 Translate::Translate(double time) {

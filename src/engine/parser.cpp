@@ -90,7 +90,7 @@ Group *makeGroup(XMLNode *scene) {
 			double yT = 0;
 			double zT = 0;
 			
-			double timeT = 10;
+			double timeT = 0;
 
 			if (tagElement->Attribute("time")) {
 
