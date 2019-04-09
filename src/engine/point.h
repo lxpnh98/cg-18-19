@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 #ifndef POINT
 #define POINT
 
-=======
->>>>>>> parent of 300ee68... minor fix
 using namespace std;
 
 class Point {
@@ -31,10 +28,6 @@ public:
 	float getZ() {
 		return z;
 	}
-<<<<<<< HEAD
-};
 
-#endif // POINT
-=======
 };
->>>>>>> parent of 300ee68... minor fix
+#endif // POINT

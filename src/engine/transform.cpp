@@ -55,7 +55,7 @@ void Translate::addPTranslate(Point* ponto) {
 	}
 
 	(this->p) = (double **)malloc((this->POINT_COUNT + 1) * sizeof(float*));
-	for (int i = 0; i < (this->POINT_COUNT + 1); i++) (this->p)[i] = (float *)malloc(3 * sizeof(float));
+	for (int i = 0; i < (this->POINT_COUNT + 1); i++) (this->p)[i] = (double *)malloc(3 * sizeof(double));
 
 	for (int i = 0; i < POINT_COUNT; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -63,9 +63,9 @@ void Translate::addPTranslate(Point* ponto) {
 		}
 	}
 
-	this->p[this->POINT_COUNT][0] = (*ponto).X();
-	this->p[this->POINT_COUNT][1] = (*ponto).Y();
-	this->p[this->POINT_COUNT][2] = (*ponto).Z();
+	this->p[this->POINT_COUNT][0] = (*ponto).getX();
+	this->p[this->POINT_COUNT][1] = (*ponto).getY();
+	this->p[this->POINT_COUNT][2] = (*ponto).getZ();
 	this->POINT_COUNT++;
 }
 
