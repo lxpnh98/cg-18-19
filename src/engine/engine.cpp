@@ -35,13 +35,15 @@ void engine::drawScene() {
 
 
         glPushMatrix();
-        // Apply transformations
+        // Draw CatmullRom curves
         for (Transform *t : *fig->transforms) {
-
 			if (Translate* tr = dynamic_cast<Translate*>(t)) {
 				tr->renderCatmullRomCurve();
 			}
+        }
 
+        // Apply transformations
+        for (Transform *t : *fig->transforms) {
             t->apply();
         }
 
