@@ -28,7 +28,9 @@ Rotate::Rotate(double time, double angle, double x, double y, double z) {
 void Rotate::apply() {
 
 	double t;
+
 	if (time != 0) {
+
 		t = glutGet(GLUT_ELAPSED_TIME) % (int)(time * 1000);
 		rodar = t / (time * 1000);
 		glRotated(rodar, this->x, this->y, this->z);
@@ -41,6 +43,7 @@ Translate::Translate(double time) {
 
 	this->time = time;
 	this->POINT_COUNT = 0;
+
 }
 
 
@@ -187,6 +190,7 @@ void Translate::apply() {
 	double t;
 
 	if (time != 0) {
+
 		t = glutGet(GLUT_ELAPSED_TIME) % (int)(time * 1000);
 		rodar = t / (time * 1000);
 		getGlobalCatmullRomPoint(rodar, pos, deriv);
@@ -199,15 +203,18 @@ void Translate::apply() {
 		normalize(Y);
 		buildRotMatrix(deriv, Y, V, A);
 		glMultMatrixd(A);
+
 	}
 }
 
 Scale::Scale(double x, double y, double z) {
+
     this->x = x;
     this->y = y;
     this->z = z;
 }
 
 void Scale::apply() {
+
     glScaled(this->x, this->y, this->z);
 }
