@@ -1,38 +1,11 @@
 <scene>
 	<group nome="Sol">
-		<rotate time="1" axisX="0" axisY="1" axisZ="0" />
 		<models>
 			<model file="sol.3d" />
 		</models>
 		<group nome="Mercúrio">
-			<translate time="4.0" X="44.5462" Y="0.0" Z="0.0" >
-				<point X="0.273559" Y="0.000000" Z="0.678008" />
-				<point X="0.529929" Y="0.000000" Z="0.613415" />
-				<point X="0.753001" Y="0.000000" Z="0.510278" />
-				<point X="0.928760" Y="0.000000" Z="0.375079" />
-				<point X="1.046162" Y="0.000000" Z="0.216313" />
-				<point X="1.097829" Y="0.000000" Z="0.043954" />
-				<point X="1.080516" Y="0.000000" Z="-0.131166" />
-				<point X="0.995311" Y="0.000000" Z="-0.298044" />
-				<point X="0.847566" Y="0.000000" Z="-0.446196" />
-				<point X="0.646566" Y="0.000000" Z="-0.566311" />
-				<point X="0.404939" Y="0.000000" Z="-0.650843" />
-				<point X="0.137869" Y="0.000000" Z="-0.694480" />
-				<point X="-0.137864" Y="0.000000" Z="-0.694480" />
-				<point X="-0.404934" Y="0.000000" Z="-0.650844" />
-				<point X="-0.646561" Y="0.000000" Z="-0.566313" />
-				<point X="-0.847562" Y="0.000000" Z="-0.446198" />
-				<point X="-0.995308" Y="0.000000" Z="-0.298048" />
-				<point X="-1.080515" Y="0.000000" Z="-0.131170" />
-				<point X="-1.097830" Y="0.000000" Z="0.043950" />
-				<point X="-1.046164" Y="0.000000" Z="0.216309" />
-				<point X="-0.928764" Y="0.000000" Z="0.375076" />
-				<point X="-0.753006" Y="0.000000" Z="0.510275" />
-				<point X="-0.529935" Y="0.000000" Z="0.613413" />
-				<point X="-0.273565" Y="0.000000" Z="0.678007" />
-				<point X="-0.000007" Y="0.000000" Z="0.700000" />
-			</translate>
-			<rotate time="4.0" angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
+			<translate X="44.5462" Y="0.0" Z="0.0" />
+			<rotate angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.2066" Y="0.2066" Z="0.2066" />
 			<models>
 				<model file="planeta.3d" />
@@ -46,7 +19,7 @@
 				<model file="planeta.3d" />
 			</models>
 		</group>
-		<group nome="Terra e lu">
+		<group nome="Terra e lua">
 			<translate X="115.3846" Y="0.0" Z="0.0" />
 			<group nome="Terra">
 				<rotate angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
@@ -141,7 +114,7 @@
 				<translate X="94.14" Y="0.0" Z="0.0" />
 				<rotate angle="0.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Calisto">
-					<rotate angle="1" axisX="0.0" axisY="0.0" axisZ="1.0" />
+					<rotate angle="1" axisX="0.0" axisY="0.0" axisZ="1.0" />			
 					<scale X="0.9150" Y="0.9150" Z="0.9150" />
 					<models>
 						<model file="lua.3d" />

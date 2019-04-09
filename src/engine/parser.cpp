@@ -26,7 +26,6 @@ std::vector<engine::figure> *parser::loadXML(const char* path) {
 
 	if (result != XML_SUCCESS) {
 
-		cout << "Erro a carregar ficheiro";
 		throw std::runtime_error("Erro no carregamento do ficheiro XML.\n");
 	}
 
@@ -34,9 +33,7 @@ std::vector<engine::figure> *parser::loadXML(const char* path) {
 
 	if (scene == nullptr) {
 
-		cout << "Não encontrou scene";
 		throw std::runtime_error("Não encontrou scene no ficheiro.\n");
-
 	}
 
 	//XMLElement *first_group = scene->FirstChildElement("group");
@@ -57,25 +54,8 @@ Group *makeGroup(XMLNode *scene) {
 
         string tagName = tag->Value();
         XMLElement *tagElement = tag->ToElement();
-	
-		if (strcmp(tagName.c_str(), "models") == 0) {
 
-			XMLNode *models = tag->FirstChild();
-			XMLElement *modelsElement;
-			while (models != nullptr) {
-				modelsElement = models->ToElement();
-				// get model path
-				string newModel = modelsElement->Attribute("file");
-
-				// path to model paths vector
-				g->addModel(newModel);
-
-				// next
-				models = models->NextSibling(); // Get next model
-			}
-		}
-
-        else if (strcmp(tagName.c_str(), "translate") == 0) {
+        if (strcmp(tagName.c_str(), "translate") == 0) {
 
 			double xT = tagElement->DoubleAttribute("X");
 			double yT = tagElement->DoubleAttribute("Y");
@@ -86,27 +66,24 @@ Group *makeGroup(XMLNode *scene) {
 			if (tagElement->Attribute("time")) {
 
 				timeT = atoi(tagElement->Attribute("time"));
-				
 			}
 
 			Translate* t = new Translate(timeT);
 
-			XMLNode * node1 = tag->FirstChild();
+			for (; tag; tag = tag->NextSibling()) {
 
-			for (; node1; node1 = node1->NextSibling()) {
-
-				XMLElement* pElement1 = node1->ToElement();
+				XMLElement* pElement1 = tag->ToElement();
 
 				if (strcmp(pElement1->Name(), "point") == 0) {
 
 					if (pElement1->Attribute("X")) {
-						xT = pElement1->DoubleAttribute("X");
+						xT = tagElement->DoubleAttribute("X");
 					}
 					if (pElement1->Attribute("Y")) {
-						yT = pElement1->DoubleAttribute("Y");
+						yT = tagElement->DoubleAttribute("Y");
 					}
 					if (pElement1->Attribute("Z")) {
-						zT = pElement1->DoubleAttribute("Z");
+						zT = tagElement->DoubleAttribute("Z");
 					}
 
 					t->addPTranslate(new Point(xT, yT, zT));
@@ -151,6 +128,20 @@ Group *makeGroup(XMLNode *scene) {
                                       tagElement->DoubleAttribute("Y"),
                                       tagElement->DoubleAttribute("Z")));
 
+        } else if (strcmp(tagName.c_str(), "models") == 0) {
+            XMLNode *models = tag->FirstChild();
+            XMLElement *modelsElement;
+            while (models != nullptr) {
+                modelsElement = models->ToElement();
+                // get model path
+                string newModel = modelsElement->Attribute("file");  
+
+                // path to model paths vector
+                g->addModel(newModel);
+
+                // next
+                models = models->NextSibling(); // Get next model
+            }
         } else if (strcmp(tagName.c_str(), "group") == 0) {
             Group *subGroup = makeGroup(tag->DeepClone(nullptr));
             subGroup->setUp(g);
@@ -161,7 +152,6 @@ Group *makeGroup(XMLNode *scene) {
         // next
         tag = tag->NextSibling();
 	}
-
     return g;
 }
 
