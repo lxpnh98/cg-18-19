@@ -4,6 +4,7 @@
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
+#include <GL/glew.h>
 #include <GL/glut.h>
 #endif
 
@@ -146,6 +147,8 @@ int main(int argc, char **argv) {
 	// OpenGL settings 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
+
+    glewInit();
 
 	// Load scene XML
 	std::vector<engine::figure> *scene = parser::loadXML((argc > 1 ? argv[1] : "scene.xml"));

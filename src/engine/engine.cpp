@@ -33,7 +33,6 @@ void engine::drawScene() {
 
 	for (fig = scene.begin(); fig != scene.end(); fig++) {
 
-		std::vector<vertex> vertices = fig->vertices;
 
         glPushMatrix();
         // Apply transformations
@@ -46,13 +45,10 @@ void engine::drawScene() {
             t->apply();
         }
 
-		// Draw vertices
-		glBegin(GL_TRIANGLES);
-		std::vector<vertex>::iterator j;
-		for (j = vertices.begin(); j != vertices.end(); j++) {
-			glVertex3f(j->x, j->y, j->z);
-		}
-		glEnd();
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glBindBuffer(GL_ARRAY_BUFFER, fig->buffer);
+        glVertexPointer(3,GL_FLOAT,0,0);
+        glDrawArrays(GL_TRIANGLES, 0, fig->bufferSize);
 
         glPopMatrix();
 	}

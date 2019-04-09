@@ -10,6 +10,15 @@
 
 #include "tinyxml2.h"
 
+// Glut has to be included last to avoid errors
+// (for example, C2381 'exit': redefinition; '__declspec(noreturn)' or '[[noreturn]]' differs)
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glew.h>
+#include <GL/glut.h>
+#endif
+
 using namespace tinyxml2;
 using std::string;
 using std::ifstream;
@@ -182,6 +191,8 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs)
 		modelFile.open(p);
 		engine::figure newModel;
 
+        std::vector<float> vertexVec = std::vector<float>();
+
         // copy transforms to figure
         newModel.transforms = new std::vector<Transform*>();
         newModel.transforms->insert(newModel.transforms->end(), Ts->begin(), Ts->end());
@@ -189,9 +200,27 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs)
 		while (!modelFile.eof()) {
 			engine::vertex vertex;
 			modelFile >> vertex.x >> vertex.y >> vertex.z;
-			newModel.vertices.push_back(vertex);
+            vertexVec.push_back(vertex.x);
+            vertexVec.push_back(vertex.y);
+            vertexVec.push_back(vertex.z);
 		}
-		loadedModels->push_back(newModel);
+
+        float *vertexArray = (float *)malloc(sizeof(float) * vertexVec.size());
+        int i;
+        for (i = 0; i < (vertexVec.size() / 3) - 1; i++) {
+            vertexArray[3*i + 0] = vertexVec[3*i + 0];
+            vertexArray[3*i + 1] = vertexVec[3*i + 1];
+            vertexArray[3*i + 2] = vertexVec[3*i + 2];
+        }
+
+        GLuint b;
+        glGenBuffers(1, &b);
+        glBindBuffer(GL_ARRAY_BUFFER, b);
+        newModel.buffer = b;
+        newModel.bufferSize = i;
+        glBufferData(GL_ARRAY_BUFFER, i * 3 * sizeof(float), vertexArray, GL_STATIC_DRAW);
+
+        loadedModels->push_back(newModel);
 	}
 
     // load models in subgroups

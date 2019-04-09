@@ -5,6 +5,14 @@
 #include <vector>
 #include "transform.h"
 
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glew.h>
+#include <GL/glut.h>
+#endif
+
+
 namespace engine {
 
 	struct vertex {
@@ -13,8 +21,9 @@ namespace engine {
 
 	// A model is a collection of vertices
 	struct figure {
+        GLuint buffer;
+        int bufferSize;
         std::vector<Transform *> *transforms;
-		std::vector<vertex> vertices;
 	};
 
 	// Scene that can be loaded with loadScene().
