@@ -5,7 +5,7 @@
 			<model file="sol.3d" />
 		</models>
 		<group nome="Mercúrio">
-			<translate time="50.0">
+			<translate time="2.4">
 				<point X="0"      Y="0.0" Z="44.5462"/>
 				<point X="21.048" Y="0.0" Z="41.155" />
 				<point X="38.891" Y="0.0" Z="31.499" />
@@ -26,14 +26,14 @@
 				<point X="-38.891" Y="0.0" Z="31.499"/>
 				<point X="-21.048" Y="0.0" Z="41.155"/>
 			</translate>
-			<rotate time="1.0" angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
+			<rotate time="590" angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.2066" Y="0.2066" Z="0.2066" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
-		<group nome="Venús">
-			<translate time="4.0">
+		<group nome="Vénus">
+			<translate time="6.1">
 				<point X="0"      Y="0.0" Z="83.2308"/>
 				<point X="35.972" Y="0.0" Z="76.895" />
 				<point X="66.468" Y="0.0" Z="58.853" />
@@ -54,14 +54,14 @@
 				<point X="-66.468" Y="0.0" Z="58.853"/>
 				<point X="-35.972" Y="0.0" Z="76.895"/>
 			</translate>
-			<rotate time="4.0" angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
+			<rotate time="2430" angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
 			<scale X="0.2833" Y="0.2833" Z="0.2833" />
 			<models>
 				<model file="planeta.3d" />
 			</models>
 		</group>
 		<group nome="Terra e lua">
-			<translate time="4.0">
+			<translate time="10">
 				<point X="0"       Y="0.0" Z="115.3846"/>
 				<point X="47.835"  Y="0.0" Z="106.601" />
 				<point X="88.388"  Y="0.0" Z="81.589"  />
@@ -83,7 +83,7 @@
 				<point X="-47.835"  Y="0.0" Z="106.601"/>
 			</translate>
 			<group nome="Terra">
-				<rotate time="4.0" angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<rotate time="10" angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.2895" Y="0.2895" Z="0.2895" />
 				<models>
 					<model file="planeta.3d" />
@@ -91,9 +91,29 @@
 			</group>
 			<group nome="Grupo lua">
 				<rotate angle="5.14" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<translate X="19.2" Y="0.0" Z="0.0" />
+				<translate time="280">
+					<point X="0"      Y="0.0" Z="19.2"  />
+					<point X="7.348"  Y="0.0" Z="17.738"/>
+					<point X="13.576" Y="0.0" Z="13.576"/>
+					<point X="17.738" Y="0.0" Z="7.348" />
+
+					<point X="19.2"   Y="0.0" Z="0"      />
+					<point X="17.738" Y="0.0" Z="-7.348" />
+					<point X="13.576" Y="0.0" Z="-13.576"/>
+					<point X="7.348"  Y="0.0" Z="-17.738"/>
+
+					<point X="0"       Y="0.0" Z="-19.2"  />
+					<point X="-7.348"  Y="0.0" Z="-17.738"/>
+					<point X="-13.576" Y="0.0" Z="-13.576"/>
+					<point X="-17.738" Y="0.0" Z="-7.348" />
+
+					<point X="-19.2"   Y="0.0" Z="0"     />
+					<point X="-17.738" Y="0.0" Z="7.348" />
+					<point X="-13.576" Y="0.0" Z="13.576"/>
+					<point X="-7.348"  Y="0.0" Z="17.738"/>
+				</translate>
 				<group nome="Lua">
-					<rotate angle="6.68" axisX="0.0" axisY="0.0" axisZ="1.0" />
+					<rotate time="280" angle="6.68" axisX="0.0" axisY="0.0" axisZ="1.0" />
 					<scale X="0.6595" Y="0.6595" Z="0.6595" />
 					<models>
 						<model file="lua.3d" />
@@ -102,7 +122,7 @@
 			</group>
 		</group>
 		<group nome="Marte e os seus Satélites">
-			<translate time="4.0">
+			<translate time="18">
 				<point X="0"       Y="0.0" Z="175.3077"/>
 				<point X="70.796"  Y="0.0" Z="161.963" />
 				<point X="130.815" Y="0.0" Z="123.961"  />
@@ -124,7 +144,7 @@
 				<point X="-70.796"  Y="0.0" Z="161.963"/>
 			</translate>
 			<group nome="Marte">
-				<rotate time="4.0" angle="-25.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<rotate time="10" angle="-25.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.2290" Y="0.2290" Z="0.2290" />
 				<models>
 					<model file="planeta.3d" />
@@ -132,7 +152,27 @@
 			</group>
 			<group nome="Grupo Deimos">
 				<rotate angle="0.93" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<translate X="7.82" Y="0.0" Z="0.0" />
+				<translate time="12.5">
+					<point X="0"     Y="0.0" Z="7.82" />
+					<point X="2.993" Y="0.0" Z="7.225"/>
+					<point X="5.53"  Y="0.0" Z="5.53"/>
+					<point X="7.225" Y="0.0" Z="2.993" />
+
+					<point X="7.82"  Y="0.0" Z="0"     />
+					<point X="7.225" Y="0.0" Z="-2.993" />
+					<point X="5.53"  Y="0.0" Z="-5.53"/>
+					<point X="2.993" Y="0.0" Z="-7.225"/>
+
+					<point X="0"      Y="0.0" Z="-7.82" />
+					<point X="-2.993" Y="0.0" Z="-7.225"/>
+					<point X="-5.53"  Y="0.0" Z="-5.53"/>
+					<point X="-7.225" Y="0.0" Z="-2.993" />
+
+					<point X="-7.82"  Y="0.0" Z="0"     />
+					<point X="-7.225" Y="0.0" Z="2.993" />
+					<point X="-5.53"  Y="0.0" Z="5.53"/>
+					<point X="-2.993" Y="0.0" Z="7.225"/>
+				</translate>
 				<group nome="Deimos">
 					<scale X="0.0023" Y="0.0023" Z="0.0023" />
 					<models>
@@ -142,7 +182,27 @@
 			</group>
 			<group nome="Grupo Fobos">
 				<rotate angle="1.09" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<translate X="3.13" Y="0.0" Z="0.0" />
+				<translate time="2.9">
+					<point X="0"     Y="0.0" Z="3.13" />
+					<point X="1.198" Y="0.0" Z="2.892"/>
+					<point X="2.213" Y="0.0" Z="2.213"/>
+					<point X="2.892" Y="0.0" Z="1.198"/>
+
+					<point X="3.13"  Y="0.0" Z="0"     />
+					<point X="2.892" Y="0.0" Z="-1.198"/>
+					<point X="2.213" Y="0.0" Z="-2.213"/>
+					<point X="1.198" Y="0.0" Z="-2.892"/>
+
+					<point X="0"      Y="0.0" Z="-3.13" />
+					<point X="-1.198" Y="0.0" Z="-2.892"/>
+					<point X="-2.213" Y="0.0" Z="-2.213"/>
+					<point X="-2.892" Y="0.0" Z="-1.198"/>
+
+					<point X="-3.13"  Y="0.0" Z="0"    />
+					<point X="-2.892" Y="0.0" Z="1.198"/>
+					<point X="-2.213" Y="0.0" Z="2.213"/>
+					<point X="-1.198" Y="0.0" Z="2.892"/>
+				</translate>
 				<group nome="Fobos">
 					<scale X="0.0044" Y="0.0044" Z="0.0044" />
 					<models>
@@ -152,7 +212,7 @@
 			</group>
 		</group>
 		<group nome="Jupiter e os seus Satélites">
-			<translate time="4.0">
+			<translate time="118.6">
 				<point X="0"       Y="0.0" Z="346"    />
 				<point X="136.235" Y="0.0" Z="319.662"/>
 				<point X="251.73"  Y="0.0" Z="244.659"/>
@@ -174,15 +234,35 @@
 				<point X="-136.235" Y="0.0" Z="319.662"/>
 			</translate>
 			<group nome="Júpiter">
-				<rotate time="4.0" angle="-3.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<rotate time="4.2" angle="-3.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="1.0" Y="1.0" Z="1.0" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
 			<group nome="Grupo Ganimedes">
-				<translate X="53.52" Y="0.0" Z="0.0" />
-				<rotate angle="2.21" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="71">
+					<point X="0"     Y="0.0" Z="53.52" />
+					<point X="20.481" Y="0.0" Z="49.446"/>
+					<point X="37.844" Y="0.0" Z="37.844"/>
+					<point X="49.446" Y="0.0" Z="20.481"/>
+
+					<point X="53.52"  Y="0.0" Z="0"     />
+					<point X="49.446" Y="0.0" Z="-20.481"/>
+					<point X="37.844" Y="0.0" Z="-37.844"/>
+					<point X="20.481" Y="0.0" Z="-49.446"/>
+
+					<point X="0"      Y="0.0" Z="-53.52" />
+					<point X="-20.481" Y="0.0" Z="-49.446"/>
+					<point X="-37.844" Y="0.0" Z="-37.844"/>
+					<point X="-49.446" Y="0.0" Z="-20.481"/>
+
+					<point X="-53.52"  Y="0.0" Z="0"    />
+					<point X="-49.446" Y="0.0" Z="20.481"/>
+					<point X="-37.844" Y="0.0" Z="37.844"/>
+					<point X="-20.481" Y="0.0" Z="49.446"/>
+				</translate>
+				<rotate time="10" angle="2.21" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Ganimedes">
 					<rotate angle="0.15" axisX="0.0" axisY="0.0" axisZ="1.0" />
 					<scale X="1.0" Y="1.0" Z="1.0" />
@@ -192,8 +272,28 @@
 				</group>
 			</group>
 			<group nome="Grupo IO">
-				<translate X="135" Y="0.0" Z="0.0" />
-				<rotate angle="0.05" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="17.7">
+					<point X="0"     Y="0.0" Z="135" />
+					<point X="51.662" Y="0.0" Z="124.724"/>
+					<point X="95.459" Y="0.0" Z="95.459"/>
+					<point X="124.724" Y="0.0" Z="51.662"/>
+
+					<point X="135"  Y="0.0" Z="0"     />
+					<point X="124.724" Y="0.0" Z="-51.662"/>
+					<point X="95.459" Y="0.0" Z="-95.459"/>
+					<point X="51.662" Y="0.0" Z="-124.724"/>
+
+					<point X="0"      Y="0.0" Z="-135" />
+					<point X="-51.662" Y="0.0" Z="-124.724"/>
+					<point X="-95.459" Y="0.0" Z="-95.459"/>
+					<point X="-124.724" Y="0.0" Z="-51.662"/>
+
+					<point X="-135"  Y="0.0" Z="0"    />
+					<point X="-124.724" Y="0.0" Z="51.662"/>
+					<point X="-95.459" Y="0.0" Z="95.459"/>
+					<point X="-51.662" Y="0.0" Z="124.724"/>
+				</translate>
+				<rotate time="17.5" angle="0.05" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="IO">
 					<scale X="0.6917" Y="0.6917" Z="0.6917" />
 					<models>
@@ -202,8 +302,28 @@
 				</group>
 			</group>
 			<group nome="Grupo Europa">
-				<translate X="33.55" Y="0.0" Z="0.0" />
-				<rotate angle="0.47" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="35.5">
+					<point X="0"     Y="0.0" Z="33.55" />
+					<point X="12.839" Y="0.0" Z="30.996"/>
+					<point X="23.723" Y="0.0" Z="23.723"/>
+					<point X="30.996" Y="0.0" Z="12.839"/>
+
+					<point X="33.55"  Y="0.0" Z="0"     />
+					<point X="30.996" Y="0.0" Z="-12.839"/>
+					<point X="23.723" Y="0.0" Z="-23.723"/>
+					<point X="12.839" Y="0.0" Z="-30.996"/>
+
+					<point X="0"      Y="0.0" Z="-33.55" />
+					<point X="-12.839" Y="0.0" Z="-30.996"/>
+					<point X="-23.723" Y="0.0" Z="-23.723"/>
+					<point X="-30.996" Y="0.0" Z="-12.839"/>
+
+					<point X="-33.55"  Y="0.0" Z="0"    />
+					<point X="-30.996" Y="0.0" Z="12.839"/>
+					<point X="-23.723" Y="0.0" Z="23.723"/>
+					<point X="-12.839" Y="0.0" Z="30.996"/>
+				</translate>
+				<rotate time="35" angle="0.47" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Europa">
 					<scale X="0.5924" Y="0.5924" Z="0.5924" />
 					<models>
@@ -212,8 +332,28 @@
 				</group>
 			</group>
 			<group nome="Grupo Calisto">
-				<translate X="94.14" Y="0.0" Z="0.0" />
-				<rotate angle="0.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="169">
+					<point X="0"     Y="0.0" Z="94.14" />
+					<point X="36.026" Y="0.0" Z="86.974"/>
+					<point X="66.567" Y="0.0" Z="66.567"/>
+					<point X="86.974" Y="0.0" Z="36.026"/>
+
+					<point X="94.14"  Y="0.0" Z="0"     />
+					<point X="86.974" Y="0.0" Z="-36.026"/>
+					<point X="66.567" Y="0.0" Z="-66.567"/>
+					<point X="36.026" Y="0.0" Z="-86.974"/>
+
+					<point X="0"      Y="0.0" Z="-94.14" />
+					<point X="-36.026" Y="0.0" Z="-86.974"/>
+					<point X="-66.567" Y="0.0" Z="-66.567"/>
+					<point X="-86.974" Y="0.0" Z="-36.026"/>
+
+					<point X="-94.14"  Y="0.0" Z="0"    />
+					<point X="-86.974" Y="0.0" Z="36.026"/>
+					<point X="-66.567" Y="0.0" Z="66.567"/>
+					<point X="-36.026" Y="0.0" Z="86.974"/>
+				</translate>
+				<rotate time="166.7" angle="0.19" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Calisto">
 					<rotate angle="1" axisX="0.0" axisY="0.0" axisZ="1.0" />
 					<scale X="0.9150" Y="0.9150" Z="0.9150" />
@@ -224,7 +364,7 @@
 			</group>
 		</group>
 		<group nome="Saturno e os seus Satélites">
-			<translate time="4.0">
+			<translate time="295">
 				<point X="0"       Y="0.0" Z="637.3333"/>
 				<point X="236.116" Y="0.0" Z="588.819" />
 				<point X="436.285" Y="0.0" Z="450.663" />
@@ -246,15 +386,35 @@
 				<point X="-236.116" Y="0.0" Z="588.819"/>
 			</translate>
 			<group nome="Saturno">
-				<rotate time="4" angle="-26.73" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<rotate time="4.2" angle="-26.73" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.9300" Y="0.9300" Z="0.9300" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
 			<group nome="Grupo Titã">
-				<translate X="61.1" Y="0.0" Z="0.0" />
-				<rotate angle="0.35" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="159.5">
+					<point X="0"      Y="0.0" Z="61.1"  />
+					<point X="23.382" Y="0.0" Z="56.449"/>
+					<point X="43.204" Y="0.0" Z="43.204"/>
+					<point X="56.449" Y="0.0" Z="23.382"/>
+
+					<point X="61.1"   Y="0.0" Z="0"      />
+					<point X="56.449" Y="0.0" Z="-23.382"/>
+					<point X="43.204" Y="0.0" Z="-43.204"/>
+					<point X="23.382" Y="0.0" Z="-56.449"/>
+
+					<point X="0"       Y="0.0" Z="-61.1"  />
+					<point X="-23.382" Y="0.0" Z="-56.449"/>
+					<point X="-43.204" Y="0.0" Z="-43.204"/>
+					<point X="-56.449" Y="0.0" Z="-23.382"/>
+
+					<point X="-61.1"   Y="0.0" Z="0"     />
+					<point X="-56.449" Y="0.0" Z="23.382"/>
+					<point X="-43.204" Y="0.0" Z="43.204"/>
+					<point X="-23.382" Y="0.0" Z="56.449"/>
+				</translate>
+				<rotate time="159.5" angle="0.35" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Titã">
 					<scale X="0.9774" Y="0.9774" Z="0.9774" />
 					<models>
@@ -263,8 +423,28 @@
 				</group>
 			</group>
 			<group nome="Grupo Reia">
-				<translate X="26.4" Y="0.0" Z="0.0" />
-				<rotate angle="0.35" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="45.2">
+					<point X="0"      Y="0.0" Z="26.4"  />
+					<point X="10.103" Y="0.0" Z="24.390"/>
+					<point X="18.668" Y="0.0" Z="18.668"/>
+					<point X="24.390" Y="0.0" Z="10.103"/>
+
+					<point X="26.4"   Y="0.0" Z="0"      />
+					<point X="24.390" Y="0.0" Z="-10.103"/>
+					<point X="18.668" Y="0.0" Z="-18.668"/>
+					<point X="10.103" Y="0.0" Z="-24.390"/>
+
+					<point X="0"       Y="0.0" Z="-26.4"  />
+					<point X="-10.103" Y="0.0" Z="-24.390"/>
+					<point X="-18.668" Y="0.0" Z="-18.668"/>
+					<point X="-24.390" Y="0.0" Z="-10.103"/>
+
+					<point X="-26.4"   Y="0.0" Z="0"     />
+					<point X="-24.390" Y="0.0" Z="10.103"/>
+					<point X="-18.668" Y="0.0" Z="18.668"/>
+					<point X="-10.103" Y="0.0" Z="24.390"/>
+				</translate>
+				<rotate time="45" angle="0.35" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Reia">
 					<scale X="0.2901" Y="0.2901" Z="0.2901\" />
 					<models>
@@ -273,8 +453,28 @@
 				</group>
 			</group>
 			<group nome="Grupo Jápeto">
-				<translate X="178.04" Y="0.0" Z="0.0" />
-				<rotate angle="15.47" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="793">
+					<point X="0"       Y="0.0" Z="178.04" />
+					<point X="68.133"  Y="0.0" Z="164.488"/>
+					<point X="125.893" Y="0.0" Z="125.893"/>
+					<point X="164.488" Y="0.0" Z="68.133" />
+
+					<point X="178.04"  Y="0.0" Z="0"       />
+					<point X="164.488" Y="0.0" Z="-68.133" />
+					<point X="125.893" Y="0.0" Z="-125.893"/>
+					<point X="68.133"  Y="0.0" Z="-164.488"/>
+
+					<point X="0"        Y="0.0" Z="-178.04" />
+					<point X="-68.133"  Y="0.0" Z="-164.488"/>
+					<point X="-125.893" Y="0.0" Z="-125.893"/>
+					<point X="-164.488" Y="0.0" Z="-68.133" />
+
+					<point X="-178.04"  Y="0.0" Z="0"      />
+					<point X="-164.488" Y="0.0" Z="68.133" />
+					<point X="-125.893" Y="0.0" Z="125.893"/>
+					<point X="-68.133"  Y="0.0" Z="164.488"/>
+				</translate>
+				<rotate time="793" angle="15.47" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Jápeto">
 					<scale X="0.2789" Y="0.2789" Z="0.2789" />
 					<models>
@@ -284,7 +484,7 @@
 			</group>
 		</group>
 		<group nome="Urano e os seus Satélites">
-			<translate time="4.0">
+			<translate time="840">
 				<point X="0"       Y="0.0" Z="897.1875"/>
 				<point X="347.477" Y="0.0" Z="828.893" />
 				<point X="642.053" Y="0.0" Z="634.407" />
@@ -306,15 +506,35 @@
 				<point X="-347.477" Y="0.0" Z="828.893"/>
 			</translate>
 			<group nome="Urano">
-				<rotate time="4" angle="-97.77" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<rotate time="5" angle="-97.77" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.6836" Y="0.6836" Z="0.6836" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
 			<group nome="Grupo Ariel">
-				<translate X="9.56" Y="0.0" Z="0.0" />
-				<rotate angle="0.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="25.2">
+					<point X="0"     Y="0.0" Z="9.56" />
+					<point X="3.658" Y="0.0" Z="8.832"/>
+					<point X="6.76"  Y="0.0" Z="6.76" />
+					<point X="8.832" Y="0.0" Z="3.658"/>
+
+					<point X="9.56"  Y="0.0" Z="0"     />
+					<point X="8.832" Y="0.0" Z="-3.658"/>
+					<point X="6.76"  Y="0.0" Z="-6.76" />
+					<point X="3.658" Y="0.0" Z="-8.832"/>
+
+					<point X="0"      Y="0.0" Z="-9.56" />
+					<point X="-3.658" Y="0.0" Z="-8.832"/>
+					<point X="-6.76"  Y="0.0" Z="-6.76" />
+					<point X="-8.832" Y="0.0" Z="-3.658"/>
+
+					<point X="-9.56"  Y="0.0" Z="0"    />
+					<point X="-8.832" Y="0.0" Z="3.658"/>
+					<point X="-6.76"  Y="0.0" Z="6.76" />
+					<point X="-3.658" Y="0.0" Z="8.832"/>
+				</translate>
+				<rotate time="25" angle="0.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Ariel">
 					<scale X="0.2198" Y="0.2198" Z="0.2198" />
 					<models>
@@ -323,8 +543,28 @@
 				</group>
 			</group>
 			<group nome="Grupo Umbriel">
-				<translate X="11.3" Y="0.0" Z="0.0" />
-				<rotate angle="0.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="41.4">
+					<point X="0"     Y="0.0" Z="11.3" />
+					<point X="4.324" Y="0.0" Z="10.44"/>
+					<point X="7.99"  Y="0.0" Z="7.99" />
+					<point X="10.44" Y="0.0" Z="4.324"/>
+
+					<point X="11.3"  Y="0.0" Z="0"     />
+					<point X="10.44" Y="0.0" Z="-4.324"/>
+					<point X="7.99"  Y="0.0" Z="-7.99" />
+					<point X="4.324" Y="0.0" Z="-10.44"/>
+
+					<point X="0"      Y="0.0" Z="-11.3" />
+					<point X="-4.324" Y="0.0" Z="-10.44"/>
+					<point X="-7.99"  Y="0.0" Z="-7.99" />
+					<point X="-10.44" Y="0.0" Z="-4.324"/>
+
+					<point X="-11.3"  Y="0.0" Z="0"    />
+					<point X="-10.44" Y="0.0" Z="4.324"/>
+					<point X="-7.99"  Y="0.0" Z="7.99" />
+					<point X="-4.324" Y="0.0" Z="10.44"/>
+				</translate>
+				<rotate time="41.4" angle="0.13" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Umbriel">
 					<scale X="0.2219" Y="0.2219" Z="0.2219" />
 					<models>
@@ -333,8 +573,28 @@
 				</group>
 			</group>
 			<group nome="Grupo Titânia">
-				<translate X="21.8" Y="0.0" Z="0.0" />
-				<rotate angle="0.34" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="87">
+					<point X="0"      Y="0.0" Z="21.8"  />
+					<point X="8.342"  Y="0.0" Z="20.141"/>
+					<point X="15.415" Y="0.0" Z="15.415"/>
+					<point X="20.141" Y="0.0" Z="8.342" />
+
+					<point X="21.8"   Y="0.0" Z="0"      />
+					<point X="20.141" Y="0.0" Z="-8.342" />
+					<point X="15.415" Y="0.0" Z="-15.415"/>
+					<point X="8.342"  Y="0.0" Z="-20.141"/>
+
+					<point X="0"       Y="0.0" Z="-21.8"  />
+					<point X="-8.342"  Y="0.0" Z="-20.141"/>
+					<point X="-15.415" Y="0.0" Z="-15.415"/>
+					<point X="-20.141" Y="0.0" Z="-8.342" />
+
+					<point X="-21.8"   Y="0.0" Z="0"     />
+					<point X="-20.141" Y="0.0" Z="8.342" />
+					<point X="-15.415" Y="0.0" Z="15.415"/>
+					<point X="-8.342"  Y="0.0" Z="20.141"/>
+				</translate>
+				<rotate time="87" angle="0.34" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Titânia">
 					<scale X="0.2992" Y="0.2992" Z="0.2992" />
 					<models>
@@ -343,8 +603,28 @@
 				</group>
 			</group>
 			<group nome="Grupo Uberon ">
-				<translate X="39.18" Y="0.0" Z="0.0" />
-				<rotate angle="0.06" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="134.6">
+					<point X="0"      Y="0.0" Z="39.18" />
+					<point X="14.994" Y="0.0" Z="36.198"/>
+					<point X="27.704" Y="0.0" Z="27.704"/>
+					<point X="36.198" Y="0.0" Z="14.994"/>
+
+					<point X="39.18"  Y="0.0" Z="0"      />
+					<point X="36.198" Y="0.0" Z="-14.994"/>
+					<point X="27.704" Y="0.0" Z="-27.704"/>
+					<point X="14.994" Y="0.0" Z="-36.198"/>
+
+					<point X="0"       Y="0.0" Z="-39.18" />
+					<point X="-14.994" Y="0.0" Z="-36.198"/>
+					<point X="-27.704" Y="0.0" Z="-27.704"/>
+					<point X="-36.198" Y="0.0" Z="-14.994"/>
+
+					<point X="-39.18"  Y="0.0" Z="0"     />
+					<point X="-36.198" Y="0.0" Z="14.994"/>
+					<point X="-27.704" Y="0.0" Z="27.704"/>
+					<point X="-14.994" Y="0.0" Z="36.198"/>
+				</translate>
+				<rotate time="134.6" angle="0.06" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Uberon">
 					<scale X="0.2889" Y="0.2889" Z="0.2889" />
 					<models>
@@ -354,7 +634,7 @@
 			</group>
 		</group>
 		<group nome="Neptuno e os seus Satélites">
-			<translate time="4.0">
+			<translate time="1650">
 				<point X="0"        Y="0.0" Z="1404.6875"/>
 				<point X="541.497"  Y="0.0" Z="1297.762" />
 				<point X="1000.556" Y="0.0" Z="993.264"  />
@@ -376,15 +656,35 @@
 				<point X="-541.497"  Y="0.0" Z="1297.762"/>
 			</translate>
 			<group nome="Neptuno">
-				<rotate time="4" angle="-28.32" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<rotate time="6.7" angle="-28.32" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.6642" Y="0.6642" Z="0.6642" />
 				<models>
 					<model file="planeta.3d" />
 				</models>
 			</group>
 			<group nome="Grupo Tritao">
-				<translate X="17.74" Y="0.0" Z="0.0" />
-				<rotate angle="0.40" axisX="0.0" axisY="0.0" axisZ="1.0" />
+				<translate time="58.8">
+					<point X="0"      Y="0.0" Z="17.74" />
+					<point X="6.789"  Y="0.0" Z="16.39" />
+					<point X="12.544" Y="0.0" Z="12.544"/>
+					<point X="16.39" Y="0.0" Z="6.789"  />
+
+					<point X="17.74"   Y="0.0" Z="0"     />
+					<point X="16.39" Y="0.0" Z="-6.789"  />
+					<point X="12.544" Y="0.0" Z="-12.544"/>
+					<point X="6.789"  Y="0.0" Z="-16.39" />
+
+					<point X="0"       Y="0.0" Z="-17.74" />
+					<point X="-6.789"  Y="0.0" Z="-16.39" />
+					<point X="-12.544" Y="0.0" Z="-12.544"/>
+					<point X="-16.39" Y="0.0" Z="-6.789"  />
+
+					<point X="-17.74"   Y="0.0" Z="0"    />
+					<point X="-16.39" Y="0.0" Z="6.789"  />
+					<point X="-12.544" Y="0.0" Z="12.544"/>
+					<point X="-6.789"  Y="0.0" Z="16.39" />
+				</translate>
+				<rotate time="58.8" angle="0.40" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<group nome="Tritao">
 					<scale X="0.5137" Y="0.5137" Z="0.5137" />
 					<models>
