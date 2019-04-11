@@ -24,6 +24,7 @@ namespace engine {
         GLuint buffer;
         int bufferSize;
         std::vector<Transform *> *transforms;
+        std::vector<Transform *> *upTransforms;
 	};
 
 	// Scene that can be loaded with loadScene().

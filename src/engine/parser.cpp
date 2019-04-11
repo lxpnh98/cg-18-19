@@ -195,7 +195,10 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs)
 
         // copy transforms to figure
         newModel.transforms = new std::vector<Transform*>();
-        newModel.transforms->insert(newModel.transforms->end(), Ts->begin(), Ts->end());
+        newModel.transforms->insert(newModel.transforms->end(), newTs->begin(), newTs->end());
+        newModel.upTransforms = new std::vector<Transform*>();
+        newModel.upTransforms->insert(newModel.upTransforms->end(), upTs->begin(), upTs->end());
+
         // load vertices
 		while (!modelFile.eof()) {
 			engine::vertex vertex;

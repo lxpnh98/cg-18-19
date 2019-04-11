@@ -28,11 +28,13 @@
 				<point X="-38.891" Y="0.0" Z="31.499"/>
 				<point X="-21.048" Y="0.0" Z="41.155"/>
 			</translate>
-			<rotate time="586" angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.2066" Y="0.2066" Z="0.2066" />
-			<models>
-				<model file="planeta.3d" />
-			</models>
+            <group>
+                <rotate time="586" angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
+                <scale X="0.2066" Y="0.2066" Z="0.2066" />
+                <models>
+                    <model file="planeta.3d" />
+                </models>
+            </group>
 		</group>
 		<group nome="Vénus">
 			<translate time="6.1">
@@ -56,11 +58,13 @@
 				<point X="-66.468" Y="0.0" Z="58.853"/>
 				<point X="-35.972" Y="0.0" Z="76.895"/>
 			</translate>
-			<rotate time="2430" angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
-			<scale X="0.2833" Y="0.2833" Z="0.2833" />
-			<models>
-				<model file="planeta.3d" />
-			</models>
+            <group>
+                <rotate time="2430" angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
+                <scale X="0.2833" Y="0.2833" Z="0.2833" />
+                <models>
+                    <model file="planeta.3d" />
+                </models>
+            </group>
 		</group>
 		<group nome="Terra e lua">
 			<translate time="10">
@@ -721,10 +725,12 @@
 				<point X="344"    Y="0.0"    Z="128.558"  />
 				<point X="564"    Y="0.0"    Z="144.937"  />
 			</translate>
-			<scale X="0.0020" Y="0.0020" Z="0.0020" />
-			<models>
-				<model file="lua.3d" />
-			</models>
+            <group>
+                <scale X="0.0020" Y="0.0020" Z="0.0020" />
+                <models>
+                    <model file="lua.3d" />
+                </models>
+            </group>
 		</group>	
 	</group>
 </scene>
