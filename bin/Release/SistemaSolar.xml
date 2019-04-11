@@ -1,9 +1,14 @@
 <scene>
-	<group nome="Sol">
-		<rotate time="2.0" axisX="0" axisY="1" axisZ="0" />
-		<models>
-			<model file="sol.3d" />
-		</models>
+	<group nome="SistemaSolar">
+		<group nome="Sol">
+			<translate time="0">
+				<point X="0" Y="0" Z="0"/>
+			</translate>
+			<rotate time="2.0" axisX="0" axisY="1" axisZ="0" />
+			<models>
+				<model file="sol.3d" />
+			</models>
+		</group>
 		<group nome="Mercúrio">
 			<translate time="2.4">
 				<point X="0"      Y="0.0" Z="44.5462"/>
