@@ -700,7 +700,7 @@
 			</group>
 		</group>
 		<group nome="Cometa">
-			<translate time="4.0">
+			<translate time="753">
 				<point X="784"     Y="0.0"    Z="150"      />
 				<point X="1004"    Y="0.0"    Z="144.937"  />
 				<point X="1224"    Y="0.0"    Z="128.558"  />
@@ -726,9 +726,9 @@
 				<point X="564"    Y="0.0"    Z="144.937"  />
 			</translate>
             <group>
-                <scale X="0.5" Y="0.5" Z="0.5" />
+                <scale X="1.0" Y="1.0" Z="1.0" />
                 <models>
-                    <model file="lua.3d" />
+                    <model file="cometa.3d" />
                 </models>
             </group>
 		</group>	
