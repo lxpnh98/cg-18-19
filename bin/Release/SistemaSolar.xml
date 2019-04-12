@@ -726,7 +726,7 @@
 				<point X="564"    Y="0.0"    Z="144.937"  />
 			</translate>
             <group>
-                <scale X="0.0020" Y="0.0020" Z="0.0020" />
+                <scale X="0.5" Y="0.5" Z="0.5" />
                 <models>
                     <model file="lua.3d" />
                 </models>
