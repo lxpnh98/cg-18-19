@@ -50,6 +50,7 @@ void drawBezierPlane(std::vector<Point> *vertices, std::vector<int> patch, std::
     vertices->push_back(p1);
     vertices->push_back(p3);
 
+    /*
     // back face
     vertices->push_back(p1);
     vertices->push_back(p2);
@@ -58,6 +59,7 @@ void drawBezierPlane(std::vector<Point> *vertices, std::vector<int> patch, std::
     vertices->push_back(p4);
     vertices->push_back(p3);
     vertices->push_back(p1);
+    */
 }
 
 void drawBezierPatches(string patchesFile, int tesselation, string fileName) {
