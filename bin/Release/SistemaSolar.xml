@@ -700,7 +700,7 @@
 			</group>
 		</group>
 		<group nome="Cometa">
-			<translate time="753">
+			<translate time="75300000000">
 				<point X="784"     Y="0.0"    Z="150"      />
 				<point X="1004"    Y="0.0"    Z="144.937"  />
 				<point X="1224"    Y="0.0"    Z="128.558"  />
