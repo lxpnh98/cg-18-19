@@ -9,7 +9,7 @@
 
 #include "transform.h"
 #include "point.h"
-#include <vector> // for 2D vector
+#include <vector>
 
 using namespace std;
 
@@ -17,6 +17,7 @@ Transform::Transform() {}
 void Transform::apply() {}
 
 Rotate::Rotate(double time, double angle, double x, double y, double z) {
+
 	this->time = time;
 	this->angle = angle;
 	double rodar = 0;
@@ -27,8 +28,6 @@ Rotate::Rotate(double time, double angle, double x, double y, double z) {
 }
 
 void Rotate::apply() {
-
-	double t;
 
 	if (time != 0) {
 			
@@ -152,9 +151,9 @@ void Translate::getCatmullRomPoint(double t, double *p0, double *p1, double *p2,
 // given global t, returns the point in the curve
 void Translate::getGlobalCatmullRomPoint(double gt, double *pos, double *deriv) {
 
-	double t = gt * POINT_COUNT; // this is the real global t
-	int index = floor(t);  // which segment
-	t = t - index; // where within  the segment
+	double t = gt * POINT_COUNT;
+	int index = floor(t);
+	t = t - index;
 
 	// indices store the points
 	if (POINT_COUNT != 0) {
@@ -170,7 +169,6 @@ void Translate::getGlobalCatmullRomPoint(double gt, double *pos, double *deriv) 
 
 void Translate::renderCatmullRomCurve() {
 	
-	// desenhar a curva usando segmentos de reta - GL_LINE_LOOP
 	int i = 0;
 
 	glColor3f(1, 1, 1);
@@ -197,6 +195,7 @@ void Translate::apply() {
 
 		t = glutGet(GLUT_ELAPSED_TIME) % (int)(time * 1000);
 		rodar = t / (time * 1000);
+
 		getGlobalCatmullRomPoint(rodar, pos, deriv);
 		glTranslated(pos[0], pos[1], pos[2]);
 
