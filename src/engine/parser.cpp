@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <unordered_map>
 #include <iostream>
 #include <fstream>
 #include "parser.h"
@@ -7,6 +8,7 @@
 #include "group.h"
 #include "transform.h"
 #include "point.h"
+#include "loadTexture.h"
 
 #include "tinyxml2.h"
 
@@ -24,11 +26,13 @@ using std::string;
 using std::ifstream;
 
 Group *makeGroup(XMLNode *scene);
-std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upT);
+std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upT, std::unordered_map<string, GLuint> *textures);
 
 // Loads an XML file containing various references to .3d files
 std::vector<engine::figure> *parser::loadXML(const char* path) {
 
+    cout << "got here 1\n";
+    fflush(stdout);
 	// Load XML document
 	XMLDocument file;
 	XMLError result = file.LoadFile(path);
@@ -48,11 +52,20 @@ std::vector<engine::figure> *parser::loadXML(const char* path) {
 
 	}
 
+    cout << "got here 1.5\n";
+    fflush(stdout);
+
 	//XMLElement *first_group = scene->FirstChildElement("group");
     Group *g = makeGroup(scene);
 
+    cout << "got here 2\n";
+    fflush(stdout);
+
 	// Loop through model paths and load models
-    std::vector<engine::figure> *loadedModels = loadModels(g, new std::vector<Transform*>());
+    std::vector<engine::figure> *loadedModels = loadModels(g, new std::vector<Transform*>(), new std::unordered_map<string, GLuint>());
+
+    cout << "got here 3\n";
+    fflush(stdout);
 
 	return loadedModels;
 }
@@ -66,7 +79,7 @@ Group *makeGroup(XMLNode *scene) {
 
         string tagName = tag->Value();
         XMLElement *tagElement = tag->ToElement();
-	
+
 		if (strcmp(tagName.c_str(), "models") == 0) {
 
 			XMLNode *models = tag->FirstChild();
@@ -76,8 +89,14 @@ Group *makeGroup(XMLNode *scene) {
 				// get model path
 				string newModel = modelsElement->Attribute("file");
 
+                string texture;
+                if (modelsElement->Attribute("texture")) {
+                    texture = modelsElement->Attribute("texture");
+                    cout << texture << "\n";
+                }
+
 				// path to model paths vector
-				g->addModel(newModel);
+                g->addModel(newModel, texture);
 
 				// next
 				models = models->NextSibling(); // Get next model
@@ -175,7 +194,7 @@ Group *makeGroup(XMLNode *scene) {
 }
 
 // upTs - tranforms from ascendent groups (initially empty)
-std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs) {
+std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs, std::unordered_map<string, GLuint> *textures) {
     std::vector<engine::figure> *loadedModels = new std::vector<engine::figure>();
 
     // transforms from current group
@@ -246,6 +265,20 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs)
         glBindBuffer(GL_ARRAY_BUFFER, b[2]);
         glBufferData(GL_ARRAY_BUFFER, i * 2 * sizeof(float), textureArray, GL_STATIC_DRAW);
 
+        string texture = g->getTexture();
+        if (!texture.empty()) {
+            if (textures->find(texture) == textures->end()) {
+                newModel.texture = (*textures)[texture];
+            } else {
+                // load texture
+                GLuint t = loadTexture(texture);
+                newModel.texture = t;
+                (*textures)[texture] = t;
+            }
+        } else {
+            newModel.texture = 0;
+        }
+
         newModel.vertexBuffer = b[0];
         newModel.normalBuffer = b[1];
         newModel.textureBuffer = b[2];
@@ -256,7 +289,7 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs)
 
     // load models in subgroups
     for (auto subGroup : *g->getSubGroups()) {
-        std::vector<engine::figure> *subModels = loadModels(subGroup, Ts);
+        std::vector<engine::figure> *subModels = loadModels(subGroup, Ts, textures);
         loadedModels->insert(loadedModels->end(), subModels->begin(), subModels->end()); 
     }
 

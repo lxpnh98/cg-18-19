@@ -13,15 +13,17 @@ class Group {
         std::vector<Transform *> *transforms;
         std::vector<string> *modelPaths;
         std::vector<Group *> *subGroups;
+        string texture;
 
     public:
         Group();
         std::vector<Transform*> *getTransforms();
         std::vector<string> *getModels();
         std::vector<Group*> *getSubGroups();
+        string getTexture();
         void setUp(Group *g);
         void addTransform(Transform *t);
-        void addModel(string m);
+        void addModel(string m, string t);
         void addSubGroup(Group *g);
 };
 

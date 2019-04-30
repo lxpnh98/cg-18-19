@@ -29,6 +29,7 @@ namespace engine {
         int numVertices;
         std::vector<Transform *> *transforms;
         std::vector<Transform *> *upTransforms;
+        GLuint texture;
 	};
 
 	// Scene that can be loaded with loadScene().
