@@ -192,6 +192,8 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs)
 		engine::figure newModel;
 
         std::vector<float> vertexVec = std::vector<float>();
+        std::vector<float> normalVec = std::vector<float>();
+        std::vector<float> textureVec = std::vector<float>();
 
         // copy transforms to figure
         newModel.transforms = new std::vector<Transform*>();
@@ -202,26 +204,52 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs)
         // load vertices
 		while (!modelFile.eof()) {
 			engine::vertex vertex;
-			modelFile >> vertex.x >> vertex.y >> vertex.z;
+			modelFile >> vertex.x >> vertex.y >> vertex.z
+                      >> vertex.nx >> vertex.ny >> vertex.nz
+                      >> vertex.ti >> vertex.tj;
             vertexVec.push_back(vertex.x);
             vertexVec.push_back(vertex.y);
             vertexVec.push_back(vertex.z);
+            normalVec.push_back(vertex.nx);
+            normalVec.push_back(vertex.ny);
+            normalVec.push_back(vertex.nz);
+            textureVec.push_back(vertex.ti);
+            textureVec.push_back(vertex.tj);
 		}
 
         float *vertexArray = (float *)malloc(sizeof(float) * vertexVec.size());
+        float *normalArray = (float *)malloc(sizeof(float) * normalVec.size());
+        float *textureArray = (float *)malloc(sizeof(float) * textureVec.size());
         int i;
         for (i = 0; i < (vertexVec.size() / 3) - 1; i++) {
             vertexArray[3*i + 0] = vertexVec[3*i + 0];
             vertexArray[3*i + 1] = vertexVec[3*i + 1];
             vertexArray[3*i + 2] = vertexVec[3*i + 2];
+
+            normalArray[3*i + 0] = normalVec[3*i + 0];
+            normalArray[3*i + 1] = normalVec[3*i + 1];
+            normalArray[3*i + 2] = normalVec[3*i + 2];
+
+            textureArray[2*i + 0] = textureVec[2*i + 0];
+            textureArray[2*i + 1] = textureVec[2*i + 1];
         }
 
-        GLuint b;
-        glGenBuffers(1, &b);
-        glBindBuffer(GL_ARRAY_BUFFER, b);
-        newModel.buffer = b;
-        newModel.bufferSize = i;
+        GLuint b[3];
+        glGenBuffers(3, b);
+
+        glBindBuffer(GL_ARRAY_BUFFER, b[0]);
         glBufferData(GL_ARRAY_BUFFER, i * 3 * sizeof(float), vertexArray, GL_STATIC_DRAW);
+
+        glBindBuffer(GL_ARRAY_BUFFER, b[1]);
+        glBufferData(GL_ARRAY_BUFFER, i * 3 * sizeof(float), normalArray, GL_STATIC_DRAW);
+
+        glBindBuffer(GL_ARRAY_BUFFER, b[2]);
+        glBufferData(GL_ARRAY_BUFFER, i * 2 * sizeof(float), textureArray, GL_STATIC_DRAW);
+
+        newModel.vertexBuffer = b[0];
+        newModel.normalBuffer = b[1];
+        newModel.textureBuffer = b[2];
+        newModel.numVertices = i/3;
 
         loadedModels->push_back(newModel);
 	}

@@ -17,12 +17,16 @@ namespace engine {
 
 	struct vertex {
 		float x, y, z;
+		float nx, ny, nz;
+		float ti, tj;
 	};
 
 	// A model is a collection of vertices
 	struct figure {
-        GLuint buffer;
-        int bufferSize;
+        GLuint vertexBuffer;
+        GLuint normalBuffer;
+        GLuint textureBuffer;
+        int numVertices;
         std::vector<Transform *> *transforms;
         std::vector<Transform *> *upTransforms;
 	};

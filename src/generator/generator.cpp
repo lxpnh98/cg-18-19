@@ -14,15 +14,27 @@ using namespace tinyxml2;
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+#define TI(a)           ((a)/(2*M_PI))
+#define TJ(b)           (((b)+(M_PI/2))/M_PI)
+
 using namespace std;
+
+void sendVertices(FILE *out, std::vector<Point> vertices) {
+    for (int i = 0; i < vertices.size(); i++) {
+
+        fprintf(out, "%f %f %f %f %f %f %f %f\n",
+            vertices[i].getX(), vertices[i].getY(), vertices[i].getZ(),
+            vertices[i].getNX(), vertices[i].getNY(), vertices[i].getNZ(),
+            vertices[i].getTI(), vertices[i].getTJ());
+    }
+}
 
 void drawPlane(float width, string fileName) {
 
 	FILE *out;
 
 	// open to write (cleans if file already exists or creates it if not)
-	out = fopen(fileName.c_str(), "w");
-
+	out = fopen(fileName.c_str(), "w"); 
 	if (out != NULL) {
 		
 		// Vector to store the vertices
@@ -49,10 +61,7 @@ void drawPlane(float width, string fileName) {
 		vertices.push_back(Point(width / 2, 0.0, -width / 2)); 
 
 		// Sending vertices to .3d file
-		for (int i = 0; i < vertices.size(); i++) {
-
-			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
-		}
+        sendVertices(out, vertices);
 	}
 
 	fclose(out);
@@ -188,10 +197,7 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
 
 		// Sending vertices to .3d file
-		for (int i = 0; i < vertices.size(); i++) {
-
-			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
-		}
+        sendVertices(out, vertices);
 	}
 
 	fclose(out);
@@ -228,13 +234,25 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
 
 				angulo_a1 = alpha + a_step; 
 
-				vertices.push_back(Point(r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha)));
-				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1)));
-				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha)));
+				vertices.push_back(Point(r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha),
+                                         r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha),
+                                         TI(alpha), TJ(beta)));
+				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                                         r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                                         TI(angulo_a1), TJ(beta)));
+				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                                         r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                                         TI(alpha), TJ(angulo_b1)));
 
-				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1)));
-				vertices.push_back(Point(r * cos(angulo_b1) * sin(angulo_a1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_a1)));
-				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha)));
+				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                                         r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                                         TI(angulo_a1), TJ(beta)));
+				vertices.push_back(Point(r * cos(angulo_b1) * sin(angulo_a1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_a1),
+                                         r * cos(angulo_b1) * sin(angulo_b1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_b1),
+                                         TI(angulo_a1), TJ(angulo_b1)));
+				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                                         r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                                         TI(angulo_a1), TJ(angulo_b1)));
 
 				alpha += a_step;
 			}
@@ -243,10 +261,7 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
 		}
 
 		// Sending vertices to .3d file
-		for (int i = 0; i < vertices.size(); i++) {
-
-			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
-		}
+        sendVertices(out, vertices);
 	}
 
 	fclose(out);
@@ -305,10 +320,7 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 		}
 
 		// Sending vertices to .3d file
-		for (int i = 0; i < vertices.size(); i++) {
-
-			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
-		}
+        sendVertices(out, vertices);
 	}
 
 	fclose(out);
@@ -363,10 +375,7 @@ void drawPyramid(float height, float width, float length, string fileName) {
 		vertices.push_back(Point(-comprimento, 0.0, -largura));
 
 		// Sending vertices to .3d file
-		for (int i = 0; i < vertices.size(); i++) {
-
-			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
-		}
+        sendVertices(out, vertices);
 	}
 
 	fclose(out);
@@ -413,10 +422,7 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 		}
 
 		// Sending vertices to .3d file
-		for (int i = 0; i < vertices.size(); i++) {
-
-			fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
-		}
+        sendVertices(out, vertices);
 	}
 
 	fclose(out);
