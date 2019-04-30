@@ -235,23 +235,23 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
 				angulo_a1 = alpha + a_step; 
 
 				vertices.push_back(Point(r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha),
-                                         r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha),
+                                             cos(beta) * sin(alpha),     sin(beta),     cos(beta) * cos(alpha),
                                          TI(alpha), TJ(beta)));
 				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
-                                         r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                                             cos(beta) * sin(angulo_a1),     sin(beta),     cos(beta) * cos(angulo_a1),
                                          TI(angulo_a1), TJ(beta)));
 				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
-                                         r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                                             cos(angulo_b1) * sin(alpha),     sin(angulo_b1),     cos(angulo_b1) * cos(alpha),
                                          TI(alpha), TJ(angulo_b1)));
 
 				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
-                                         r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                                             cos(beta) * sin(angulo_a1),     sin(beta),     cos(beta) * cos(angulo_a1),
                                          TI(angulo_a1), TJ(beta)));
 				vertices.push_back(Point(r * cos(angulo_b1) * sin(angulo_a1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_a1),
-                                         r * cos(angulo_b1) * sin(angulo_b1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_b1),
+                                             cos(angulo_b1) * sin(angulo_a1),     sin(angulo_b1),     cos(angulo_b1) * cos(angulo_a1),
                                          TI(angulo_a1), TJ(angulo_b1)));
 				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
-                                         r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                                             cos(angulo_b1) * sin(alpha),     sin(angulo_b1),     cos(angulo_b1) * cos(alpha),
                                          TI(angulo_a1), TJ(angulo_b1)));
 
 				alpha += a_step;

@@ -108,6 +108,13 @@ void renderScene(void) {
 		   	  cDirX, cDirY, cDirZ,
 			  cTiltX, cTiltY, cTiltZ);
 
+    float lpos[4] = { 0,0,100,0 };
+    glLightfv(GL_LIGHT0, GL_POSITION, lpos);
+
+    float blue[4] = { 0.0f, 0.0f, 1.0f, 1.0f };
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, blue);
+
+
 // put drawing instructions here
 	drawCoordinates();
     glColor3f(1, 1, 1);
@@ -147,6 +154,11 @@ int main(int argc, char **argv) {
 	// OpenGL settings 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+
+    glEnableClientState(GL_NORMAL_ARRAY);
 
     glewInit();
 
