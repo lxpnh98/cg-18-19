@@ -6,7 +6,7 @@
 		<group nome="Sol">
 			<rotate time="2.0" axisX="0" axisY="1" axisZ="0" />
 			<models>
-				<model file="sol.3d" texture="sun.tga"
+				<model file="sol.3d" texture="sun.jpg"
 					 diffR=0.8 diffG=0.8 diffB=0.15/>
 			</models>
 		</group>
@@ -36,7 +36,7 @@
                 <rotate time="586" angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
                 <scale X="0.2066" Y="0.2066" Z="0.2066" />
                 <models>
-                    <model file="planeta.3d" texture="mercury.tga"/>
+                    <model file="planeta.3d" texture="mercury.jpg"/>
                 </models>
             </group>
 		</group>
@@ -66,7 +66,7 @@
                 <rotate time="2430" angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
                 <scale X="0.2833" Y="0.2833" Z="0.2833" />
                 <models>
-                    <model file="planeta.3d" texture="venus.tga"/>
+                    <model file="planeta.3d" texture="venus.jpg"/>
                 </models>
             </group>
 		</group>
@@ -96,7 +96,7 @@
 				<rotate time="10" angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
 				<scale X="0.2895" Y="0.2895" Z="0.2895" />
 				<models>
-					<model file="planeta.3d" texture="earth.tga"/>
+					<model file="planeta.3d" texture="earth.jpg"/>
 				</models>
 			</group>
 			<group nome="Grupo lua">
@@ -126,7 +126,7 @@
 					<rotate time="270" angle="6.68" axisX="0.0" axisY="0.0" axisZ="1.0" />
 					<scale X="0.6595" Y="0.6595" Z="0.6595" />
 					<models>
-						<model file="lua.3d" texture="moon.tga"/>
+						<model file="lua.3d" texture="moon.jpg"/>
 					</models>
 				</group>
 			</group>
