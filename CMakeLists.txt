@@ -46,7 +46,8 @@ if  (WIN32)
                                           ${TOOLKITS_FOLDER}/devil/devIL.lib
 										  ${TOOLKITS_FOLDER}/glew/glew32.lib )
 
-	if (EXISTS "${TOOLKITS_FOLDER}/glut/glut32.dll" AND EXISTS "${TOOLKITS_FOLDER}/glew/glew32.dll")
+	if (EXISTS "${TOOLKITS_FOLDER}/glut/glut32.dll" AND EXISTS "${TOOLKITS_FOLDER}/glew/glew32.dll"
+													AND EXISTS "${TOOLKITS_FOLDER}/devil/devil.dll")
 	file(COPY ${TOOLKITS_FOLDER}/glut/glut32.dll
 			DESTINATION ${CMAKE_BINARY_DIR})
 	file(COPY ${TOOLKITS_FOLDER}/glew/glew32.dll
