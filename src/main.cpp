@@ -6,6 +6,7 @@
 #else
 #include <GL/glew.h>
 #include <GL/glut.h>
+#include <IL/il.h>
 #endif
 
 #define _USE_MATH_DEFINES
@@ -163,6 +164,11 @@ int main(int argc, char **argv) {
     glEnableClientState(GL_NORMAL_ARRAY);
 
     glewInit();
+
+	ilInit();
+	ilEnable(IL_ORIGIN_SET);
+	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
+
 
 	// Load scene XML
 	std::vector<engine::figure> *scene = parser::loadXML((argc > 1 ? argv[1] : "scene.xml"));

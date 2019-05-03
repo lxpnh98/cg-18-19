@@ -271,7 +271,7 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
 
         string texture = g->getTexture();
         if (!texture.empty()) {
-            if (textures->find(texture) == textures->end()) {
+            if (textures->find(texture) != textures->end()) {
                 newModel.texture = (*textures)[texture];
             } else {
                 // load texture
