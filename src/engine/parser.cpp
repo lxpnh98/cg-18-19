@@ -265,6 +265,10 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
         glBindBuffer(GL_ARRAY_BUFFER, b[2]);
         glBufferData(GL_ARRAY_BUFFER, i * 2 * sizeof(float), textureArray, GL_STATIC_DRAW);
 
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_NORMAL_ARRAY);
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
         string texture = g->getTexture();
         if (!texture.empty()) {
             if (textures->find(texture) == textures->end()) {

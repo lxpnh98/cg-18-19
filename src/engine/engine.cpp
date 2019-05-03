@@ -49,22 +49,20 @@ void engine::drawScene() {
             t->apply();
         }
 
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glBindTexture(GL_TEXTURE_2D, fig->texture);
+		glBindTexture(GL_TEXTURE_2D, fig->texture);
+		glBindBuffer(GL_ARRAY_BUFFER, fig->vertexBuffer);
+		glVertexPointer(3,GL_FLOAT,0,0);
 
-        glBindBuffer(GL_ARRAY_BUFFER, fig->vertexBuffer);
-        glVertexPointer(3,GL_FLOAT,0,0);
-        glDrawArrays(GL_TRIANGLES, 0, fig->numVertices * 3);
+		glBindBuffer(GL_ARRAY_BUFFER, fig->normalBuffer);
+		glNormalPointer(GL_FLOAT, 0, 0);
 
+		glBindBuffer(GL_ARRAY_BUFFER, fig->textureBuffer);
+		glTexCoordPointer(2, GL_FLOAT, 0, 0);
 
-        glBindBuffer(GL_ARRAY_BUFFER, fig->normalBuffer);
-        glNormalPointer(GL_FLOAT, 0, 0);
-
-        glBindBuffer(GL_ARRAY_BUFFER, fig->textureBuffer);
-        glTexCoordPointer(2, GL_FLOAT, 0, 0);
+		int numV = (fig->numVertices * 3);
+		glDrawArrays(GL_TRIANGLES, 0, numV);
 
         glBindTexture(GL_TEXTURE_2D, 0);
-
 
         glPopMatrix();
 	}
