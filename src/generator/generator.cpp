@@ -31,610 +31,632 @@ void sendVertices(FILE *out, std::vector<Point> vertices) {
 
 void drawPlane(float width, string fileName) {
 
-	FILE *out;
+    FILE *out;
 
-	// open to write (cleans if file already exists or creates it if not)
-	out = fopen(fileName.c_str(), "w"); 
-	if (out != NULL) {
-		
-		// Vector to store the vertices
-		std::vector<Point> vertices;
+    // open to write (cleans if file already exists or creates it if not)
+    out = fopen(fileName.c_str(), "w"); 
+    if (out != NULL) {
+        
+        // Vector to store the vertices
+        std::vector<Point> vertices;
 
-		//T1
-		vertices.push_back(Point(width/2, 0.0, -width/2));
-		vertices.push_back(Point(-width/2, 0.0, width/2));
-		vertices.push_back(Point(width/2, 0.0, width/2));
+        //T1
+        vertices.push_back(Point(width/2, 0.0, -width/2,
+                                 width/2, 0.0, -width/2,
+                                 1, -1));
+        vertices.push_back(Point(-width/2, 0.0, width/2,
+                                 -width/2, 0.0, width/2,
+                                 -1, 1));
+        vertices.push_back(Point(width/2, 0.0, width/2,
+                                 width/2, 0.0, width/2,
+                                 1, 1));
 
-		//T2
-		vertices.push_back(Point(width/2, 0.0, -width/2));
-		vertices.push_back(Point(-width/2, 0.0, -width/2));
-		vertices.push_back(Point(-width/2, 0.0, width/2));
+        //T2
+        vertices.push_back(Point(width/2, 0.0, -width/2,
+                                 width/2, 0.0, -width/2,
+                                 1, -1));
+        vertices.push_back(Point(-width/2, 0.0, -width/2,
+                                 -width/2, 0.0, -width/2,
+                                 -1, -1));
+        vertices.push_back(Point(-width/2, 0.0, width/2,
+                                 -width/2, 0.0, width/2,
+                                 -1, 1));
 
-		// T11
-		vertices.push_back(Point(width / 2, 0.0, width / 2));
-		vertices.push_back(Point(-width / 2, 0.0, width / 2));
-		vertices.push_back(Point(width / 2, 0.0, -width / 2));
+        // T11
+        vertices.push_back(Point(width/2, 0.0, width/2,
+                                 width/2, 0.0, width/2,
+                                 1, 1));
+        vertices.push_back(Point(-width/2, 0.0, width/2,
+                                 -width/2, 0.0, width/2,
+                                 -1, 1));
+        vertices.push_back(Point(width/2, 0.0, -width/2,
+                                 width/2, 0.0, -width/2,
+                                 1, -1));
 
-		// T21
-		vertices.push_back(Point(-width / 2, 0.0, width / 2));
-		vertices.push_back(Point(-width / 2, 0.0, -width / 2));
-		vertices.push_back(Point(width / 2, 0.0, -width / 2)); 
+        // T21
+        vertices.push_back(Point(-width/2, 0.0, width/2,
+                                 -width/2, 0.0, width/2,
+                                 -1, 1));
+        vertices.push_back(Point(-width/2, 0.0, -width/2,
+                                 -width/2, 0.0, -width/2,
+                                 -1, -1));
+        vertices.push_back(Point(width/2, 0.0, -width/2,
+                                 width/2, 0.0, -width/2,
+                                 1, -1));
 
-		// Sending vertices to .3d file
+        // Sending vertices to .3d file
         sendVertices(out, vertices);
-	}
-
-	fclose(out);
-
+    }
+    fclose(out);
 }
 
 // pôr o centro da caixa na origem?
 void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
-	FILE *out;
+    FILE *out;
 
-	// open to write (cleans if file already exists or creates it if not)
-	out = fopen(fileName.c_str(), "w");
+    // open to write (cleans if file already exists or creates it if not)
+    out = fopen(fileName.c_str(), "w");
 
-	if (out != NULL) {
+    if (out != NULL) {
 
-		// Vector to store the vertices
-		std::vector<Point> vertices;
+        // Vector to store the vertices
+        std::vector<Point> vertices;
 
-		float incX = x / nrDivisions;
-		float incY = y / nrDivisions;
-		float incZ = z / nrDivisions;
+        float incX = x / nrDivisions;
+        float incY = y / nrDivisions;
+        float incZ = z / nrDivisions;
 
-		float xDiv = 0;
-		float yDiv = 0;
-		float zDiv = 0;
+        float xDiv = 0;
+        float yDiv = 0;
+        float zDiv = 0;
 
         int xx, yy, zz;
-		// base e topo em que o Y é fixo
-		for (zz = 0; zz < nrDivisions; zz++) {
+        // base e topo em que o Y é fixo
+        for (zz = 0; zz < nrDivisions; zz++) {
 
-			for (xx = 0; xx < nrDivisions; xx++) {
+            for (xx = 0; xx < nrDivisions; xx++) {
 
-				// base
-				vertices.push_back(Point(xDiv, 0, zDiv));
-				vertices.push_back(Point(xDiv + incX, 0, zDiv));
-				vertices.push_back(Point(xDiv, 0, zDiv + incZ));
+                // base
+                vertices.push_back(Point(xDiv, 0, zDiv));
+                vertices.push_back(Point(xDiv + incX, 0, zDiv));
+                vertices.push_back(Point(xDiv, 0, zDiv + incZ));
 
-				// base
-				vertices.push_back(Point(xDiv + incX, 0, zDiv));
-				vertices.push_back(Point(xDiv + incX, 0, zDiv + incZ));
-				vertices.push_back(Point(xDiv, 0, zDiv + incZ));
+                // base
+                vertices.push_back(Point(xDiv + incX, 0, zDiv));
+                vertices.push_back(Point(xDiv + incX, 0, zDiv + incZ));
+                vertices.push_back(Point(xDiv, 0, zDiv + incZ));
 
-				// topo
-				vertices.push_back(Point(xDiv, y, zDiv));
-				vertices.push_back(Point(xDiv, y, zDiv + incZ));
-				vertices.push_back(Point(xDiv + incX, y, zDiv));
-
-
-				// topo
-				vertices.push_back(Point(xDiv + incX, y, zDiv));
-				vertices.push_back(Point(xDiv, y, zDiv + incZ));
-				vertices.push_back(Point(xDiv + incX, y, zDiv + incZ));
-
-				xDiv += incX;
-			}
-
-			xDiv = 0;
-			zDiv += incZ;
-		}
-
-		xDiv = 0;
-		yDiv = 0;
-		zDiv = 0;
-
-		// lados em que o x é fixo
-		for (zz = 0; zz < nrDivisions; zz++) {
-
-			for (yy = 0; yy < nrDivisions; yy++) {
-
-				// lado esquerdo
-				vertices.push_back(Point(x, yDiv, zDiv));
-				vertices.push_back(Point(x, yDiv + incY, zDiv + incZ));
-				vertices.push_back(Point(x, yDiv, zDiv + incZ));
-
-				// lado esquerdo
-				vertices.push_back(Point(x, yDiv + incY, zDiv));
-				vertices.push_back(Point(x, yDiv + incY, zDiv + incZ));
-				vertices.push_back(Point(x, yDiv, zDiv));
-
-				// lado direito
-				vertices.push_back(Point(0, yDiv, zDiv));
-				vertices.push_back(Point(0, yDiv, zDiv + incZ));
-				vertices.push_back(Point(0, yDiv + incY, zDiv + incZ));
-
-				// lado direito
-				vertices.push_back(Point(0, yDiv + incY, zDiv));
-				vertices.push_back(Point(0, yDiv, zDiv));
-				vertices.push_back(Point(0, yDiv + incY, zDiv + incZ));
-
-				yDiv += incY;
-			}
-
-			yDiv = 0;
-			zDiv += incZ;
-		}
-
-		xDiv = 0;
-		yDiv = 0;
-		zDiv = 0;
-
-		// lados em que o z é fixo
-		for (xx = 0; xx < nrDivisions; xx++) {
-
-			for (yy = 0; yy < nrDivisions; yy++) {
-
-				// frente
-				vertices.push_back(Point(xDiv + incX, yDiv + incY, z));
-				vertices.push_back(Point(xDiv, yDiv, z));
-				vertices.push_back(Point(xDiv + incX, yDiv, z));
-
-				// frente
-				vertices.push_back(Point(xDiv + incX, yDiv + incY, z));
-				vertices.push_back(Point(xDiv, yDiv + incY, z));
-				vertices.push_back(Point(xDiv, yDiv, z));
-
-				// tras
-				vertices.push_back(Point(xDiv + incX, yDiv + incY, 0));
-				vertices.push_back(Point(xDiv + incX, yDiv, 0));
-				vertices.push_back(Point(xDiv, yDiv, 0));
-
-				// tras
-				vertices.push_back(Point(xDiv + incX, yDiv + incY, 0));
-				vertices.push_back(Point(xDiv, yDiv, 0));
-				vertices.push_back(Point(xDiv, yDiv + incY, 0));
-
-				yDiv += incY;
-			}
-
-			yDiv = 0;
-			xDiv += incX;
-		}
+                // topo
+                vertices.push_back(Point(xDiv, y, zDiv));
+                vertices.push_back(Point(xDiv, y, zDiv + incZ));
+                vertices.push_back(Point(xDiv + incX, y, zDiv));
 
 
-		// Sending vertices to .3d file
+                // topo
+                vertices.push_back(Point(xDiv + incX, y, zDiv));
+                vertices.push_back(Point(xDiv, y, zDiv + incZ));
+                vertices.push_back(Point(xDiv + incX, y, zDiv + incZ));
+
+                xDiv += incX;
+            }
+
+            xDiv = 0;
+            zDiv += incZ;
+        }
+
+        xDiv = 0;
+        yDiv = 0;
+        zDiv = 0;
+
+        // lados em que o x é fixo
+        for (zz = 0; zz < nrDivisions; zz++) {
+
+            for (yy = 0; yy < nrDivisions; yy++) {
+
+                // lado esquerdo
+                vertices.push_back(Point(x, yDiv, zDiv));
+                vertices.push_back(Point(x, yDiv + incY, zDiv + incZ));
+                vertices.push_back(Point(x, yDiv, zDiv + incZ));
+
+                // lado esquerdo
+                vertices.push_back(Point(x, yDiv + incY, zDiv));
+                vertices.push_back(Point(x, yDiv + incY, zDiv + incZ));
+                vertices.push_back(Point(x, yDiv, zDiv));
+
+                // lado direito
+                vertices.push_back(Point(0, yDiv, zDiv));
+                vertices.push_back(Point(0, yDiv, zDiv + incZ));
+                vertices.push_back(Point(0, yDiv + incY, zDiv + incZ));
+
+                // lado direito
+                vertices.push_back(Point(0, yDiv + incY, zDiv));
+                vertices.push_back(Point(0, yDiv, zDiv));
+                vertices.push_back(Point(0, yDiv + incY, zDiv + incZ));
+
+                yDiv += incY;
+            }
+
+            yDiv = 0;
+            zDiv += incZ;
+        }
+
+        xDiv = 0;
+        yDiv = 0;
+        zDiv = 0;
+
+        // lados em que o z é fixo
+        for (xx = 0; xx < nrDivisions; xx++) {
+
+            for (yy = 0; yy < nrDivisions; yy++) {
+
+                // frente
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, z));
+                vertices.push_back(Point(xDiv, yDiv, z));
+                vertices.push_back(Point(xDiv + incX, yDiv, z));
+
+                // frente
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, z));
+                vertices.push_back(Point(xDiv, yDiv + incY, z));
+                vertices.push_back(Point(xDiv, yDiv, z));
+
+                // tras
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, 0));
+                vertices.push_back(Point(xDiv + incX, yDiv, 0));
+                vertices.push_back(Point(xDiv, yDiv, 0));
+
+                // tras
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, 0));
+                vertices.push_back(Point(xDiv, yDiv, 0));
+                vertices.push_back(Point(xDiv, yDiv + incY, 0));
+
+                yDiv += incY;
+            }
+
+            yDiv = 0;
+            xDiv += incX;
+        }
+
+
+        // Sending vertices to .3d file
         sendVertices(out, vertices);
-	}
+    }
 
-	fclose(out);
+    fclose(out);
 
 }
 
 void drawSphere(float r, int slices, int stacks, string fileName) {
 
-	FILE *out;
+    FILE *out;
 
-	// open to write (cleans if file already exists or creates it if not)
-	out = fopen(fileName.c_str(), "w");
+    // open to write (cleans if file already exists or creates it if not)
+    out = fopen(fileName.c_str(), "w");
 
-	if (out != NULL) {
+    if (out != NULL) {
 
-		// Vector to store the vertices
-		std::vector<Point> vertices;
+        // Vector to store the vertices
+        std::vector<Point> vertices;
 
-		float alpha = 0;
-		float beta = -M_PI/2;
+        float alpha = 0;
+        float beta = -M_PI/2;
 
-		float a_step = ((2 * M_PI) / slices);
-		float b_step = (M_PI / stacks);
+        float a_step = ((2 * M_PI) / slices);
+        float b_step = (M_PI / stacks);
 
-		float angulo_a1 = 0;
-		float angulo_b1 = 0;
+        float angulo_a1 = 0;
+        float angulo_b1 = 0;
 
-		for (int i = 0; i < stacks; i++) {
-			
-			alpha = 0;
-			angulo_b1 = beta + b_step;
+        for (int i = 0; i < stacks; i++) {
+            
+            alpha = 0;
+            angulo_b1 = beta + b_step;
 
-			for(int j = 0; j < slices; j++) {
+            for(int j = 0; j < slices; j++) {
 
-				angulo_a1 = alpha + a_step; 
+                angulo_a1 = alpha + a_step; 
 
-				vertices.push_back(Point(r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha),
+                vertices.push_back(Point(r * cos(beta) * sin(alpha), r * sin(beta), r * cos(beta) * cos(alpha),
                                              cos(beta) * sin(alpha),     sin(beta),     cos(beta) * cos(alpha),
                                          TI(alpha), TJ(beta)));
-				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
                                              cos(beta) * sin(angulo_a1),     sin(beta),     cos(beta) * cos(angulo_a1),
                                          TI(angulo_a1), TJ(beta)));
-				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
                                              cos(angulo_b1) * sin(alpha),     sin(angulo_b1),     cos(angulo_b1) * cos(alpha),
                                          TI(alpha), TJ(angulo_b1)));
 
-				vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
+                vertices.push_back(Point(r * cos(beta) * sin(angulo_a1), r * sin(beta), r * cos(beta) * cos(angulo_a1),
                                              cos(beta) * sin(angulo_a1),     sin(beta),     cos(beta) * cos(angulo_a1),
                                          TI(angulo_a1), TJ(beta)));
-				vertices.push_back(Point(r * cos(angulo_b1) * sin(angulo_a1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_a1),
+                vertices.push_back(Point(r * cos(angulo_b1) * sin(angulo_a1), r * sin(angulo_b1), r * cos(angulo_b1) * cos(angulo_a1),
                                              cos(angulo_b1) * sin(angulo_a1),     sin(angulo_b1),     cos(angulo_b1) * cos(angulo_a1),
                                          TI(angulo_a1), TJ(angulo_b1)));
-				vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
+                vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
                                              cos(angulo_b1) * sin(alpha),     sin(angulo_b1),     cos(angulo_b1) * cos(alpha),
                                          TI(angulo_a1), TJ(angulo_b1)));
 
-				alpha += a_step;
-			}
+                alpha += a_step;
+            }
 
-			beta += b_step;
-		}
+            beta += b_step;
+        }
 
-		// Sending vertices to .3d file
+        // Sending vertices to .3d file
         sendVertices(out, vertices);
-	}
+    }
 
-	fclose(out);
+    fclose(out);
 
 }
 
 void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
-	FILE *out;
+    FILE *out;
 
-	// open to write (cleans if file already exists or creates it if not)
-	out = fopen(fileName.c_str(), "w");
+    // open to write (cleans if file already exists or creates it if not)
+    out = fopen(fileName.c_str(), "w");
 
-	if (out != NULL) {
+    if (out != NULL) {
 
-		// Vector to store the vertices
-		std::vector<Point> vertices;
+        // Vector to store the vertices
+        std::vector<Point> vertices;
 
-		float a = (2 * M_PI) / slices;
+        float a = (2 * M_PI) / slices;
 
-		//float hStack = h / stacks;
-		//float rStack = ((h - hStack) * r) / h;
+        //float hStack = h / stacks;
+        //float rStack = ((h - hStack) * r) / h;
 
-		for (int i = 0; i < slices; i++) {
+        for (int i = 0; i < slices; i++) {
 
             // triangulos da base rodados (0.5 * step) angulos para alinhar com
             // os triangulos dos lados
-			// base
-			vertices.push_back(Point(0, 0, 0));
-			vertices.push_back(Point(r * cos(a * (i + 0.5)), 0, r * sin(a * (i + 0.5))));
-			vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)), 0, r * sin(a * (i + 1 + 0.5))));
+            // base
+            vertices.push_back(Point(0, 0, 0));
+            vertices.push_back(Point(r * cos(a * (i + 0.5)), 0, r * sin(a * (i + 0.5))));
+            vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)), 0, r * sin(a * (i + 1 + 0.5))));
 
             float oldRadius = r;
             float oldHeight = 0;
 
-			// sides
-			for (int j = 0; j < stacks; j++) {
+            // sides
+            for (int j = 0; j < stacks; j++) {
 
-				float newHeight = h / stacks * (j+1);
-				float newRadius = (h - newHeight) * r / h;
+                float newHeight = h / stacks * (j+1);
+                float newRadius = (h - newHeight) * r / h;
 
-				// triangle1
-				vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
-				vertices.push_back(Point(oldRadius * sin(a * i), oldHeight, oldRadius * cos(a * i)));
-				vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
+                // triangle1
+                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
+                vertices.push_back(Point(oldRadius * sin(a * i), oldHeight, oldRadius * cos(a * i)));
+                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
 
-				// triangle 2
-				vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
-				vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
-				vertices.push_back(Point(newRadius * sin(a * (i + 1)), newHeight, newRadius * cos(a * (i + 1))));
+                // triangle 2
+                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
+                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
+                vertices.push_back(Point(newRadius * sin(a * (i + 1)), newHeight, newRadius * cos(a * (i + 1))));
 
-				oldRadius = newRadius;
-				oldHeight = newHeight;
+                oldRadius = newRadius;
+                oldHeight = newHeight;
 
-			}
-		}
+            }
+        }
 
-		// Sending vertices to .3d file
+        // Sending vertices to .3d file
         sendVertices(out, vertices);
-	}
+    }
 
-	fclose(out);
+    fclose(out);
 
 }
 
 void drawPyramid(float height, float width, float length, string fileName) {
 
-	FILE *out;
+    FILE *out;
 
-	// open to write (cleans if file already exists or creates it if not)
-	out = fopen(fileName.c_str(), "w");
+    // open to write (cleans if file already exists or creates it if not)
+    out = fopen(fileName.c_str(), "w");
 
-	if (out != NULL) {
+    if (out != NULL) {
 
-		// Vector to store the vertices
-		std::vector<Point> vertices; 
-		
-		float largura = width/2;
-		float comprimento = length/2;
+        // Vector to store the vertices
+        std::vector<Point> vertices; 
+        
+        float largura = width/2;
+        float comprimento = length/2;
 
-		// Triângulo da Frente
-		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(-comprimento, 0.0, largura));
-		vertices.push_back(Point(comprimento, 0.0, largura));
+        // Triângulo da Frente
+        vertices.push_back(Point(0.0, height, 0.0));
+        vertices.push_back(Point(-comprimento, 0.0, largura));
+        vertices.push_back(Point(comprimento, 0.0, largura));
 
-		// Right
-		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(comprimento, 0.0, largura));
-		vertices.push_back(Point(comprimento, 0.0, -largura));
+        // Right
+        vertices.push_back(Point(0.0, height, 0.0));
+        vertices.push_back(Point(comprimento, 0.0, largura));
+        vertices.push_back(Point(comprimento, 0.0, -largura));
 
-		// Back
-		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(comprimento, 0.0, -largura));
-		vertices.push_back(Point(-comprimento, 0.0, -largura));
+        // Back
+        vertices.push_back(Point(0.0, height, 0.0));
+        vertices.push_back(Point(comprimento, 0.0, -largura));
+        vertices.push_back(Point(-comprimento, 0.0, -largura));
 
-		// Left 
-		vertices.push_back(Point(0.0, height, 0.0));
-		vertices.push_back(Point(-comprimento, 0.0, -largura));
-		vertices.push_back(Point(-comprimento, 0.0, largura));
+        // Left 
+        vertices.push_back(Point(0.0, height, 0.0));
+        vertices.push_back(Point(-comprimento, 0.0, -largura));
+        vertices.push_back(Point(-comprimento, 0.0, largura));
 
-		// ponteiro dos relógios
+        // ponteiro dos relógios
 
-		// Debaixo    
-		vertices.push_back(Point(-comprimento, 0.0, -largura));
-		vertices.push_back(Point(comprimento, 0.0, largura));
-		vertices.push_back(Point(-comprimento, 0.0, largura));
+        // Debaixo    
+        vertices.push_back(Point(-comprimento, 0.0, -largura));
+        vertices.push_back(Point(comprimento, 0.0, largura));
+        vertices.push_back(Point(-comprimento, 0.0, largura));
 
-		// Debaixo      
-		vertices.push_back(Point(comprimento, 0.0, -largura));
-		vertices.push_back(Point(comprimento, 0.0, largura));
-		vertices.push_back(Point(-comprimento, 0.0, -largura));
+        // Debaixo      
+        vertices.push_back(Point(comprimento, 0.0, -largura));
+        vertices.push_back(Point(comprimento, 0.0, largura));
+        vertices.push_back(Point(-comprimento, 0.0, -largura));
 
-		// Sending vertices to .3d file
+        // Sending vertices to .3d file
         sendVertices(out, vertices);
-	}
+    }
 
-	fclose(out);
+    fclose(out);
 
 }
 
 void drawCylinder(float r, float height, int slices, string fileName) {
 
-	FILE *out;
+    FILE *out;
 
-	// open to write (cleans if file already exists or creates it if not)
-	out = fopen(fileName.c_str(), "w");
+    // open to write (cleans if file already exists or creates it if not)
+    out = fopen(fileName.c_str(), "w");
 
-	if (out != NULL) {
+    if (out != NULL) {
 
-		// Vector to store the vertices
-		std::vector<Point> vertices;
+        // Vector to store the vertices
+        std::vector<Point> vertices;
 
-		float a = (2 * M_PI) / slices;
-		float altura = height / 2;
+        float a = (2 * M_PI) / slices;
+        float altura = height / 2;
 
-		for (int i = 0; i < slices; i++) {
+        for (int i = 0; i < slices; i++) {
 
-			// top
-			vertices.push_back(Point(0, altura, 0));
-			vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
-			vertices.push_back(Point(r * cos(a * i), altura, r * sin(a * i)));
+            // top
+            vertices.push_back(Point(0, altura, 0));
+            vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
+            vertices.push_back(Point(r * cos(a * i), altura, r * sin(a * i)));
 
-			// bottom
-			vertices.push_back(Point(0, -altura, 0));
-			vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * (i + 1)), -altura, r * sin(a * (i + 1))));
+            // bottom
+            vertices.push_back(Point(0, -altura, 0));
+            vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
+            vertices.push_back(Point(r * cos(a * (i + 1)), -altura, r * sin(a * (i + 1))));
 
-			// side 1
-			vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
-			vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * i), altura, r * sin(a * i)));
+            // side 1
+            vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
+            vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
+            vertices.push_back(Point(r * cos(a * i), altura, r * sin(a * i)));
 
-			// side 2
-			vertices.push_back(Point(r * cos(a * (i + 1)), -altura, r * sin(a * (i + 1))));
-			vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
-			vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
+            // side 2
+            vertices.push_back(Point(r * cos(a * (i + 1)), -altura, r * sin(a * (i + 1))));
+            vertices.push_back(Point(r * cos(a * i), -altura, r * sin(a * i)));
+            vertices.push_back(Point(r * cos(a * (i + 1)), altura, r * sin(a * (i + 1))));
 
-		}
+        }
 
-		// Sending vertices to .3d file
+        // Sending vertices to .3d file
         sendVertices(out, vertices);
-	}
+    }
 
-	fclose(out);
+    fclose(out);
 
 }
 
 void writeToXML(string fileName) {
 
-	tinyxml2::XMLDocument doc;
+    tinyxml2::XMLDocument doc;
 
-	if (doc.LoadFile("scene.xml") != tinyxml2::XML_SUCCESS) {
+    if (doc.LoadFile("scene.xml") != tinyxml2::XML_SUCCESS) {
 
-		XMLNode * pRoot = doc.NewElement("scene");
+        XMLNode * pRoot = doc.NewElement("scene");
 
-		doc.InsertFirstChild(pRoot);
+        doc.InsertFirstChild(pRoot);
 
-		tinyxml2::XMLElement* newElement = doc.NewElement("model");
+        tinyxml2::XMLElement* newElement = doc.NewElement("model");
 
-		newElement->SetAttribute("file", fileName.c_str());
+        newElement->SetAttribute("file", fileName.c_str());
 
-		pRoot->InsertFirstChild(newElement);
+        pRoot->InsertFirstChild(newElement);
 
-		doc.SaveFile("scene.xml");
+        doc.SaveFile("scene.xml");
 
-	}
-	
-	else {
+    }
+    
+    else {
 
-		XMLElement * pRoot = doc.FirstChildElement("scene");
+        XMLElement * pRoot = doc.FirstChildElement("scene");
 
-		tinyxml2::XMLElement* newElement = doc.NewElement("model");
+        tinyxml2::XMLElement* newElement = doc.NewElement("model");
 
-		newElement->SetAttribute("file", fileName.c_str());
+        newElement->SetAttribute("file", fileName.c_str());
 
-		pRoot->InsertFirstChild(newElement);
+        pRoot->InsertFirstChild(newElement);
 
-		doc.SaveFile("scene.xml");
+        doc.SaveFile("scene.xml");
 
-	}
+    }
 
 }
 
 int main(int argc, char** argv) {
 
-	// Checks if program receives something to process
-	if (argv[1] != NULL) { 
+    // Checks if program receives something to process
+    if (argv[1] != NULL) { 
 
-		std::string primitive = argv[1];
+        std::string primitive = argv[1];
 
-		// PLANE
-		if (primitive.compare("plane") == 0 && argc == 4) {
+        // PLANE
+        if (primitive.compare("plane") == 0 && argc == 4) {
 
-			std::cout << "A criar um plano..." << std::endl;
+            std::cout << "A criar um plano..." << std::endl;
 
-			float width = std::stof(argv[2]);
+            float width = std::stof(argv[2]);
 
-			std::string file = argv[3];
+            std::string file = argv[3];
 
-			// Call triangle function
-			drawPlane(width, file);
+            // Call triangle function
+            drawPlane(width, file);
 
-			std::cout << "Plano criado com sucesso." << std::endl;
+            std::cout << "Plano criado com sucesso." << std::endl;
 
-			// writes to scene.xml
-			writeToXML(file);
+            // writes to scene.xml
+            writeToXML(file);
 
-			std::cout << "Path do plano escrita no scene.xml com sucesso" << std::endl;
-		}
+            std::cout << "Path do plano escrita no scene.xml com sucesso" << std::endl;
+        }
 
-		else if (primitive.compare("box") == 0 && argc == 7) {
+        else if (primitive.compare("box") == 0 && argc == 7) {
 
-			std::cout << "A criar uma caixa..." << std::endl;
+            std::cout << "A criar uma caixa..." << std::endl;
 
-			float x, y, z;
+            float x, y, z;
 
-			x = std::stof(argv[2]);
-			y = std::stof(argv[3]);
-			z = std::stof(argv[4]);
+            x = std::stof(argv[2]);
+            y = std::stof(argv[3]);
+            z = std::stof(argv[4]);
 
-			int nrDivisions = std::stoi(argv[5]);
+            int nrDivisions = std::stoi(argv[5]);
 
-			std::string file = argv[6];
+            std::string file = argv[6];
 
-			// Call box function
-			drawBox(x, y, z, nrDivisions, file);
+            // Call box function
+            drawBox(x, y, z, nrDivisions, file);
 
-			std::cout << "Caixa criada com sucesso." << std::endl;
+            std::cout << "Caixa criada com sucesso." << std::endl;
 
-			// writes to scene.xml
-			writeToXML(file);
+            // writes to scene.xml
+            writeToXML(file);
 
-			std::cout << "Path da caixa escrita no scene.xml com sucesso" << std::endl;
-		}
+            std::cout << "Path da caixa escrita no scene.xml com sucesso" << std::endl;
+        }
 
-		else if (primitive.compare("sphere") == 0 && argc == 6) {
+        else if (primitive.compare("sphere") == 0 && argc == 6) {
 
-			std::cout << "A criar uma esfera..." << std::endl;
-		
-			float radius = std::stof(argv[2]);
+            std::cout << "A criar uma esfera..." << std::endl;
+        
+            float radius = std::stof(argv[2]);
 
-			int slices = std::stoi(argv[3]);
+            int slices = std::stoi(argv[3]);
 
-			int stacks = std::stoi(argv[4]);
+            int stacks = std::stoi(argv[4]);
 
-			std::string file = argv[5];
+            std::string file = argv[5];
 
-			// Call sphere function
-			drawSphere(radius, slices, stacks, file);
+            // Call sphere function
+            drawSphere(radius, slices, stacks, file);
 
-			std::cout << "Esfera criada com sucesso." << std::endl;
+            std::cout << "Esfera criada com sucesso." << std::endl;
 
-			// writes to scene.xml
-			writeToXML(file);
+            // writes to scene.xml
+            writeToXML(file);
 
-			std::cout << "Path da esfera escrita no scene.xml com sucesso" << std::endl;
-		}
+            std::cout << "Path da esfera escrita no scene.xml com sucesso" << std::endl;
+        }
 
-		else if (primitive.compare("cone") == 0 && argc == 7) {
+        else if (primitive.compare("cone") == 0 && argc == 7) {
 
-			std::cout << "A criar um cone..." << std::endl;
+            std::cout << "A criar um cone..." << std::endl;
 
-			float radius = std::stof(argv[2]);
+            float radius = std::stof(argv[2]);
 
-			float height = std::stof(argv[3]);
+            float height = std::stof(argv[3]);
 
-			int slices = std::stoi(argv[4]);
+            int slices = std::stoi(argv[4]);
 
-			int stacks = std::stoi(argv[5]);
+            int stacks = std::stoi(argv[5]);
 
-			std::string file = argv[6];
+            std::string file = argv[6];
 
-			// Call cone function
-			drawCone(radius, height, slices, stacks, file);
+            // Call cone function
+            drawCone(radius, height, slices, stacks, file);
 
-			std::cout << "Cone criado com sucesso." << std::endl;
+            std::cout << "Cone criado com sucesso." << std::endl;
 
-			// writes to scene.xml
-			writeToXML(file);
+            // writes to scene.xml
+            writeToXML(file);
 
-			std::cout << "Path do cone escrita no scene.xml com sucesso" << std::endl;
-		}
+            std::cout << "Path do cone escrita no scene.xml com sucesso" << std::endl;
+        }
 
-		else if (primitive.compare("pyramid") == 0 && argc == 6) {
+        else if (primitive.compare("pyramid") == 0 && argc == 6) {
 
-			std::cout << "A criar uma pirâmide..." << std::endl;
+            std::cout << "A criar uma pirâmide..." << std::endl;
 
-			float height = std::stof(argv[2]);
+            float height = std::stof(argv[2]);
 
-			float width = std::stof(argv[3]);
+            float width = std::stof(argv[3]);
 
-			float length = std::stof(argv[4]);
+            float length = std::stof(argv[4]);
 
-			std::string file = argv[5];
+            std::string file = argv[5];
 
-			// Call pyramid function
-			drawPyramid(height, width, length, file);
+            // Call pyramid function
+            drawPyramid(height, width, length, file);
 
-			std::cout << "Pirâmide criada com sucesso." << std::endl;
+            std::cout << "Pirâmide criada com sucesso." << std::endl;
 
-			// writes to scene.xml
-			writeToXML(file);
+            // writes to scene.xml
+            writeToXML(file);
 
-			std::cout << "Path da pirâmide escrita no scene.xml com sucesso" << std::endl;
-		}
+            std::cout << "Path da pirâmide escrita no scene.xml com sucesso" << std::endl;
+        }
 
-		else if (primitive.compare("cylinder") == 0 && argc == 6) {
+        else if (primitive.compare("cylinder") == 0 && argc == 6) {
 
-			std::cout << "A criar um cilindro..." << std::endl;
+            std::cout << "A criar um cilindro..." << std::endl;
 
-			float radius = std::stof(argv[2]);
+            float radius = std::stof(argv[2]);
 
-			float height = std::stof(argv[3]);
+            float height = std::stof(argv[3]);
 
-			int slices = std::stoi(argv[4]);
+            int slices = std::stoi(argv[4]);
 
-			std::string file = argv[5];
+            std::string file = argv[5];
 
-			// Call cilinder function
-			drawCylinder(radius, height, slices, file);
+            // Call cilinder function
+            drawCylinder(radius, height, slices, file);
 
-			std::cout << "Cilindro criado." << std::endl;
+            std::cout << "Cilindro criado." << std::endl;
 
-			// writes to scene.xml
-			writeToXML(file);
+            // writes to scene.xml
+            writeToXML(file);
 
-			std::cout << "Path do cilindro escrita no scene.xml com sucesso" << std::endl;
-		}
+            std::cout << "Path do cilindro escrita no scene.xml com sucesso" << std::endl;
+        }
 
-		else if (primitive.compare("bezier") == 0 && argc == 5) {
+        else if (primitive.compare("bezier") == 0 && argc == 5) {
 
-			std::cout << "A criar um cilindro..." << std::endl;
+            std::cout << "A criar um cilindro..." << std::endl;
 
-			std::string in_file = argv[2];
+            std::string in_file = argv[2];
 
-			int tesselation = std::stoi(argv[3]);
+            int tesselation = std::stoi(argv[3]);
 
-			std::string file = argv[4];
+            std::string file = argv[4];
 
-			drawBezierPatches(in_file, tesselation, file);
+            drawBezierPatches(in_file, tesselation, file);
 
-			std::cout << "Modelo de patches Bezier criado." << std::endl;
+            std::cout << "Modelo de patches Bezier criado." << std::endl;
 
-			// writes to scene.xml
-			writeToXML(file);
+            // writes to scene.xml
+            writeToXML(file);
 
-			std::cout << "Path do modelo escrita no scene.xml com sucesso" << std::endl;
-		}
-		else {
+            std::cout << "Path do modelo escrita no scene.xml com sucesso" << std::endl;
+        }
+        else {
 
-			std::cout << argv[1] << " não é um sólido válido." << std::endl;
-		}
-	}
+            std::cout << argv[1] << " não é um sólido válido." << std::endl;
+        }
+    }
 
-	return 0;
+    return 0;
 }
