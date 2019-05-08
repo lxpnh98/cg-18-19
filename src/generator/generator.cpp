@@ -36,7 +36,7 @@ void drawPlane(float width, string fileName) {
     // open to write (cleans if file already exists or creates it if not)
     out = fopen(fileName.c_str(), "w"); 
     if (out != NULL) {
-        
+
         // Vector to store the vertices
         std::vector<Point> vertices;
 
@@ -118,25 +118,56 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
             for (xx = 0; xx < nrDivisions; xx++) {
 
                 // base
-                vertices.push_back(Point(xDiv, 0, zDiv));
-                vertices.push_back(Point(xDiv + incX, 0, zDiv));
-                vertices.push_back(Point(xDiv, 0, zDiv + incZ));
+                vertices.push_back(Point(xDiv, 0, zDiv,
+                                         xDiv, 0, zDiv,
+                                         xDiv, zDiv));
+
+                vertices.push_back(Point(xDiv + incX, 0, zDiv,
+                                         xDiv + incX, 0, zDiv,
+                                         xDiv + incX, zDiv));
+
+                vertices.push_back(Point(xDiv, 0, zDiv + incZ,
+                                         xDiv, 0, zDiv + incZ,
+                                         xDiv, zDiv + incZ));
 
                 // base
-                vertices.push_back(Point(xDiv + incX, 0, zDiv));
-                vertices.push_back(Point(xDiv + incX, 0, zDiv + incZ));
-                vertices.push_back(Point(xDiv, 0, zDiv + incZ));
+                vertices.push_back(Point(xDiv + incX, 0, zDiv,
+                                         xDiv + incX, 0, zDiv,
+                                         xDiv + incX, zDiv));
+
+                vertices.push_back(Point(xDiv + incX, 0, zDiv + incZ,
+                                         xDiv + incX, 0, zDiv + incZ,
+                                         xDiv + incX, zDiv + incZ));
+
+                vertices.push_back(Point(xDiv, 0, zDiv + incZ,
+                                         xDiv, 0, zDiv + incZ,
+                                         xDiv, zDiv + incZ));
 
                 // topo
-                vertices.push_back(Point(xDiv, y, zDiv));
-                vertices.push_back(Point(xDiv, y, zDiv + incZ));
-                vertices.push_back(Point(xDiv + incX, y, zDiv));
+                vertices.push_back(Point(xDiv, y, zDiv,
+                                         xDiv, y, zDiv,
+                                         xDiv, zDiv));
 
+                vertices.push_back(Point(xDiv, y, zDiv + incZ,
+                                         xDiv, y, zDiv + incZ,
+                                         xDiv, zDiv + incZ));
+
+                vertices.push_back(Point(xDiv + incX, y, zDiv,
+                                         xDiv + incX, y, zDiv,
+                                         xDiv + incX, zDiv));
 
                 // topo
-                vertices.push_back(Point(xDiv + incX, y, zDiv));
-                vertices.push_back(Point(xDiv, y, zDiv + incZ));
-                vertices.push_back(Point(xDiv + incX, y, zDiv + incZ));
+                vertices.push_back(Point(xDiv + incX, y, zDiv,
+                                         xDiv + incX, y, zDiv,
+                                         xDiv + incX, zDiv));
+
+                vertices.push_back(Point(xDiv, y, zDiv + incZ,
+                                         xDiv, y, zDiv + incZ,
+                                         xDiv, zDiv + incZ));
+
+                vertices.push_back(Point(xDiv + incX, y, zDiv + incZ,
+                                         xDiv + incX, y, zDiv + incZ,
+                                         xDiv + incX, zDiv + incZ));
 
                 xDiv += incX;
             }
@@ -155,24 +186,56 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
             for (yy = 0; yy < nrDivisions; yy++) {
 
                 // lado esquerdo
-                vertices.push_back(Point(x, yDiv, zDiv));
-                vertices.push_back(Point(x, yDiv + incY, zDiv + incZ));
-                vertices.push_back(Point(x, yDiv, zDiv + incZ));
+                vertices.push_back(Point(x, yDiv, zDiv,
+                                         x, yDiv, zDiv,
+                                         yDiv, zDiv));
+
+                vertices.push_back(Point(x, yDiv + incY, zDiv + incZ,
+                                         x, yDiv + incY, zDiv + incZ,
+                                         yDiv + incY, zDiv + incZ));
+
+                vertices.push_back(Point(x, yDiv, zDiv + incZ,
+                                         x, yDiv, zDiv + incZ,
+                                         yDiv, zDiv + incZ));
 
                 // lado esquerdo
-                vertices.push_back(Point(x, yDiv + incY, zDiv));
-                vertices.push_back(Point(x, yDiv + incY, zDiv + incZ));
-                vertices.push_back(Point(x, yDiv, zDiv));
+                vertices.push_back(Point(x, yDiv + incY, zDiv,
+                                         x, yDiv + incY, zDiv,
+                                         yDiv + incY, zDiv));
+
+                vertices.push_back(Point(x, yDiv + incY, zDiv + incZ,
+                                         x, yDiv + incY, zDiv + incZ,
+                                         yDiv + incY, zDiv + incZ));
+
+                vertices.push_back(Point(x, yDiv, zDiv,
+                                         x, yDiv, zDiv,
+                                         yDiv, zDiv));
 
                 // lado direito
-                vertices.push_back(Point(0, yDiv, zDiv));
-                vertices.push_back(Point(0, yDiv, zDiv + incZ));
-                vertices.push_back(Point(0, yDiv + incY, zDiv + incZ));
+                vertices.push_back(Point(0, yDiv, zDiv,
+                                         0, yDiv, zDiv,
+                                         yDiv, zDiv));
+
+                vertices.push_back(Point(0, yDiv, zDiv + incZ,
+                                         0, yDiv, zDiv + incZ,
+                                         yDiv, zDiv + incZ));
+
+                vertices.push_back(Point(0, yDiv + incY, zDiv + incZ,
+                                         0, yDiv + incY, zDiv + incZ,
+                                         yDiv + incY, zDiv + incZ));
 
                 // lado direito
-                vertices.push_back(Point(0, yDiv + incY, zDiv));
-                vertices.push_back(Point(0, yDiv, zDiv));
-                vertices.push_back(Point(0, yDiv + incY, zDiv + incZ));
+                vertices.push_back(Point(0, yDiv + incY, zDiv,
+                                         0, yDiv + incY, zDiv,
+                                         yDiv + incY, zDiv));
+
+                vertices.push_back(Point(0, yDiv, zDiv,
+                                         0, yDiv, zDiv,
+                                         yDiv, zDiv));
+
+                vertices.push_back(Point(0, yDiv + incY, zDiv + incZ,
+                                         0, yDiv + incY, zDiv + incZ,
+                                         yDiv + incY, zDiv + incZ));
 
                 yDiv += incY;
             }
@@ -191,24 +254,56 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
             for (yy = 0; yy < nrDivisions; yy++) {
 
                 // frente
-                vertices.push_back(Point(xDiv + incX, yDiv + incY, z));
-                vertices.push_back(Point(xDiv, yDiv, z));
-                vertices.push_back(Point(xDiv + incX, yDiv, z));
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, z,
+                                         xDiv + incX, yDiv + incY, z,
+                                         xDiv + incX, yDiv + incY));
+
+                vertices.push_back(Point(xDiv, yDiv, z,
+                                         xDiv, yDiv, z,
+                                         xDiv, yDiv));
+
+                vertices.push_back(Point(xDiv + incX, yDiv, z,
+                                         xDiv + incX, yDiv, z,
+                                         xDiv + incX, yDiv));
 
                 // frente
-                vertices.push_back(Point(xDiv + incX, yDiv + incY, z));
-                vertices.push_back(Point(xDiv, yDiv + incY, z));
-                vertices.push_back(Point(xDiv, yDiv, z));
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, z,
+                                         xDiv + incX, yDiv + incY, z,
+                                         xDiv + incX, yDiv + incY));
+
+                vertices.push_back(Point(xDiv, yDiv + incY, z,
+                                         xDiv, yDiv + incY, z,
+                                         xDiv, yDiv + incY));
+
+                vertices.push_back(Point(xDiv, yDiv, z,
+                                         xDiv, yDiv, z,
+                                         xDiv, yDiv));
 
                 // tras
-                vertices.push_back(Point(xDiv + incX, yDiv + incY, 0));
-                vertices.push_back(Point(xDiv + incX, yDiv, 0));
-                vertices.push_back(Point(xDiv, yDiv, 0));
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, 0,
+                                         xDiv + incX, yDiv + incY, 0,
+                                         xDiv + incX, yDiv + incY));
+
+                vertices.push_back(Point(xDiv + incX, yDiv, 0,
+                                         xDiv + incX, yDiv, 0,
+                                         xDiv + incX, yDiv));
+
+                vertices.push_back(Point(xDiv, yDiv, 0,
+                                         xDiv, yDiv, 0,
+                                         xDiv, yDiv));
 
                 // tras
-                vertices.push_back(Point(xDiv + incX, yDiv + incY, 0));
-                vertices.push_back(Point(xDiv, yDiv, 0));
-                vertices.push_back(Point(xDiv, yDiv + incY, 0));
+                vertices.push_back(Point(xDiv + incX, yDiv + incY, 0,
+                                         xDiv + incX, yDiv + incY, 0,
+                                         xDiv + incX, yDiv + incY));
+
+                vertices.push_back(Point(xDiv, yDiv, 0,
+                                         xDiv, yDiv, 0,
+                                         xDiv, yDiv));
+
+                vertices.push_back(Point(xDiv, yDiv + incY, 0,
+                                         xDiv, yDiv + incY, 0,
+                                         xDiv, yDiv + incY));
 
                 yDiv += incY;
             }
@@ -217,13 +312,10 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
             xDiv += incX;
         }
 
-
         // Sending vertices to .3d file
         sendVertices(out, vertices);
     }
-
     fclose(out);
-
 }
 
 void drawSphere(float r, int slices, int stacks, string fileName) {
@@ -312,9 +404,17 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
             // triangulos da base rodados (0.5 * step) angulos para alinhar com
             // os triangulos dos lados
             // base
-            vertices.push_back(Point(0, 0, 0));
-            vertices.push_back(Point(r * cos(a * (i + 0.5)), 0, r * sin(a * (i + 0.5))));
-            vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)), 0, r * sin(a * (i + 1 + 0.5))));
+            vertices.push_back(Point(0, 0, 0,
+                                     0, 0, 0,
+                                     0, 0));
+
+            vertices.push_back(Point(r * cos(a * (i + 0.5)), 0, r * sin(a * (i + 0.5)),
+                                         cos(a * (i + 0.5)), 0,     sin(a * (i + 0.5)),
+                                         cos(a * (i + 0.5)), sin(a * (i + 0.5))));
+
+            vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)), 0, r * sin(a * (i + 1 + 0.5)),
+                                         cos(a * (i + 1 + 0.5)), 0,     sin(a * (i + 1 + 0.5)),
+                                         cos(a * (i + 1 + 0.5)),        sin(a * (i + 1 + 0.5))));
 
             float oldRadius = r;
             float oldHeight = 0;
@@ -326,14 +426,30 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
                 float newRadius = (h - newHeight) * r / h;
 
                 // triangle1
-                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
-                vertices.push_back(Point(oldRadius * sin(a * i), oldHeight, oldRadius * cos(a * i)));
-                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
+                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i),
+                                                     sin(a * i), newHeight,             cos(a * i),
+                                                      TI(a * i),                         TI(newHeight)));
+
+                vertices.push_back(Point(oldRadius * sin(a * i), oldHeight, oldRadius * cos(a * i),
+                                                     sin(a * i), oldHeight,             cos(a * i),
+                                                      TI(a * i),                         TI(oldHeight)));
+
+                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1)),
+                                                     sin(a * (i + 1)), oldHeight,             cos(a * (i + 1)),
+                                                      TI(a * (i + 1)),                         TI(oldHeight)));
 
                 // triangle 2
-                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i)));
-                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1))));
-                vertices.push_back(Point(newRadius * sin(a * (i + 1)), newHeight, newRadius * cos(a * (i + 1))));
+                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i),
+                                                     sin(a * i), newHeight,             cos(a * i),
+                                                      TI(a * i),                         TI(newHeight)));
+
+                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1)),
+                                                     sin(a * (i + 1)), oldHeight,             cos(a * (i + 1)),
+                                                      TI(a * (i + 1)),                         TI(oldHeight)));
+
+                vertices.push_back(Point(newRadius * sin(a * (i + 1)), newHeight, newRadius * cos(a * (i + 1)),
+                                                     sin(a * (i + 1)), newHeight,             cos(a * (i + 1)),
+                                                      TI(a * (i + 1)),                         TI(newHeight)));
 
                 oldRadius = newRadius;
                 oldHeight = newHeight;
