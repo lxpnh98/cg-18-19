@@ -433,10 +433,17 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
         // Vector to store the vertices
         std::vector<Point> vertices;
 
-        float a = (2 * M_PI) / slices;
+        float raioP = 1.0/6.0;
 
-        //float hStack = h / stacks;
-        //float rStack = ((h - hStack) * r) / h;
+        float centroX = raioP;
+        float centroY = raioP;
+
+        float centroGrandeX = 0.0;
+        float centroGrandeY = 1.0;
+
+        float step = (centroGrandeY - 2*centroY) / stacks;
+
+        float a = (2 * M_PI) / slices;
 
         for (int i = 0; i < slices; i++) {
 
@@ -445,15 +452,15 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
             // base
             vertices.push_back(Point(0, 0, 0,
                                      0, 0, 0,
-                                     0, 0));
+                                     centroX, centroY));
 
-            vertices.push_back(Point(r * cos(a * (i + 0.5)), 0, r * sin(a * (i + 0.5)),
-                                         cos(a * (i + 0.5)), 0,     sin(a * (i + 0.5)),
-                                         cos(a * (i + 0.5)), sin(a * (i + 0.5))));
+            vertices.push_back(Point(r * cos(a * (i + 0.5)),            0, r * sin(a * (i + 0.5)),
+                                         cos(a * (i + 0.5)),	        0,     sin(a * (i + 0.5)),
+                       centroX + centroX*cos(a * (i + 0.5)), centroY + centroY*sin(a * (i + 0.5))));
 
-            vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)), 0, r * sin(a * (i + 1 + 0.5)),
-                                         cos(a * (i + 1 + 0.5)), 0,     sin(a * (i + 1 + 0.5)),
-                                         cos(a * (i + 1 + 0.5)),        sin(a * (i + 1 + 0.5))));
+            vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)),            0, r * sin(a * (i + 1 + 0.5)),
+                                         cos(a * (i + 1 + 0.5)),            0,     sin(a * (i + 1 + 0.5)),
+				       centroX + centroX*cos(a * (i + 1 + 0.5)), centroY + centroY*sin(a * (i + 1 + 0.5))));
 
             float oldRadius = r;
             float oldHeight = 0;
@@ -465,30 +472,30 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
                 float newRadius = (h - newHeight) * r / h;
 
                 // triangle1
-                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i),
-                                                     sin(a * i), newHeight,             cos(a * i),
-                                                      TI(a * i), TI(newHeight)));
+                vertices.push_back(Point(newRadius * sin(a * i),   newHeight, newRadius * cos(a * i),
+                                                     sin(a * i),   newHeight,             cos(a * i),
+                           (newRadius/r)*(2.0/3)*sin(a * i / 4), 1-((newRadius/r)*(2.0/3)*cos(a * i / 4))));
 
-                vertices.push_back(Point(oldRadius * sin(a * i), oldHeight, oldRadius * cos(a * i),
-                                                     sin(a * i), oldHeight,             cos(a * i),
-                                                      TI(a * i), TI(oldHeight)));
+                vertices.push_back(Point(oldRadius * sin(a * i),   oldHeight, oldRadius * cos(a * i),
+                                                     sin(a * i),   oldHeight,             cos(a * i),
+                           (oldRadius/r)*(2.0/3)*sin(a * i / 4), 1-((oldRadius/r)*(2.0/3)*cos(a * i / 4))));
 
-                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1)),
-                                                     sin(a * (i + 1)), oldHeight,             cos(a * (i + 1)),
-                                                      TI(a * (i + 1)), TI(oldHeight)));
+                vertices.push_back(Point(oldRadius * sin(a * (i + 1)),  oldHeight, oldRadius * cos(a * (i + 1)),
+                                                     sin(a * (i + 1)),  oldHeight,             cos(a * (i + 1)),
+                           (oldRadius/r)*(2.0/3)*sin(a * (i + 1) / 4), 1-(oldRadius/r)*(2.0/3)*cos(a * (i + 1) / 4)));
 
                 // triangle 2
-                vertices.push_back(Point(newRadius * sin(a * i), newHeight, newRadius * cos(a * i),
-                                                     sin(a * i), newHeight,             cos(a * i),
-                                                      TI(a * i), TI(newHeight)));
+                vertices.push_back(Point(newRadius * sin(a * i),   newHeight, newRadius * cos(a * i),
+                                                     sin(a * i),   newHeight,             cos(a * i),
+                           (newRadius/r)*(2.0/3)*sin(a * i / 4), 1-((newRadius/r)*(2.0/3)*cos(a * i / 4))));
 
-                vertices.push_back(Point(oldRadius * sin(a * (i + 1)), oldHeight, oldRadius * cos(a * (i + 1)),
-                                                     sin(a * (i + 1)), oldHeight,             cos(a * (i + 1)),
-                                                      TI(a * (i + 1)), TI(oldHeight)));
+                vertices.push_back(Point(oldRadius * sin(a * (i + 1)),  oldHeight, oldRadius * cos(a * (i + 1)),
+                                                     sin(a * (i + 1)),  oldHeight,             cos(a * (i + 1)),
+                           (oldRadius/r)*(2.0/3)*sin(a * (i + 1) / 4), 1-(oldRadius/r)*(2.0/3)*cos(a * (i + 1) / 4)));
 
-                vertices.push_back(Point(newRadius * sin(a * (i + 1)), newHeight, newRadius * cos(a * (i + 1)),
-                                                     sin(a * (i + 1)), newHeight,             cos(a * (i + 1)),
-                                                      TI(a * (i + 1)), TI(newHeight)));
+                vertices.push_back(Point(newRadius * sin(a * (i + 1)),  newHeight, newRadius * cos(a * (i + 1)),
+                                                     sin(a * (i + 1)),  newHeight,             cos(a * (i + 1)),
+                           (newRadius/r)*(2.0/3)*sin(a * (i + 1) / 4), 1-(newRadius/r)*(2.0/3)*cos(a * (i + 1) / 4)));
 
                 oldRadius = newRadius;
                 oldHeight = newHeight;
