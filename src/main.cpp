@@ -20,6 +20,11 @@ float Zoom = 80.0f, zoomMin = 4.0f;
 float cAngleA = 0.0f, cAngleB = 0.0f;
 float offsetX = 0.0f, offsetY = 0.0f, offsetZ = 0.0f;
 
+// vetores luzes
+//float amb[3] = { 0,0,0.5 };
+//float diff[3] = { 1,1,1 };
+//float matt[4] = { 0,0,1,1 };
+
 //Método de calculo da posição da câmera
 void cameraCalc() {
 	cPosX = Zoom * (cos(cAngleB) * sin(cAngleA)) + cDirX;
@@ -109,17 +114,20 @@ void renderScene(void) {
 		   	  cDirX, cDirY, cDirZ,
 			  cTiltX, cTiltY, cTiltZ);
 
-    float lpos[4] = { 0,0,100,0 };
+    float lpos[4] = { 0,0,100,0};
     glLightfv(GL_LIGHT0, GL_POSITION, lpos);
 
-    float blue[4] = { 0.0f, 0.0f, 1.0f, 1.0f };
-    //glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, blue);
+    //float blue[4] = { 0.0f, 0.0f, 1.0f, 1.0f };
+    //glLightfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
+	//glLightfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
+	//glLightfv(GL_FRONT_AND_BACK, GL_SPECULAR, matt);
 
-
-// put drawing instructions here
+	// put drawing instructions here
 	drawCoordinates();
     glColor3f(1, 1, 1);
+	glPushMatrix();
 	engine::drawScene();
+	glPopMatrix();
 
 	// End of frame
 	glutSwapBuffers();

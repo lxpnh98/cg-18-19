@@ -33,7 +33,6 @@ void engine::drawScene() {
 
 	for (fig = scene.begin(); fig != scene.end(); fig++) {
 
-
         glPushMatrix();
         // Apply transformations from above groups
         for (Transform *t : *fig->upTransforms) {
@@ -59,12 +58,10 @@ void engine::drawScene() {
 		glBindBuffer(GL_ARRAY_BUFFER, fig->textureBuffer);
 		glTexCoordPointer(2, GL_FLOAT, 0, 0);
 
-		int numV = (fig->numVertices * 3);
-		glDrawArrays(GL_TRIANGLES, 0, numV);
+		glDrawArrays(GL_TRIANGLES, 0, (fig->numVertices * 3));
 
         glBindTexture(GL_TEXTURE_2D, 0);
 
         glPopMatrix();
 	}
-
 }
