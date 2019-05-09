@@ -43,46 +43,46 @@ void drawPlane(float width, string fileName) {
         //T1
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-                                 1, -1));
+								 1, 1));
         vertices.push_back(Point(-width/2, 0.0, width/2,
                                  -width/2, 0.0, width/2,
-                                 -1, 1));
+                                 0, 0));
         vertices.push_back(Point(width/2, 0.0, width/2,
                                  width/2, 0.0, width/2,
-                                 1, 1));
+								 1, 0));
 
         //T2
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-                                 1, -1));
+								 1, 1));
         vertices.push_back(Point(-width/2, 0.0, -width/2,
                                  -width/2, 0.0, -width/2,
-                                 -1, -1));
+                                 0, 1));
         vertices.push_back(Point(-width/2, 0.0, width/2,
                                  -width/2, 0.0, width/2,
-                                 -1, 1));
+                                 0, 0));
 
         // T11
         vertices.push_back(Point(width/2, 0.0, width/2,
                                  width/2, 0.0, width/2,
-                                 1, 1));
+								 1, 0));
         vertices.push_back(Point(-width/2, 0.0, width/2,
                                  -width/2, 0.0, width/2,
-                                 -1, 1));
+                                 0, 0));
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-                                 1, -1));
+								 1, 1));
 
         // T21
         vertices.push_back(Point(-width/2, 0.0, width/2,
                                  -width/2, 0.0, width/2,
-                                 -1, 1));
+                                 0, 0));
         vertices.push_back(Point(-width/2, 0.0, -width/2,
                                  -width/2, 0.0, -width/2,
-                                 -1, -1));
+                                 0, 1));
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-                                 1, -1));
+								 1, 1));
 
         // Sending vertices to .3d file
         sendVertices(out, vertices);
