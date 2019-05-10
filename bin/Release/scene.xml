@@ -1,12 +1,9 @@
 <scene>
-    <model file="cylinder.3d"/>
-    <model file="cylinder.3d"/>
-    <model file="cylinder.3d"/>
     <group>
         <rotate time="10" axisX="0.0" axisY="1.0" axisZ="0.0"/>
         <scale X="1" Y="1" Z="1"/>
         <models>
-            <model file="cylinder.3d" texture="cilindro.jpg"/>
+            <model file="pyramid.3d" texture="pyramid.png"/>
         </models>
     </group>
 </scene>

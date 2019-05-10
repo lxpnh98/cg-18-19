@@ -524,85 +524,99 @@ void drawPyramid(float height, float width, float length, string fileName) {
         float largura = width/2;
         float comprimento = length/2;
 
+        float ladoX = 0.25;
+        float ladoY = 0.25;
+
+		float altura = 1.0;
+        float trianguloX = 0.0;
+        float trianguloY = 0.25;
+        float step = 0.25;
+
         // Triângulo da Frente
         vertices.push_back(Point(0.0, height, 0.0,
                                  0.0, height, 0.0,
-                                 0.0, height));
+                                 trianguloX + step/2, altura));
 
         vertices.push_back(Point(-comprimento, 0.0, largura,
                                  -comprimento, 0.0, largura,
-                                 -comprimento, largura));
+                                 trianguloX, trianguloY));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
                                  comprimento, 0.0, largura,
-                                 comprimento, largura));
+                                 trianguloX + step, trianguloY));
+
+        trianguloX += step;
 
         // Right
         vertices.push_back(Point(0.0, height, 0.0,
                                  0.0, height, 0.0,
-                                 height, 0.0));
+                                 trianguloX + step/2, altura));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
                                  comprimento, 0.0, largura,
-                                 comprimento, largura));
+                                 trianguloX, trianguloY));
 
         vertices.push_back(Point(comprimento, 0.0, -largura,
                                  comprimento, 0.0, -largura,
-                                 comprimento, -largura));
+                                 trianguloX + step, trianguloY));
+
+        trianguloX += step;
 
         // Back
         vertices.push_back(Point(0.0, height, 0.0,
                                  0.0, height, 0.0,
-                                 height, 0.0));
+                                 trianguloX + step/2, altura));
 
         vertices.push_back(Point(comprimento, 0.0, -largura,
                                  comprimento, 0.0, -largura,
-                                 comprimento, -largura));
+                                 trianguloX, trianguloY));
 
         vertices.push_back(Point(-comprimento, 0.0, -largura,
                                  -comprimento, 0.0, -largura,
-                                 -comprimento, -largura));
+                                 trianguloX + step, trianguloY));
+
+        trianguloX += step;
 
         // Left 
         vertices.push_back(Point(0.0, height, 0.0,
                                  0.0, height, 0.0,
-                                 height, 0.0));
+                                 trianguloX + step/2, altura));
 
         vertices.push_back(Point(-comprimento, 0.0, -largura,
                                  -comprimento, 0.0, -largura,
-                                 -comprimento, -largura));
+                                 trianguloX, trianguloY));
 
         vertices.push_back(Point(-comprimento, 0.0, largura,
                                  -comprimento, 0.0, largura,
-                                 -comprimento, largura));
+                                 trianguloX + step, trianguloY));
 
         // ponteiro dos relógios
 
         // Debaixo    
         vertices.push_back(Point(-comprimento, 0.0, -largura,
                                  -comprimento, 0.0, -largura,
-                                 -comprimento, -largura));
+                                 0.0, 0.0));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
                                  comprimento, 0.0, largura,
-                                 comprimento, largura));
+                                 ladoX, ladoY));
 
         vertices.push_back(Point(-comprimento, 0.0, largura,
                                  -comprimento, 0.0, largura,
-                                 -comprimento, largura));
+                                 0.0, ladoY));
 
         // Debaixo      
         vertices.push_back(Point(comprimento, 0.0, -largura,
                                  comprimento, 0.0, -largura,
-                                 comprimento, -largura));
+                                 ladoX, 0.0));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
                                  comprimento, 0.0, largura,
-                                 comprimento, largura));
+                                 ladoX, ladoY));
 
         vertices.push_back(Point(-comprimento, 0.0, -largura,
                                  -comprimento, 0.0, -largura,
-                                 -comprimento, -largura));
+                                 0.0, 0.0));
 
         // Sending vertices to .3d file
         sendVertices(out, vertices);
@@ -684,7 +698,7 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 		}
 
         // Sending vertices to .3d file
-        sendVertices(out, vertices);
+	        sendVertices(out, vertices);
     }
 	std::fclose(out);
 }

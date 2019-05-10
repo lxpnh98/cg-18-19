@@ -31,8 +31,6 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upT, 
 // Loads an XML file containing various references to .3d files
 std::vector<engine::figure> *parser::loadXML(const char* path) {
 
-    cout << "got here 1\n";
-    fflush(stdout);
 	// Load XML document
 	XMLDocument file;
 	XMLError result = file.LoadFile(path);
@@ -41,7 +39,7 @@ std::vector<engine::figure> *parser::loadXML(const char* path) {
 
 		cout << "Erro a carregar ficheiro";
 		throw std::runtime_error("Erro no carregamento do ficheiro XML.\n");
-	}
+	}	
 
 	XMLNode *scene = file.FirstChildElement("scene");
 
@@ -52,20 +50,11 @@ std::vector<engine::figure> *parser::loadXML(const char* path) {
 
 	}
 
-    cout << "got here 1.5\n";
-    fflush(stdout);
-
 	//XMLElement *first_group = scene->FirstChildElement("group");
     Group *g = makeGroup(scene);
 
-    cout << "got here 2\n";
-    fflush(stdout);
-
 	// Loop through model paths and load models
     std::vector<engine::figure> *loadedModels = loadModels(g, new std::vector<Transform*>(), new std::unordered_map<string, GLuint>());
-
-    cout << "got here 3\n";
-    fflush(stdout);
 
 	return loadedModels;
 }
@@ -92,7 +81,6 @@ Group *makeGroup(XMLNode *scene) {
                 string texture;
                 if (modelsElement->Attribute("texture")) {
                     texture = modelsElement->Attribute("texture");
-                    cout << texture << "\n";
                 }
 
 				// path to model paths vector
