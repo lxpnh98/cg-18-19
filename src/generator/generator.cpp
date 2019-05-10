@@ -21,7 +21,6 @@ using namespace std;
 
 void sendVertices(FILE *out, std::vector<Point> vertices) {
     for (int i = 0; i < vertices.size(); i++) {
-
         fprintf(out, "%f %f %f %f %f %f %f %f\n",
             vertices[i].getX(), vertices[i].getY(), vertices[i].getZ(),
             vertices[i].getNX(), vertices[i].getNY(), vertices[i].getNZ(),
@@ -33,28 +32,26 @@ void drawPlane(float width, string fileName) {
 
     FILE *out;
 
-    // open to write (cleans if file already exists or creates it if not)
     out = fopen(fileName.c_str(), "w"); 
     if (out != NULL) {
 
-        // Vector to store the vertices
         std::vector<Point> vertices;
 
         //T1
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-								 1, 1));
+                                 1, 1));
         vertices.push_back(Point(-width/2, 0.0, width/2,
                                  -width/2, 0.0, width/2,
                                  0, 0));
         vertices.push_back(Point(width/2, 0.0, width/2,
                                  width/2, 0.0, width/2,
-								 1, 0));
+                                 1, 0));
 
         //T2
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-								 1, 1));
+                                 1, 1));
         vertices.push_back(Point(-width/2, 0.0, -width/2,
                                  -width/2, 0.0, -width/2,
                                  0, 1));
@@ -65,13 +62,13 @@ void drawPlane(float width, string fileName) {
         // T11
         vertices.push_back(Point(width/2, 0.0, width/2,
                                  width/2, 0.0, width/2,
-								 1, 0));
+                                 1, 0));
         vertices.push_back(Point(-width/2, 0.0, width/2,
                                  -width/2, 0.0, width/2,
                                  0, 0));
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-								 1, 1));
+                                 1, 1));
 
         // T21
         vertices.push_back(Point(-width/2, 0.0, width/2,
@@ -82,15 +79,13 @@ void drawPlane(float width, string fileName) {
                                  0, 1));
         vertices.push_back(Point(width/2, 0.0, -width/2,
                                  width/2, 0.0, -width/2,
-								 1, 1));
+                                 1, 1));
 
-        // Sending vertices to .3d file
         sendVertices(out, vertices);
     }
     std::fclose(out);
 }
 
-// pôr o centro da caixa na origem?
 void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
     FILE *out;
@@ -99,7 +94,6 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
     if (out != NULL) {
 
-        // Vector to store the vertices
         std::vector<Point> vertices;
 
         float incX = x / nrDivisions;
@@ -212,16 +206,15 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
                 // lado esquerdo
                 vertices.push_back(Point(x, yDiv, zDiv,
                                          x, yDiv, zDiv,
-									     esquerdaX, esquerdaZ));
+                                         esquerdaX, esquerdaZ));
 
                 vertices.push_back(Point(x, yDiv + incY, zDiv + incZ,
                                          x, yDiv + incY, zDiv + incZ,
-										 esquerdaX - texX, esquerdaZ - texZ));
+                                         esquerdaX - texX, esquerdaZ - texZ));
 
                 vertices.push_back(Point(x, yDiv, zDiv + incZ,
                                          x, yDiv, zDiv + incZ,
-										 esquerdaX, esquerdaZ - texZ));
-
+                                         esquerdaX, esquerdaZ - texZ));
 
                 // lado esquerdo
                 vertices.push_back(Point(x, yDiv + incY, zDiv,
@@ -272,10 +265,6 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
             esquerdaZ -= texZ;
             direitaX = (1.0/3.0);
             direitaZ -= texZ;
-
-			printf("%f----------%f\n", esquerdaZ, esquerdaX);
-			printf("%f----------%f\n", direitaZ, direitaX);
-
 
             yDiv = 0;
             zDiv += incZ;
@@ -356,19 +345,17 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
         }
         sendVertices(out, vertices);
     }
-	std::fclose(out);
+    std::fclose(out);
 }
 
 void drawSphere(float r, int slices, int stacks, string fileName) {
 
     FILE *out;
 
-    // open to write (cleans if file already exists or creates it if not)
     out = fopen(fileName.c_str(), "w");
 
     if (out != NULL) {
 
-        // Vector to store the vertices
         std::vector<Point> vertices;
 
         float alpha = 0;
@@ -415,22 +402,19 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
             beta += b_step;
         }
 
-        // Sending vertices to .3d file
         sendVertices(out, vertices);
     }
-	std::fclose(out);
+    std::fclose(out);
 }
 
 void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
     FILE *out;
 
-    // open to write (cleans if file already exists or creates it if not)
     out = fopen(fileName.c_str(), "w");
 
     if (out != NULL) {
 
-        // Vector to store the vertices
         std::vector<Point> vertices;
 
         float raioP = 1.0/6.0;
@@ -455,12 +439,12 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
                                      centroX, centroY));
 
             vertices.push_back(Point(r * cos(a * (i + 0.5)),            0, r * sin(a * (i + 0.5)),
-                                         cos(a * (i + 0.5)),	        0,     sin(a * (i + 0.5)),
+                                         cos(a * (i + 0.5)),            0,     sin(a * (i + 0.5)),
                        centroX + centroX*cos(a * (i + 0.5)), centroY + centroY*sin(a * (i + 0.5))));
 
             vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)),            0, r * sin(a * (i + 1 + 0.5)),
                                          cos(a * (i + 1 + 0.5)),            0,     sin(a * (i + 1 + 0.5)),
-				       centroX + centroX*cos(a * (i + 1 + 0.5)), centroY + centroY*sin(a * (i + 1 + 0.5))));
+                       centroX + centroX*cos(a * (i + 1 + 0.5)), centroY + centroY*sin(a * (i + 1 + 0.5))));
 
             float oldRadius = r;
             float oldHeight = 0;
@@ -503,31 +487,28 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
             }
         }
 
-        // Sending vertices to .3d file
         sendVertices(out, vertices);
     }
-	std::fclose(out);
+    std::fclose(out);
 }
 
 void drawPyramid(float height, float width, float length, string fileName) {
 
     FILE *out;
 
-    // open to write (cleans if file already exists or creates it if not)
     out = fopen(fileName.c_str(), "w");
 
     if (out != NULL) {
 
-        // Vector to store the vertices
         std::vector<Point> vertices; 
-        
+
         float largura = width/2;
         float comprimento = length/2;
 
         float ladoX = 0.25;
         float ladoY = 0.25;
 
-		float altura = 1.0;
+        float altura = 1.0;
         float trianguloX = 0.0;
         float trianguloY = 0.25;
         float step = 0.25;
@@ -618,10 +599,9 @@ void drawPyramid(float height, float width, float length, string fileName) {
                                  -comprimento, 0.0, -largura,
                                  0.0, 0.0));
 
-        // Sending vertices to .3d file
         sendVertices(out, vertices);
     }
-	std::fclose(out);
+    std::fclose(out);
 }
 
 void drawCylinder(float r, float height, int slices, string fileName) {
@@ -637,11 +617,11 @@ void drawCylinder(float r, float height, int slices, string fileName) {
         float a = (2 * M_PI) / slices;
         float altura = height / 2;
 
-		float centroX = 0.4375;
-		float centroY = 0.25;
+        float centroX = 0.4375;
+        float centroY = 0.25;
 
-		float tex_fator = 1.0/slices;
-		float tex_raio = centroX - centroY;
+        float tex_fator = 1.0/slices;
+        float tex_raio = centroX - centroY;
 
         for (int i = 0; i < slices; i++) {
 
@@ -650,12 +630,12 @@ void drawCylinder(float r, float height, int slices, string fileName) {
                                      0, altura, 0,
                                      centroX, tex_raio));
 
-            vertices.push_back(Point(r * sin(a * i), 		  altura, r * cos(a * i),
-                                         sin(a * i), 		  altura,     cos(a * i),
+            vertices.push_back(Point(r * sin(a * i),          altura, r * cos(a * i),
+                                         sin(a * i),          altura,     cos(a * i),
                     centroX + tex_raio * sin(a * i), tex_raio + tex_raio * cos(a * i)));
 
-            vertices.push_back(Point(r * sin(a * (i + 1)), 			altura, r * cos(a * (i + 1)),
-                                         sin(a * (i + 1)), 			altura,     cos(a * (i + 1)),
+            vertices.push_back(Point(r * sin(a * (i + 1)),          altura, r * cos(a * (i + 1)),
+                                         sin(a * (i + 1)),          altura,     cos(a * (i + 1)),
                     centroX + tex_raio * sin(a * (i + 1)), tex_raio + tex_raio * cos(a * (i + 1))));
 
             // bottom
@@ -683,6 +663,7 @@ void drawCylinder(float r, float height, int slices, string fileName) {
             vertices.push_back(Point(r * sin(a * i), -altura, r * cos(a * i),
                                          sin(a * i), -altura,     cos(a * i),
                                       i * tex_fator, 0.375));
+
             // side 2
             vertices.push_back(Point(r * sin(a * i), -altura, r * cos(a * i),
                                          sin(a * i), -altura,     cos(a * i),
@@ -695,12 +676,11 @@ void drawCylinder(float r, float height, int slices, string fileName) {
             vertices.push_back(Point(r * sin(a * (i + 1)), altura, r * cos(a * (i + 1)),
                                          sin(a * (i + 1)), altura,     cos(a * (i + 1)),
                                       (i + 1) * tex_fator, 1));
-		}
+        }
 
-        // Sending vertices to .3d file
-	        sendVertices(out, vertices);
+        sendVertices(out, vertices);
     }
-	std::fclose(out);
+    std::fclose(out);
 }
 
 void writeToXML(string fileName) {
@@ -722,7 +702,7 @@ void writeToXML(string fileName) {
         doc.SaveFile("scene.xml");
 
     }
-    
+
     else {
 
         XMLElement * pRoot = doc.FirstChildElement("scene");
@@ -746,7 +726,6 @@ int main(int argc, char** argv) {
 
         std::string primitive = argv[1];
 
-        // PLANE
         if (primitive.compare("plane") == 0 && argc == 4) {
 
             std::cout << "A criar um plano..." << std::endl;
@@ -755,7 +734,7 @@ int main(int argc, char** argv) {
 
             std::string file = argv[3];
 
-            // Call triangle function
+            // Call plane function
             drawPlane(width, file);
 
             std::cout << "Plano criado com sucesso." << std::endl;
@@ -794,7 +773,7 @@ int main(int argc, char** argv) {
         else if (primitive.compare("sphere") == 0 && argc == 6) {
 
             std::cout << "A criar uma esfera..." << std::endl;
-        
+
             float radius = std::stof(argv[2]);
 
             int slices = std::stoi(argv[3]);
@@ -874,7 +853,7 @@ int main(int argc, char** argv) {
 
             std::string file = argv[5];
 
-            // Call cilinder function
+            // Call cylinder function
             drawCylinder(radius, height, slices, file);
 
             std::cout << "Cilindro criado." << std::endl;
@@ -909,6 +888,5 @@ int main(int argc, char** argv) {
             std::cout << argv[1] << " não é um sólido válido." << std::endl;
         }
     }
-
     return 0;
 }
