@@ -54,8 +54,8 @@ void engine::drawScene() {
         for (Transform *t : *fig->transforms) {
             t->apply();
         }
-		printf("passei aqui 4.1\n");
-        glBindTexture(GL_TEXTURE_2D, fig->texture);
+
+		glBindTexture(GL_TEXTURE_2D, fig->texture);
 		glBindBuffer(GL_ARRAY_BUFFER, fig->vertexBuffer);
 		glVertexPointer(3,GL_FLOAT,0,0);
 
@@ -70,17 +70,15 @@ void engine::drawScene() {
 
         glPopMatrix();
 
-		printf("passei aqui5\n");
 		type = fig->type;
-		cor = fig->colour;
+        cor = fig->colour;
         switch(type) {
             case 1 :
-				printf("passei aqui6\n");
-                diffuse[1] = cor.getCorR();
+		       diffuse[1] = cor.getCorR();
                 diffuse[2] = cor.getCorG();
                 diffuse[3] = cor.getCorB();
                 glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
-                break;
+		        break;
             case 2 :
                 specular[1] = cor.getCorR();
                 specular[2] = cor.getCorG();
@@ -102,7 +100,5 @@ void engine::drawScene() {
             default:
                 break;
         }
-		printf("passei aqui7\n");
-
 	}
 }

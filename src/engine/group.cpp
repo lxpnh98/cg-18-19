@@ -28,6 +28,9 @@ string Group::getTexture() {
 int Group::getType() {
     return this->type;
 }
+Colour Group::getColour() {
+    return this->colour;
+}
 void Group::setUp(Group *g) {
     this->up = g;
 }

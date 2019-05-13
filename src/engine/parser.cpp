@@ -67,7 +67,7 @@ Group *makeGroup(XMLNode *scene) {
 	string corR = "0.0";
 	string corG = "0.0";
 	string corB = "0.0";
-    int type = 1;
+    int type = 0;
 
 	while (tag != nullptr) {
 
@@ -89,11 +89,9 @@ Group *makeGroup(XMLNode *scene) {
                 }
 
                 if (modelsElement->Attribute("diffR") && modelsElement->Attribute("diffG") && modelsElement->Attribute("diffB")) {
-                    printf("passei aqui\n");
                     corR = modelsElement->Attribute("diffR");
                     corG = modelsElement->Attribute("diffG");
                     corB = modelsElement->Attribute("diffB");
-                    printf("passei aqui2\n");
                     type = 1;
                 } else if (modelsElement->Attribute("specR") && modelsElement->Attribute("specG") && modelsElement->Attribute("specB")) {
                         corR = modelsElement->Attribute("specR");
@@ -112,11 +110,9 @@ Group *makeGroup(XMLNode *scene) {
                                 type = 4;
                     }
 
-                printf("passei aqui3\n");
 				// path to model paths vector
                 g->addModel(newModel, texture, corR, corG, corB, type);
 
-                printf("passei aqui4\n");
 				// next
 				models = models->NextSibling(); // Get next model
 			}
@@ -306,6 +302,9 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
         newModel.normalBuffer = b[1];
         newModel.textureBuffer = b[2];
         newModel.numVertices = i/3;
+
+        newModel.colour = g->getColour();
+        newModel.type = g->getType();
 
         loadedModels->push_back(newModel);
 	}

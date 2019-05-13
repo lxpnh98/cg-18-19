@@ -25,6 +25,7 @@ class Group {
         std::vector<Group*> *getSubGroups();
         string getTexture();
         int getType();
+        Colour getColour();
         void setUp(Group *g);
         void addTransform(Transform *t);
         void addModel(string m, string t, string diffR, string diffG, string diffB, int type);
