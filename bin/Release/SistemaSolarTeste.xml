@@ -3,7 +3,7 @@
 		<group nome="Sol">
 			<rotate time="2.0" axisX="0" axisY="1" axisZ="0" />
 			<models>
-				<model file="sol.3d" texture="sun.jpg" />
+				<model file="sol.3d" texture="sun.jpg" diffR="0.5" diffG="0.5" diffB="0.5" />
 			</models>
 		</group>
 		<group nome="Mercúrio">

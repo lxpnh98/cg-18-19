@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "transform.h"
+#include "colour.h"
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -30,6 +31,8 @@ namespace engine {
         std::vector<Transform *> *transforms;
         std::vector<Transform *> *upTransforms;
         GLuint texture;
+        Colour colour;
+        int type;
 	};
 
 	// Scene that can be loaded with loadScene().

@@ -39,7 +39,7 @@ std::vector<engine::figure> *parser::loadXML(const char* path) {
 
 		cout << "Erro a carregar ficheiro";
 		throw std::runtime_error("Erro no carregamento do ficheiro XML.\n");
-	}	
+	}
 
 	XMLNode *scene = file.FirstChildElement("scene");
 
@@ -64,6 +64,11 @@ Group *makeGroup(XMLNode *scene) {
 
     XMLNode *tag = scene->FirstChild();
 
+	string corR = "0.0";
+	string corG = "0.0";
+	string corB = "0.0";
+    int type = 1;
+
 	while (tag != nullptr) {
 
         string tagName = tag->Value();
@@ -72,8 +77,8 @@ Group *makeGroup(XMLNode *scene) {
 		if (strcmp(tagName.c_str(), "models") == 0) {
 
 			XMLNode *models = tag->FirstChild();
-			XMLElement *modelsElement;
-			while (models != nullptr) {
+            XMLElement *modelsElement;
+            while (models != nullptr) {
 				modelsElement = models->ToElement();
 				// get model path
 				string newModel = modelsElement->Attribute("file");
@@ -83,9 +88,35 @@ Group *makeGroup(XMLNode *scene) {
                     texture = modelsElement->Attribute("texture");
                 }
 
-				// path to model paths vector
-                g->addModel(newModel, texture);
+                if (modelsElement->Attribute("diffR") && modelsElement->Attribute("diffG") && modelsElement->Attribute("diffB")) {
+                    printf("passei aqui\n");
+                    corR = modelsElement->Attribute("diffR");
+                    corG = modelsElement->Attribute("diffG");
+                    corB = modelsElement->Attribute("diffB");
+                    printf("passei aqui2\n");
+                    type = 1;
+                } else if (modelsElement->Attribute("specR") && modelsElement->Attribute("specG") && modelsElement->Attribute("specB")) {
+                        corR = modelsElement->Attribute("specR");
+                        corG = modelsElement->Attribute("specG");
+                        corB = modelsElement->Attribute("specB");
+                        type = 2;
+                    } else if (modelsElement->Attribute("emisR") && modelsElement->Attribute("emisG") && modelsElement->Attribute("emisB")) {
+                            corR = modelsElement->Attribute("emisR");
+                            corG = modelsElement->Attribute("emisG");
+                            corB = modelsElement->Attribute("emisB");
+                            type = 3;
+                    } else if (modelsElement->Attribute("ambiR") && modelsElement->Attribute("ambiG") && modelsElement->Attribute("ambiB")) {
+                                corR = modelsElement->Attribute("ambiR");
+                                corG = modelsElement->Attribute("ambiG");
+                                corB = modelsElement->Attribute("ambiB");
+                                type = 4;
+                    }
 
+                printf("passei aqui3\n");
+				// path to model paths vector
+                g->addModel(newModel, texture, corR, corG, corB, type);
+
+                printf("passei aqui4\n");
 				// next
 				models = models->NextSibling(); // Get next model
 			}

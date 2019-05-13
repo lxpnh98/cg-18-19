@@ -16,6 +16,12 @@ using std::vector;
 using engine::figure;
 using engine::vertex;
 
+// vetores cores
+float diffuse[4] = { 1,1,1,1 };
+float specular[4] = { 1,1,1,1 };
+float emissive[4] = { 1,1,1,1 };
+float ambient[4] = { 1,1,1,1 };
+
 vector<figure> engine::scene;
 
 void engine::loadScene(vector<figure> scene) {
@@ -28,9 +34,10 @@ void engine::drawScene() {
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	vector<figure>::iterator fig;
+	int type;
+	Colour cor;
 
 	// Iterate over models
-
 	for (fig = scene.begin(); fig != scene.end(); fig++) {
 
         glPushMatrix();
@@ -47,8 +54,8 @@ void engine::drawScene() {
         for (Transform *t : *fig->transforms) {
             t->apply();
         }
-
-		glBindTexture(GL_TEXTURE_2D, fig->texture);
+		printf("passei aqui 4.1\n");
+        glBindTexture(GL_TEXTURE_2D, fig->texture);
 		glBindBuffer(GL_ARRAY_BUFFER, fig->vertexBuffer);
 		glVertexPointer(3,GL_FLOAT,0,0);
 
@@ -59,9 +66,43 @@ void engine::drawScene() {
 		glTexCoordPointer(2, GL_FLOAT, 0, 0);
 
 		glDrawArrays(GL_TRIANGLES, 0, (fig->numVertices * 3));
-
         glBindTexture(GL_TEXTURE_2D, 0);
 
         glPopMatrix();
+
+		printf("passei aqui5\n");
+		type = fig->type;
+		cor = fig->colour;
+        switch(type) {
+            case 1 :
+				printf("passei aqui6\n");
+                diffuse[1] = cor.getCorR();
+                diffuse[2] = cor.getCorG();
+                diffuse[3] = cor.getCorB();
+                glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+                break;
+            case 2 :
+                specular[1] = cor.getCorR();
+                specular[2] = cor.getCorG();
+                specular[3] = cor.getCorB();
+                glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+                break;
+            case 3 :
+                emissive[1] = cor.getCorR();
+                emissive[2] = cor.getCorG();
+                emissive[3] = cor.getCorB();
+                glMaterialfv(GL_FRONT, GL_EMISSION, emissive);
+                break;
+            case 4 :
+                ambient[1] = cor.getCorR();
+                ambient[2] = cor.getCorG();
+                ambient[3] = cor.getCorB();
+                glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
+                break;    
+            default:
+                break;
+        }
+		printf("passei aqui7\n");
+
 	}
 }

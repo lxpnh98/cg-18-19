@@ -20,9 +20,6 @@ float Zoom = 80.0f, zoomMin = 4.0f;
 float cAngleA = 0.0f, cAngleB = 0.0f;
 float offsetX = 0.0f, offsetY = 0.0f, offsetZ = 0.0f;
 
-// vetores luzes
-//float amb[3] = { 0,0,0.5 };
-//float diff[3] = { 1,1,1 };
 //float matt[4] = { 0,0,1,1 };
 
 //Método de calculo da posição da câmera

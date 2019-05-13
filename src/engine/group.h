@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "transform.h"
+#include "colour.h"
 
 using namespace std;
 
@@ -14,6 +15,8 @@ class Group {
         std::vector<string> *modelPaths;
         std::vector<Group *> *subGroups;
         string texture;
+        Colour colour;
+        int type;
 
     public:
         Group();
@@ -21,9 +24,10 @@ class Group {
         std::vector<string> *getModels();
         std::vector<Group*> *getSubGroups();
         string getTexture();
+        int getType();
         void setUp(Group *g);
         void addTransform(Transform *t);
-        void addModel(string m, string t);
+        void addModel(string m, string t, string diffR, string diffG, string diffB, int type);
         void addSubGroup(Group *g);
 };
 
