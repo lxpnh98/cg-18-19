@@ -39,46 +39,46 @@ void drawPlane(float width, string fileName) {
 
         //T1
         vertices.push_back(Point(width/2, 0.0, -width/2,
-                                 width/2, 0.0, -width/2,
+                                 0.0, 1.0, 0.0,
                                  1, 1));
         vertices.push_back(Point(-width/2, 0.0, width/2,
-                                 -width/2, 0.0, width/2,
+                                 0.0, 1.0, 0.0,
                                  0, 0));
         vertices.push_back(Point(width/2, 0.0, width/2,
-                                 width/2, 0.0, width/2,
+                                 0.0, 1.0, 0.0,
                                  1, 0));
 
         //T2
         vertices.push_back(Point(width/2, 0.0, -width/2,
-                                 width/2, 0.0, -width/2,
+                                 0.0, 1.0, 0.0,
                                  1, 1));
         vertices.push_back(Point(-width/2, 0.0, -width/2,
-                                 -width/2, 0.0, -width/2,
+                                 0.0, 1.0, 0.0,
                                  0, 1));
         vertices.push_back(Point(-width/2, 0.0, width/2,
-                                 -width/2, 0.0, width/2,
+                                 0.0, 1.0, 0.0,
                                  0, 0));
 
         // T11
         vertices.push_back(Point(width/2, 0.0, width/2,
-                                 width/2, 0.0, width/2,
+                                 0.0, -1.0, 0.0,
                                  1, 0));
         vertices.push_back(Point(-width/2, 0.0, width/2,
-                                 -width/2, 0.0, width/2,
+                                 0.0, -1.0, 0.0,
                                  0, 0));
         vertices.push_back(Point(width/2, 0.0, -width/2,
-                                 width/2, 0.0, -width/2,
+                                 0.0, -1.0, 0.0,
                                  1, 1));
 
         // T21
         vertices.push_back(Point(-width/2, 0.0, width/2,
-                                 -width/2, 0.0, width/2,
+                                 0.0, -1.0, 0.0,
                                  0, 0));
         vertices.push_back(Point(-width/2, 0.0, -width/2,
-                                 -width/2, 0.0, -width/2,
+                                 0.0, -1.0, 0.0,
                                  0, 1));
         vertices.push_back(Point(width/2, 0.0, -width/2,
-                                 width/2, 0.0, -width/2,
+                                 0.0, -1.0, 0.0,
                                  1, 1));
 
         sendVertices(out, vertices);
@@ -131,54 +131,54 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
             for (xx = 0; xx < nrDivisions; xx++) {
                 // base
                 vertices.push_back(Point(xDiv, 0, zDiv,
-                                         xDiv, 0, zDiv,
+                                         0.0, -1.0, 0.0,
                                          baseX, baseZ));
 
                 vertices.push_back(Point(xDiv + incX, 0, zDiv,
-                                         xDiv + incX, 0, zDiv,
+                                         0.0, -1.0, 0.0,
                                          baseX + texX, baseZ));
 
                 vertices.push_back(Point(xDiv, 0, zDiv + incZ,
-                                         xDiv, 0, zDiv + incZ,
+                                         0.0, -1.0, 0.0,
                                          baseX, baseZ + texZ));
 
                 // base
                 vertices.push_back(Point(xDiv + incX, 0, zDiv,
-                                         xDiv + incX, 0, zDiv,
+                                         0.0, -1.0, 0.0,
                                          baseX + texX, baseZ));
 
                 vertices.push_back(Point(xDiv + incX, 0, zDiv + incZ,
-                                         xDiv + incX, 0, zDiv + incZ,
+                                         0.0, -1.0, 0.0,
                                          baseX + texX, baseZ + texZ));
 
                 vertices.push_back(Point(xDiv, 0, zDiv + incZ,
-                                         xDiv, 0, zDiv + incZ,
+                                         0.0, -1.0, 0.0,
                                          baseX, baseZ + texZ));
 
                 // topo
                 vertices.push_back(Point(xDiv, y, zDiv,
-                                         xDiv, y, zDiv,
+                                         0.0, 1.0, 0.0,
                                          topoX, topoZ));
 
                 vertices.push_back(Point(xDiv, y, zDiv + incZ,
-                                         xDiv, y, zDiv + incZ,
+                                         0.0, 1.0, 0.0,
                                          topoX, topoZ - texZ));
 
                 vertices.push_back(Point(xDiv + incX, y, zDiv,
-                                         xDiv + incX, y, zDiv,
+                                         0.0, 1.0, 0.0,
                                          topoX + texX, topoZ));
 
                 // topo
                 vertices.push_back(Point(xDiv + incX, y, zDiv,
-                                         xDiv + incX, y, zDiv,
+                                         0.0, 1.0, 0.0,
                                          topoX + texX, topoZ));
 
                 vertices.push_back(Point(xDiv, y, zDiv + incZ,
-                                         xDiv, y, zDiv + incZ,
+                                         0.0, 1.0, 0.0,
                                          topoX, topoZ - texZ));
 
                 vertices.push_back(Point(xDiv + incX, y, zDiv + incZ,
-                                         xDiv + incX, y, zDiv + incZ,
+                                         0.0, 1.0, 0.0,
                                          topoX + texX, topoZ - texZ));
 
                 xDiv += incX;
@@ -205,54 +205,54 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
                 // lado esquerdo
                 vertices.push_back(Point(x, yDiv, zDiv,
-                                         x, yDiv, zDiv,
+                                         1.0, 0.0, 0.0,
                                          esquerdaX, esquerdaZ));
 
                 vertices.push_back(Point(x, yDiv + incY, zDiv + incZ,
-                                         x, yDiv + incY, zDiv + incZ,
+                                         1.0, 0.0, 0.0,
                                          esquerdaX - texX, esquerdaZ - texZ));
 
                 vertices.push_back(Point(x, yDiv, zDiv + incZ,
-                                         x, yDiv, zDiv + incZ,
+                                         1.0, 0.0, 0.0,
                                          esquerdaX, esquerdaZ - texZ));
 
                 // lado esquerdo
                 vertices.push_back(Point(x, yDiv + incY, zDiv,
-                                         x, yDiv + incY, zDiv,
+                                         1.0, 0.0, 0.0,
                                          esquerdaX - texX, esquerdaZ));
 
                 vertices.push_back(Point(x, yDiv + incY, zDiv + incZ,
-                                         x, yDiv + incY, zDiv + incZ,
+                                         1.0, 0.0, 0.0,
                                          esquerdaX - texX, esquerdaZ - texZ));
 
                 vertices.push_back(Point(x, yDiv, zDiv,
-                                         x, yDiv, zDiv,
+                                         1.0, 0.0, 0.0,
                                          esquerdaX, esquerdaZ));
 
                 // lado direito
                 vertices.push_back(Point(0, yDiv, zDiv,
-                                         0, yDiv, zDiv,
+                                         -1.0, 0.0, 0.0,
                                          direitaX, direitaZ));
 
                 vertices.push_back(Point(0, yDiv, zDiv + incZ,
-                                         0, yDiv, zDiv + incZ,
+                                         -1.0, 0.0, 0.0,
                                          direitaX, direitaZ - texZ));
 
                 vertices.push_back(Point(0, yDiv + incY, zDiv + incZ,
-                                         0, yDiv + incY, zDiv + incZ,
+                                         -1.0, 0.0, 0.0,
                                          direitaX - texX, direitaZ - texZ));
 
                 // lado direito
                 vertices.push_back(Point(0, yDiv + incY, zDiv,
-                                         0, yDiv + incY, zDiv,
+                                         -1.0, 0.0, 0.0,
                                          direitaX - texX, direitaZ));
 
                 vertices.push_back(Point(0, yDiv, zDiv,
-                                         0, yDiv, zDiv,
+                                         -1.0, 0.0, 0.0,
                                          direitaX, direitaZ));
 
                 vertices.push_back(Point(0, yDiv + incY, zDiv + incZ,
-                                         0, yDiv + incY, zDiv + incZ,
+                                         -1.0, 0.0, 0.0,
                                          direitaX - texX, direitaZ - texZ));
 
                 yDiv += incY;
@@ -280,54 +280,54 @@ void drawBox(float x, float y, float z, int nrDivisions, string fileName) {
 
                 // frente
                 vertices.push_back(Point(xDiv + incX, yDiv + incY, z,
-                                         xDiv + incX, yDiv + incY, z,
+                                         0.0, 0.0, 1.0,
                                          frenteX + texX, frenteZ + texZ));
 
                 vertices.push_back(Point(xDiv, yDiv, z,
-                                         xDiv, yDiv, z,
+                                         0.0, 0.0, 1.0,
                                          frenteX, frenteZ));
 
                 vertices.push_back(Point(xDiv + incX, yDiv, z,
-                                         xDiv + incX, yDiv, z,
+                                         0.0, 0.0, 1.0,
                                          frenteX + texX, frenteZ));
 
                 // frente
                 vertices.push_back(Point(xDiv + incX, yDiv + incY, z,
-                                         xDiv + incX, yDiv + incY, z,
+                                         0.0, 0.0, 1.0,
                                          frenteX + texX, frenteZ + texZ));
 
                 vertices.push_back(Point(xDiv, yDiv + incY, z,
-                                         xDiv, yDiv + incY, z,
+                                         0.0, 0.0, 1.0,
                                          frenteX, frenteZ + texZ));
 
                 vertices.push_back(Point(xDiv, yDiv, z,
-                                         xDiv, yDiv, z,
+                                         0.0, 0.0, 1.0,
                                          frenteX, frenteZ));
 
                 // tras
                 vertices.push_back(Point(xDiv + incX, yDiv + incY, 0,
-                                         xDiv + incX, yDiv + incY, 0,
+                                         0.0, 0.0, -1.0,
                                          trasX + texX, trasZ + texZ));
 
                 vertices.push_back(Point(xDiv + incX, yDiv, 0,
-                                         xDiv + incX, yDiv, 0,
+                                         0.0, 0.0, -1.0,
                                          trasX + texX, trasZ));
 
                 vertices.push_back(Point(xDiv, yDiv, 0,
-                                         xDiv, yDiv, 0,
+                                         0.0, 0.0, -1.0,
                                          trasX, trasZ));
 
                 // tras
                 vertices.push_back(Point(xDiv + incX, yDiv + incY, 0,
-                                         xDiv + incX, yDiv + incY, 0,
+                                         0.0, 0.0, -1.0,
                                          trasX + texX, trasZ + texZ));
 
                 vertices.push_back(Point(xDiv, yDiv, 0,
-                                         xDiv, yDiv, 0,
+                                         0.0, 0.0, -1.0,
                                          trasX, trasZ));
 
                 vertices.push_back(Point(xDiv, yDiv + incY, 0,
-                                         xDiv, yDiv + incY, 0,
+                                         0.0, 0.0, -1.0,
                                          trasX, trasZ + texZ));
 
                 xDiv += incX;
