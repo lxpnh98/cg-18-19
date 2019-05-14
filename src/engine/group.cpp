@@ -1,5 +1,6 @@
 #include "group.h"
 #include "colour.h"
+#include "light.h"
 
 using std::vector;
 
@@ -8,6 +9,7 @@ Group::Group() {
     this->transforms = new std::vector<Transform *>();
     this->modelPaths = new std::vector<string>();
     this->subGroups = new std::vector<Group *>();
+	this->lights = new std::vector<Light *>();
     this->texture = string();
     this->diffuse = Colour();
     this->specular = Colour();
@@ -29,6 +31,11 @@ std::vector<string> *Group::getModels() {
 std::vector<Group *> *Group::getSubGroups() {
     return this->subGroups;
 }
+
+vector<Light *> *Group::getLight() {
+	return this->lights;
+}
+
 string Group::getTexture() {
     return this->texture;
 }
@@ -81,4 +88,8 @@ void Group::addModel(string m, string t, Colour diffuse, Colour specular, Colour
 }
 void Group::addSubGroup(Group *g) {
     this->subGroups->push_back(g);
+}
+
+void Group::addLight(Light* l) {
+	this->lights->push_back(l);
 }

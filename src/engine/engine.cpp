@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "engine.h"
+#include "light.h"
 
 // Glut has to be included last to avoid errors
 // (for example, C2381 'exit': redefinition; '__declspec(noreturn)' or '[[noreturn]]' differs)
@@ -53,6 +54,11 @@ void engine::drawScene() {
         for (Transform *t : *fig->transforms) {
             t->apply();
         }
+
+		vector <Light*>::iterator lIt;
+		for (Light *l : *fig->lights) {
+			l->draw();
+		}
 
         glBindTexture(GL_TEXTURE_2D, fig->texture);
         glBindBuffer(GL_ARRAY_BUFFER, fig->vertexBuffer);

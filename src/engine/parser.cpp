@@ -125,7 +125,43 @@ Group *makeGroup(XMLNode *scene) {
                 // next
                 models = models->NextSibling(); // Get next model
             }
-        }
+		}
+		else if (strcmp(tagName.c_str(), "lights") == 0) {
+
+			XMLNode *lights = tag->FirstChild();
+			XMLElement *lightsElement;
+			string type = "";
+			float x = 0;
+			float y = 0;
+			float z = 0;
+
+			while (lights != nullptr) {
+
+				lightsElement = lights->ToElement();
+
+				if (lightsElement->Attribute("type")) {
+					type = lightsElement->Attribute("type");
+				}
+				if (lightsElement->Attribute("X")) {
+					x = stof(lightsElement->Attribute("X"));
+				}
+				if (lightsElement->Attribute("Y")) {
+					y = stof(lightsElement->Attribute("Y"));
+				}
+				if (lightsElement->Attribute("Z")) {
+					z = stof(lightsElement->Attribute("Z"));
+				}
+
+				Light* light = new Light(type, x, y, z);
+
+				g->addLight(light);
+
+				// next
+				lights = lights->NextSibling();
+
+			}
+
+		}
 
         else if (strcmp(tagName.c_str(), "translate") == 0) {
 
@@ -228,6 +264,7 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
     Ts->insert(Ts->end(), newTs->begin(), newTs->end()); // concat newTs
 
     std::vector<string> *modelPaths = g->getModels();
+
     for (auto p : *modelPaths) {
 
         ifstream modelFile;
@@ -320,6 +357,8 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
         newModel.typeEmis  = g->getTypeEmis();
         newModel.typeAmbi  = g->getTypeAmbi();
         newModel.typeShine = g->getTypeShine();
+
+		newModel.lights = g->getLight();
 
         loadedModels->push_back(newModel);
     }

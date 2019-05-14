@@ -5,6 +5,7 @@
 #include <vector>
 #include "transform.h"
 #include "colour.h"
+#include "light.h"
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -29,6 +30,7 @@ namespace engine {
         int numVertices;
         std::vector<Transform *> *transforms;
         std::vector<Transform *> *upTransforms;
+		std::vector<Light *> *lights;
         GLuint texture;
         Colour diffuse;
         Colour specular;
