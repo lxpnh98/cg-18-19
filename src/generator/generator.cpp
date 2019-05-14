@@ -431,20 +431,19 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
         for (int i = 0; i < slices; i++) {
 
-            // triangulos da base rodados (0.5 * step) angulos para alinhar com
-            // os triangulos dos lados
             // base
-            vertices.push_back(Point(0, 0, 0,
-                                     0, 0, 0,
-                                     centroX, centroY));
+			vertices.push_back(Point(0, 0, 0,
+									 0, 0, 0,
+									 centroX, centroY));
 
-            vertices.push_back(Point(r * cos(a * (i + 0.5)),            0, r * sin(a * (i + 0.5)),
-                                         cos(a * (i + 0.5)),            0,     sin(a * (i + 0.5)),
-                       centroX + centroX*cos(a * (i + 0.5)), centroY + centroY*sin(a * (i + 0.5))));
+            vertices.push_back(Point(r * sin(a * (i + 1)), 0, r * cos(a * (i + 1)),
+                                         sin(a * (i + 1)), 0, cos(a * (i + 1)),
+                     centroX + centroX * sin(a * (i + 1)), centroY + centroY * cos(a * (i + 1))));
 
-            vertices.push_back(Point(r * cos(a * (i + 1 + 0.5)),            0, r * sin(a * (i + 1 + 0.5)),
-                                         cos(a * (i + 1 + 0.5)),            0,     sin(a * (i + 1 + 0.5)),
-                       centroX + centroX*cos(a * (i + 1 + 0.5)), centroY + centroY*sin(a * (i + 1 + 0.5))));
+			vertices.push_back(Point(r * sin(a * i), 0, r *  cos(a * i),
+									     sin(a * i), 0, cos(a * i),
+					 centroX + centroX * sin(a * i), centroY + centroY * cos(a * i)));
+
 
             float oldRadius = r;
             float oldHeight = 0;
