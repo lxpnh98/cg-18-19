@@ -9,9 +9,6 @@
                                                         ambiR="1.0" ambiG="0.0" ambiB="1.0"
                                                         shine="90.0" />
             </models>
-            <lights>
-                <light type="POINT" X="0" Y="0" Z="0"/>
-            </lights>
         </group>
         <group nome="Mercúrio">
             <translate time="2.4">

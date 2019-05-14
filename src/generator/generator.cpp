@@ -394,7 +394,7 @@ void drawSphere(float r, int slices, int stacks, string fileName) {
                                          TI(angulo_a1), TJ(angulo_b1)));
                 vertices.push_back(Point(r * cos(angulo_b1) * sin(alpha), r * sin(angulo_b1), r * cos(angulo_b1) * cos(alpha),
                                              cos(angulo_b1) * sin(alpha),     sin(angulo_b1),     cos(angulo_b1) * cos(alpha),
-                                         TI(angulo_a1), TJ(angulo_b1)));
+                                         TI(alpha), TJ(angulo_b1)));
 
                 alpha += a_step;
             }
