@@ -15,8 +15,15 @@ class Group {
         std::vector<string> *modelPaths;
         std::vector<Group *> *subGroups;
         string texture;
-        Colour colour;
-        int type;
+        Colour diffuse;
+        Colour specular;
+        Colour emissive;
+        Colour ambient;
+        int typeDiff;
+        int typeSpec;
+        int typeEmis;
+        int typeAmbi;
+        float typeShine;
 
     public:
         Group();
@@ -24,11 +31,19 @@ class Group {
         std::vector<string> *getModels();
         std::vector<Group*> *getSubGroups();
         string getTexture();
-        int getType();
-        Colour getColour();
+        Colour getDiffuse();
+        Colour getSpecular();
+        Colour getEmissive();
+        Colour getAmbient();
+        int getTypeDiff();
+        int getTypeSpec();
+        int getTypeEmis();
+        int getTypeAmbi();
+        float getTypeShine();
         void setUp(Group *g);
         void addTransform(Transform *t);
-        void addModel(string m, string t, string diffR, string diffG, string diffB, int type);
+        void addModel(string m, string t, Colour diffuse, Colour specular, Colour emissive, Colour ambient, 
+                                    int typeDiff, int typeSpec, int typeEmis, int typeAmbi, float typeShine);
         void addSubGroup(Group *g);
 };
 

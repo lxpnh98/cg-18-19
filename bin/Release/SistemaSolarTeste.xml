@@ -1,9 +1,10 @@
 <scene>
 	<group nome="SistemaSolar">
 		<group nome="Sol">
-			<rotate time="2.0" axisX="0" axisY="1" axisZ="0" />
+			<rotate time="10.0" axisX="0" axisY="1" axisZ="0" />
 			<models>
-				<model file="sol.3d" texture="sol.jpg" diffR="0.5" diffG="0.5" diffB="0.5" />
+				<model file="sol.3d" texture="sun.jpg" specR="1.0" specG="1.0" specB="1.0" 
+													   shine="90.0" />
 			</models>
 		</group>
 		<group nome="Mercúrio">

@@ -9,6 +9,7 @@
 #include "transform.h"
 #include "point.h"
 #include "loadTexture.h"
+#include "colour.h"
 
 #include "tinyxml2.h"
 
@@ -31,32 +32,32 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upT, 
 // Loads an XML file containing various references to .3d files
 std::vector<engine::figure> *parser::loadXML(const char* path) {
 
-	// Load XML document
-	XMLDocument file;
-	XMLError result = file.LoadFile(path);
+    // Load XML document
+    XMLDocument file;
+    XMLError result = file.LoadFile(path);
 
-	if (result != XML_SUCCESS) {
+    if (result != XML_SUCCESS) {
 
-		cout << "Erro a carregar ficheiro";
-		throw std::runtime_error("Erro no carregamento do ficheiro XML.\n");
-	}
+        cout << "Erro a carregar ficheiro";
+        throw std::runtime_error("Erro no carregamento do ficheiro XML.\n");
+    }
 
-	XMLNode *scene = file.FirstChildElement("scene");
+    XMLNode *scene = file.FirstChildElement("scene");
 
-	if (scene == nullptr) {
+    if (scene == nullptr) {
 
-		cout << "Não encontrou scene";
-		throw std::runtime_error("Não encontrou scene no ficheiro.\n");
+        cout << "Não encontrou scene";
+        throw std::runtime_error("Não encontrou scene no ficheiro.\n");
 
-	}
+    }
 
-	//XMLElement *first_group = scene->FirstChildElement("group");
+    //XMLElement *first_group = scene->FirstChildElement("group");
     Group *g = makeGroup(scene);
 
-	// Loop through model paths and load models
+    // Loop through model paths and load models
     std::vector<engine::figure> *loadedModels = loadModels(g, new std::vector<Transform*>(), new std::unordered_map<string, GLuint>());
 
-	return loadedModels;
+    return loadedModels;
 }
 
 Group *makeGroup(XMLNode *scene) {
@@ -64,24 +65,29 @@ Group *makeGroup(XMLNode *scene) {
 
     XMLNode *tag = scene->FirstChild();
 
-	string corR = "0.0";
-	string corG = "0.0";
-	string corB = "0.0";
-    int type = 0;
+    Colour diffuse  = Colour();
+    Colour specular = Colour();
+    Colour emissive = Colour();
+    Colour ambient  = Colour();
+    int typeDiff = 0;
+    int typeSpec = 0;
+    int typeEmis = 0;
+    int typeAmbi = 0;
+    float typeShine = 0.0;
 
-	while (tag != nullptr) {
+    while (tag != nullptr) {
 
         string tagName = tag->Value();
         XMLElement *tagElement = tag->ToElement();
 
-		if (strcmp(tagName.c_str(), "models") == 0) {
+        if (strcmp(tagName.c_str(), "models") == 0) {
 
-			XMLNode *models = tag->FirstChild();
+            XMLNode *models = tag->FirstChild();
             XMLElement *modelsElement;
             while (models != nullptr) {
-				modelsElement = models->ToElement();
-				// get model path
-				string newModel = modelsElement->Attribute("file");
+                modelsElement = models->ToElement();
+                // get model path
+                string newModel = modelsElement->Attribute("file");
 
                 string texture;
                 if (modelsElement->Attribute("texture")) {
@@ -89,102 +95,105 @@ Group *makeGroup(XMLNode *scene) {
                 }
 
                 if (modelsElement->Attribute("diffR") && modelsElement->Attribute("diffG") && modelsElement->Attribute("diffB")) {
-                    corR = modelsElement->Attribute("diffR");
-                    corG = modelsElement->Attribute("diffG");
-                    corB = modelsElement->Attribute("diffB");
-                    type = 1;
-                } else if (modelsElement->Attribute("specR") && modelsElement->Attribute("specG") && modelsElement->Attribute("specB")) {
-                        corR = modelsElement->Attribute("specR");
-                        corG = modelsElement->Attribute("specG");
-                        corB = modelsElement->Attribute("specB");
-                        type = 2;
-                    } else if (modelsElement->Attribute("emisR") && modelsElement->Attribute("emisG") && modelsElement->Attribute("emisB")) {
-                            corR = modelsElement->Attribute("emisR");
-                            corG = modelsElement->Attribute("emisG");
-                            corB = modelsElement->Attribute("emisB");
-                            type = 3;
-                    } else if (modelsElement->Attribute("ambiR") && modelsElement->Attribute("ambiG") && modelsElement->Attribute("ambiB")) {
-                                corR = modelsElement->Attribute("ambiR");
-                                corG = modelsElement->Attribute("ambiG");
-                                corB = modelsElement->Attribute("ambiB");
-                                type = 4;
-                    }
+                    diffuse = Colour(stof(modelsElement->Attribute("diffR")), stof(modelsElement->Attribute("diffG")), 
+                                    stof(modelsElement->Attribute("diffB")));
+                    typeDiff = 1;
+                }
+                if (modelsElement->Attribute("specR") && modelsElement->Attribute("specG") && modelsElement->Attribute("specB")) {
+                    specular = Colour(stof(modelsElement->Attribute("specR")), stof(modelsElement->Attribute("specG")), 
+                                    stof(modelsElement->Attribute("specB")));
+                    typeSpec = 1;
+                }
+                if (modelsElement->Attribute("emisR") && modelsElement->Attribute("emisG") && modelsElement->Attribute("emisB")) {
+                    emissive = Colour(stof(modelsElement->Attribute("emisR")), stof(modelsElement->Attribute("emisG")), 
+                                    stof(modelsElement->Attribute("emisB")));
+                    typeEmis = 1;
+                }
+                if (modelsElement->Attribute("ambiR") && modelsElement->Attribute("ambiG") && modelsElement->Attribute("ambiB")) {
+                    ambient = Colour(stof(modelsElement->Attribute("ambiR")), stof(modelsElement->Attribute("ambiG")), 
+                                    stof(modelsElement->Attribute("ambiB")));
+                    typeAmbi = 1;
+                }
+                if (modelsElement->Attribute("shine")) {
+                    typeShine = stof(modelsElement->Attribute("shine"));
+                }
 
-				// path to model paths vector
-                g->addModel(newModel, texture, corR, corG, corB, type);
+                // path to model paths vector
+                g->addModel(newModel, texture, diffuse, specular, emissive, ambient,
+                            typeDiff, typeSpec, typeEmis, typeAmbi, typeShine);
 
-				// next
-				models = models->NextSibling(); // Get next model
-			}
-		}
+                // next
+                models = models->NextSibling(); // Get next model
+            }
+        }
 
         else if (strcmp(tagName.c_str(), "translate") == 0) {
 
-			double xT = 0;
-			double yT = 0;
-			double zT = 0;
-			
-			double timeT = 0;
+            double xT = 0;
+            double yT = 0;
+            double zT = 0;
+            
+            double timeT = 0;
 
-			if (tagElement->Attribute("time")) {
+            if (tagElement->Attribute("time")) {
 
-				timeT = atoi(tagElement->Attribute("time"));
-				
-			}
+                timeT = atoi(tagElement->Attribute("time"));
 
-			Translate* t = new Translate(timeT);
+            }
 
-			XMLNode * node1 = tag->FirstChild();
+            Translate* t = new Translate(timeT);
 
-			for (; node1; node1 = node1->NextSibling()) {
+            XMLNode * node1 = tag->FirstChild();
 
-				XMLElement* pElement1 = node1->ToElement();
+            for (; node1; node1 = node1->NextSibling()) {
 
-				if (strcmp(pElement1->Name(), "point") == 0) {
+                XMLElement* pElement1 = node1->ToElement();
 
-					if (pElement1->Attribute("X")) {
-						xT = pElement1->DoubleAttribute("X");
-					}
-					if (pElement1->Attribute("Y")) {
-						yT = pElement1->DoubleAttribute("Y");
-					}
-					if (pElement1->Attribute("Z")) {
-						zT = pElement1->DoubleAttribute("Z");
-					}
+                if (strcmp(pElement1->Name(), "point") == 0) {
 
-					t->addPTranslate(new Point(xT, yT, zT));
-				}
-			}
+                    if (pElement1->Attribute("X")) {
+                        xT = pElement1->DoubleAttribute("X");
+                    }
+                    if (pElement1->Attribute("Y")) {
+                        yT = pElement1->DoubleAttribute("Y");
+                    }
+                    if (pElement1->Attribute("Z")) {
+                        zT = pElement1->DoubleAttribute("Z");
+                    }
+
+                    t->addPTranslate(new Point(xT, yT, zT));
+                }
+            }
 
             g->addTransform(t);
 
         } else if (strcmp(tagName.c_str(), "rotate") == 0) {
 
-			double angle = 0;
-			double axisx = 0;
-			double axisy = 0;
-			double axisz = 0;
-			double time = 0;
+            double angle = 0;
+            double axisx = 0;
+            double axisy = 0;
+            double axisz = 0;
+            double time = 0;
 
-			if (tagElement->Attribute("angle")) {
-				angle = tagElement->DoubleAttribute("angle");
-			}
+            if (tagElement->Attribute("angle")) {
+                angle = tagElement->DoubleAttribute("angle");
+            }
 
-			if (tagElement->Attribute("time")) {
-				time = tagElement->DoubleAttribute("time");
-			}
+            if (tagElement->Attribute("time")) {
+                time = tagElement->DoubleAttribute("time");
+            }
 
-			if (tagElement->Attribute("axisX")) {
-				axisx = tagElement->DoubleAttribute("axisX");
-			}
-			if (tagElement->Attribute("axisY")) {
-				axisy = tagElement->DoubleAttribute("axisY");
-			}
-			if (tagElement->Attribute("axisZ")) {
-				axisz = tagElement->DoubleAttribute("axisZ");
-			}
+            if (tagElement->Attribute("axisX")) {
+                axisx = tagElement->DoubleAttribute("axisX");
+            }
+            if (tagElement->Attribute("axisY")) {
+                axisy = tagElement->DoubleAttribute("axisY");
+            }
+            if (tagElement->Attribute("axisZ")) {
+                axisz = tagElement->DoubleAttribute("axisZ");
+            }
 
-			Rotate* r = new Rotate(time, angle, axisx, axisy, axisz);
+            Rotate* r = new Rotate(time, angle, axisx, axisy, axisz);
 
             g->addTransform(r);
 
@@ -198,12 +207,12 @@ Group *makeGroup(XMLNode *scene) {
             Group *subGroup = makeGroup(tag->DeepClone(nullptr));
             subGroup->setUp(g);
             g->addSubGroup(subGroup);
-		} else {
-			printf("invalid tag\n");
-		}
+        } else {
+            printf("invalid tag\n");
+        }
         // next
         tag = tag->NextSibling();
-	}
+    }
 
     return g;
 }
@@ -218,12 +227,12 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
     Ts->insert(Ts->end(), upTs->begin(), upTs->end()); // concat upTs
     Ts->insert(Ts->end(), newTs->begin(), newTs->end()); // concat newTs
 
-	std::vector<string> *modelPaths = g->getModels();
-	for (auto p : *modelPaths) {
+    std::vector<string> *modelPaths = g->getModels();
+    for (auto p : *modelPaths) {
 
-		ifstream modelFile;
-		modelFile.open(p);
-		engine::figure newModel;
+        ifstream modelFile;
+        modelFile.open(p);
+        engine::figure newModel;
 
         std::vector<float> vertexVec = std::vector<float>();
         std::vector<float> normalVec = std::vector<float>();
@@ -236,9 +245,9 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
         newModel.upTransforms->insert(newModel.upTransforms->end(), upTs->begin(), upTs->end());
 
         // load vertices
-		while (!modelFile.eof()) {
-			engine::vertex vertex;
-			modelFile >> vertex.x >> vertex.y >> vertex.z
+        while (!modelFile.eof()) {
+            engine::vertex vertex;
+            modelFile >> vertex.x >> vertex.y >> vertex.z
                       >> vertex.nx >> vertex.ny >> vertex.nz
                       >> vertex.ti >> vertex.tj;
             vertexVec.push_back(vertex.x);
@@ -249,7 +258,7 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
             normalVec.push_back(vertex.nz);
             textureVec.push_back(vertex.ti);
             textureVec.push_back(vertex.tj);
-		}
+        }
 
         float *vertexArray = (float *)malloc(sizeof(float) * vertexVec.size());
         float *normalArray = (float *)malloc(sizeof(float) * normalVec.size());
@@ -280,9 +289,9 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
         glBindBuffer(GL_ARRAY_BUFFER, b[2]);
         glBufferData(GL_ARRAY_BUFFER, i * 2 * sizeof(float), textureArray, GL_STATIC_DRAW);
 
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_NORMAL_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glEnableClientState(GL_NORMAL_ARRAY);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
         string texture = g->getTexture();
         if (!texture.empty()) {
@@ -302,12 +311,18 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
         newModel.normalBuffer = b[1];
         newModel.textureBuffer = b[2];
         newModel.numVertices = i/3;
-
-        newModel.colour = g->getColour();
-        newModel.type = g->getType();
+        newModel.diffuse   = g->getDiffuse();
+        newModel.specular  = g->getSpecular();
+        newModel.emissive  = g->getEmissive();
+        newModel.ambient   = g->getAmbient();
+        newModel.typeDiff  = g->getTypeDiff();
+        newModel.typeSpec  = g->getTypeSpec();
+        newModel.typeEmis  = g->getTypeEmis();
+        newModel.typeAmbi  = g->getTypeAmbi();
+        newModel.typeShine = g->getTypeShine();
 
         loadedModels->push_back(newModel);
-	}
+    }
 
     // load models in subgroups
     for (auto subGroup : *g->getSubGroups()) {
@@ -317,4 +332,3 @@ std::vector<engine::figure> *loadModels(Group *g, std::vector<Transform*> *upTs,
 
     return loadedModels;
 }
-
