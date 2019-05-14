@@ -1,34 +1,37 @@
 <scene>
-	<group nome="SistemaSolar">
-		<group nome="Sol">
-			<rotate time="10.0" axisX="0" axisY="1" axisZ="0" />
-			<models>
-				<model file="sol.3d" texture="sun.jpg" specR="1.0" specG="1.0" specB="1.0" 
-													   shine="90.0" />
-			</models>
-		</group>
-		<group nome="Mercúrio">
-			<translate time="2.4">
-				<point X="0"      Y="0.0" Z="44.5462"/>
-				<point X="21.048" Y="0.0" Z="41.155" />
-				<point X="38.891" Y="0.0" Z="31.499" />
-				<point X="50.813" Y="0.0" Z="17.047" />
+    <group nome="SistemaSolar">
+        <group nome="Sol">
+            <rotate time="10.0" axisX="0" axisY="1" axisZ="0" />
+            <models>
+                <model file="sol.3d" texture="sun.jpg"  diffR="0.0" diffG="1.0" diffB="0.0"
+                                                        specR="1.0" specG="0.0" specB="0.0"
+                                                        emisR="0.0" emisG="1.0" emisB="1.0"
+                                                        ambiR="1.0" ambiG="0.0" ambiB="1.0"
+                                                        shine="90.0" />
+            </models>
+        </group>
+        <group nome="Mercúrio">
+            <translate time="2.4">
+                <point X="0"      Y="0.0" Z="44.5462"/>
+                <point X="21.048" Y="0.0" Z="41.155" />
+                <point X="38.891" Y="0.0" Z="31.499" />
+                <point X="50.813" Y="0.0" Z="17.047" />
 
-				<point X="55.0"   Y="0.0" Z="0"      />
-				<point X="50.813" Y="0.0" Z="-17.047"/>
-				<point X="38.891" Y="0.0" Z="-31.499"/>
-				<point X="21.048" Y="0.0" Z="-41.155"/>
+                <point X="55.0"   Y="0.0" Z="0"      />
+                <point X="50.813" Y="0.0" Z="-17.047"/>
+                <point X="38.891" Y="0.0" Z="-31.499"/>
+                <point X="21.048" Y="0.0" Z="-41.155"/>
 
-				<point X="0"       Y="0.0" Z="-44.5462"/>
-				<point X="-21.048" Y="0.0" Z="-41.155" />
-				<point X="-38.891" Y="0.0" Z="-31.499" />
-				<point X="-50.813" Y="0.0" Z="-17.047" />
+                <point X="0"       Y="0.0" Z="-44.5462"/>
+                <point X="-21.048" Y="0.0" Z="-41.155" />
+                <point X="-38.891" Y="0.0" Z="-31.499" />
+                <point X="-50.813" Y="0.0" Z="-17.047" />
 
-				<point X="-55.0"   Y="0.0" Z="0"     />
-				<point X="-50.813" Y="0.0" Z="17.047"/>
-				<point X="-38.891" Y="0.0" Z="31.499"/>
-				<point X="-21.048" Y="0.0" Z="41.155"/>
-			</translate>
+                <point X="-55.0"   Y="0.0" Z="0"     />
+                <point X="-50.813" Y="0.0" Z="17.047"/>
+                <point X="-38.891" Y="0.0" Z="31.499"/>
+                <point X="-21.048" Y="0.0" Z="41.155"/>
+            </translate>
             <group>
                 <rotate time="586" angle="-0.01" axisX="0.0" axisY="0.0" axisZ="1.0" />
                 <scale X="0.2066" Y="0.2066" Z="0.2066" />
@@ -36,29 +39,29 @@
                     <model file="planeta.3d" texture="mercury.jpg" />
                 </models>
             </group>
-		</group>
-		<group nome="Vénus">
-			<translate time="6.1">
-				<point X="0"      Y="0.0" Z="83.2308"/>
-				<point X="35.972" Y="0.0" Z="76.895" />
-				<point X="66.468" Y="0.0" Z="58.853" />
-				<point X="86.845" Y="0.0" Z="31.851" />
+        </group>
+        <group nome="Vénus">
+            <translate time="6.1">
+                <point X="0"      Y="0.0" Z="83.2308"/>
+                <point X="35.972" Y="0.0" Z="76.895" />
+                <point X="66.468" Y="0.0" Z="58.853" />
+                <point X="86.845" Y="0.0" Z="31.851" />
 
-				<point X="94.0"   Y="0.0" Z="0"      />
-				<point X="86.845" Y="0.0" Z="-31.851"/>
-				<point X="66.468" Y="0.0" Z="-58.853"/>
-				<point X="35.972" Y="0.0" Z="-76.895"/>
+                <point X="94.0"   Y="0.0" Z="0"      />
+                <point X="86.845" Y="0.0" Z="-31.851"/>
+                <point X="66.468" Y="0.0" Z="-58.853"/>
+                <point X="35.972" Y="0.0" Z="-76.895"/>
 
-				<point X="0"       Y="0.0" Z="-83.2308"/>
-				<point X="-35.972" Y="0.0" Z="-76.895" />
-				<point X="-66.468" Y="0.0" Z="-58.853" />
-				<point X="-86.845" Y="0.0" Z="-31.851" />
+                <point X="0"       Y="0.0" Z="-83.2308"/>
+                <point X="-35.972" Y="0.0" Z="-76.895" />
+                <point X="-66.468" Y="0.0" Z="-58.853" />
+                <point X="-86.845" Y="0.0" Z="-31.851" />
 
-				<point X="-94.0"   Y="0.0" Z="0"     />
-				<point X="-86.845" Y="0.0" Z="31.851"/>
-				<point X="-66.468" Y="0.0" Z="58.853"/>
-				<point X="-35.972" Y="0.0" Z="76.895"/>
-			</translate>
+                <point X="-94.0"   Y="0.0" Z="0"     />
+                <point X="-86.845" Y="0.0" Z="31.851"/>
+                <point X="-66.468" Y="0.0" Z="58.853"/>
+                <point X="-35.972" Y="0.0" Z="76.895"/>
+            </translate>
             <group>
                 <rotate time="2430" angle="-177.3" axisX="0.0" axisY="0.0" axisZ="1.0" />
                 <scale X="0.2833" Y="0.2833" Z="0.2833" />
@@ -66,67 +69,67 @@
                     <model file="planeta.3d" texture="venus.jpg" />
                 </models>
             </group>
-		</group>
-		<group nome="Terra e lua">
-			<translate time="10">
-				<point X="0"       Y="0.0" Z="115.3846"/>
-				<point X="47.835"  Y="0.0" Z="106.601" />
-				<point X="88.388"  Y="0.0" Z="81.589"  />
-				<point X="115.485" Y="0.0" Z="44.156"  />
+        </group>
+        <group nome="Terra e lua">
+            <translate time="10">
+                <point X="0"       Y="0.0" Z="115.3846"/>
+                <point X="47.835"  Y="0.0" Z="106.601" />
+                <point X="88.388"  Y="0.0" Z="81.589"  />
+                <point X="115.485" Y="0.0" Z="44.156"  />
 
-				<point X="125.0"   Y="0.0" Z="0"       />
-				<point X="115.485" Y="0.0" Z="-44.156" />
-				<point X="88.388"  Y="0.0" Z="-81.589" />
-				<point X="47.835"  Y="0.0" Z="-106.601"/>
+                <point X="125.0"   Y="0.0" Z="0"       />
+                <point X="115.485" Y="0.0" Z="-44.156" />
+                <point X="88.388"  Y="0.0" Z="-81.589" />
+                <point X="47.835"  Y="0.0" Z="-106.601"/>
 
-				<point X="0"        Y="0.0" Z="-115.3846"/>
-				<point X="-47.835"  Y="0.0" Z="-106.601" />
-				<point X="-88.388"  Y="0.0" Z="-81.589"  />
-				<point X="-115.485" Y="0.0" Z="-44.156"  />
+                <point X="0"        Y="0.0" Z="-115.3846"/>
+                <point X="-47.835"  Y="0.0" Z="-106.601" />
+                <point X="-88.388"  Y="0.0" Z="-81.589"  />
+                <point X="-115.485" Y="0.0" Z="-44.156"  />
 
-				<point X="-125.0"   Y="0.0" Z="0"      />
-				<point X="-115.485" Y="0.0" Z="44.156" />
-				<point X="-88.388"  Y="0.0" Z="81.589" />
-				<point X="-47.835"  Y="0.0" Z="106.601"/>
-			</translate>
-			<group nome="Terra">
-				<rotate time="10" angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<scale X="0.2895" Y="0.2895" Z="0.2895" />
-				<models>
-					<model file="planeta.3d" texture="earth.jpg" />
-				</models>
-			</group>
-			<group nome="Grupo lua">
-				<rotate angle="5.14" axisX="0.0" axisY="0.0" axisZ="1.0" />
-				<translate time="270">
-					<point X="0"      Y="0.0" Z="19.2"  />
-					<point X="7.348"  Y="0.0" Z="17.738"/>
-					<point X="13.576" Y="0.0" Z="13.576"/>
-					<point X="17.738" Y="0.0" Z="7.348" />
+                <point X="-125.0"   Y="0.0" Z="0"      />
+                <point X="-115.485" Y="0.0" Z="44.156" />
+                <point X="-88.388"  Y="0.0" Z="81.589" />
+                <point X="-47.835"  Y="0.0" Z="106.601"/>
+            </translate>
+            <group nome="Terra">
+                <rotate time="10" angle="-23.26" axisX="0.0" axisY="0.0" axisZ="1.0" />
+                <scale X="0.2895" Y="0.2895" Z="0.2895" />
+                <models>
+                    <model file="planeta.3d" texture="earth.jpg" />
+                </models>
+            </group>
+            <group nome="Grupo lua">
+                <rotate angle="5.14" axisX="0.0" axisY="0.0" axisZ="1.0" />
+                <translate time="270">
+                    <point X="0"      Y="0.0" Z="19.2"  />
+                    <point X="7.348"  Y="0.0" Z="17.738"/>
+                    <point X="13.576" Y="0.0" Z="13.576"/>
+                    <point X="17.738" Y="0.0" Z="7.348" />
 
-					<point X="19.2"   Y="0.0" Z="0"      />
-					<point X="17.738" Y="0.0" Z="-7.348" />
-					<point X="13.576" Y="0.0" Z="-13.576"/>
-					<point X="7.348"  Y="0.0" Z="-17.738"/>
+                    <point X="19.2"   Y="0.0" Z="0"      />
+                    <point X="17.738" Y="0.0" Z="-7.348" />
+                    <point X="13.576" Y="0.0" Z="-13.576"/>
+                    <point X="7.348"  Y="0.0" Z="-17.738"/>
 
-					<point X="0"       Y="0.0" Z="-19.2"  />
-					<point X="-7.348"  Y="0.0" Z="-17.738"/>
-					<point X="-13.576" Y="0.0" Z="-13.576"/>
-					<point X="-17.738" Y="0.0" Z="-7.348" />
+                    <point X="0"       Y="0.0" Z="-19.2"  />
+                    <point X="-7.348"  Y="0.0" Z="-17.738"/>
+                    <point X="-13.576" Y="0.0" Z="-13.576"/>
+                    <point X="-17.738" Y="0.0" Z="-7.348" />
 
-					<point X="-19.2"   Y="0.0" Z="0"     />
-					<point X="-17.738" Y="0.0" Z="7.348" />
-					<point X="-13.576" Y="0.0" Z="13.576"/>
-					<point X="-7.348"  Y="0.0" Z="17.738"/>
-				</translate>
-				<group nome="Lua">
-					<rotate time="270" angle="6.68" axisX="0.0" axisY="0.0" axisZ="1.0" />
-					<scale X="0.6595" Y="0.6595" Z="0.6595" />
-					<models>
-						<model file="lua.3d" texture="moon.jpg" />
-					</models>
-				</group>
-			</group>
-		</group>
-	</group>
+                    <point X="-19.2"   Y="0.0" Z="0"     />
+                    <point X="-17.738" Y="0.0" Z="7.348" />
+                    <point X="-13.576" Y="0.0" Z="13.576"/>
+                    <point X="-7.348"  Y="0.0" Z="17.738"/>
+                </translate>
+                <group nome="Lua">
+                    <rotate time="270" angle="6.68" axisX="0.0" axisY="0.0" axisZ="1.0" />
+                    <scale X="0.6595" Y="0.6595" Z="0.6595" />
+                    <models>
+                        <model file="lua.3d" texture="moon.jpg" />
+                    </models>
+                </group>
+            </group>
+        </group>
+    </group>
 </scene>
