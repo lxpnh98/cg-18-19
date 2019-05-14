@@ -106,5 +106,5 @@ void engine::drawScene() {
         if ( fig->typeShine != 0.0 ) {
             glMaterialf(GL_FRONT, GL_SHININESS, fig->typeShine);
         }
-    }
+	}
 }
