@@ -626,54 +626,54 @@ void drawCylinder(float r, float height, int slices, string fileName) {
 
             // top
             vertices.push_back(Point(0, altura, 0,
-                                     0, altura, 0,
+                                     0.0, 1.0, 0.0,
                                      centroX, tex_raio));
 
             vertices.push_back(Point(r * sin(a * i),          altura, r * cos(a * i),
-                                         sin(a * i),          altura,     cos(a * i),
+                                     0.0, 1.0, 0.0,
                     centroX + tex_raio * sin(a * i), tex_raio + tex_raio * cos(a * i)));
 
             vertices.push_back(Point(r * sin(a * (i + 1)),          altura, r * cos(a * (i + 1)),
-                                         sin(a * (i + 1)),          altura,     cos(a * (i + 1)),
+                                     0.0, 1.0, 0.0,
                     centroX + tex_raio * sin(a * (i + 1)), tex_raio + tex_raio * cos(a * (i + 1))));
 
             // bottom
             vertices.push_back(Point(0, -altura, 0,
-                                     0, -altura, 0,
+                                     0.0, -1.0, 0.0,
                                      0.8125, 0.1875));
 
             vertices.push_back(Point(r * sin(a * (i + 1)),        -altura, r * cos(a * (i + 1)),
-                                         sin(a * (i + 1)),        -altura,     cos(a * (i + 1)),
+                                     0.0, -1.0, 0.0,
                      0.8125 + tex_raio * sin(a * (i + 1)), 0.1875 + tex_raio * cos(a * (i + 1))));
 
             vertices.push_back(Point(r * sin(a * i),        -altura, r * cos(a * i),
-                                         sin(a * i),        -altura,     cos(a * i),
+                                     0.0, -1.0, 0.0,
                      0.8125 + tex_raio * sin(a * i), 0.1875 + tex_raio * cos(a * i)));
 
             // side 1
             vertices.push_back(Point(r * sin(a * (i + 1)), altura, r * cos(a * (i + 1)),
-                                         sin(a * (i + 1)), altura,     cos(a * (i + 1)),
+                                         sin(a * (i + 1)), 0.0,     cos(a * (i + 1)),
                                       (i + 1) * tex_fator, 1));
 
             vertices.push_back(Point(r * sin(a * i), altura, r * cos(a * i),
-                                         sin(a * i), altura,     cos(a * i),
+                                         sin(a * i), 0.0,     cos(a * i),
                                      i  * tex_fator, 1));
 
             vertices.push_back(Point(r * sin(a * i), -altura, r * cos(a * i),
-                                         sin(a * i), -altura,     cos(a * i),
+                                         sin(a * i), 0.0,     cos(a * i),
                                       i * tex_fator, 0.375));
 
             // side 2
             vertices.push_back(Point(r * sin(a * i), -altura, r * cos(a * i),
-                                         sin(a * i), -altura,     cos(a * i),
+                                         sin(a * i), 0.0,     cos(a * i),
                                       i * tex_fator, 0.375));
 
             vertices.push_back(Point(r * sin(a * (i + 1)), -altura, r * cos(a * (i + 1)),
-                                         sin(a * (i + 1)), -altura,     cos(a * (i + 1)),
+                                         sin(a * (i + 1)), 0.0,     cos(a * (i + 1)),
                                       (i + 1) * tex_fator, 0.375));
 
             vertices.push_back(Point(r * sin(a * (i + 1)), altura, r * cos(a * (i + 1)),
-                                         sin(a * (i + 1)), altura,     cos(a * (i + 1)),
+                                         sin(a * (i + 1)), 0.0,     cos(a * (i + 1)),
                                       (i + 1) * tex_fator, 1));
         }
 
