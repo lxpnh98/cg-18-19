@@ -18,10 +18,11 @@ class Light {
 
 	string type;
 	float x, y, z;
+	int id;
 
 public:
 	Light();
-	Light(string type, float x, float y, float z);
+	Light(int nrLight, string type, float x, float y, float z);
 	void draw();
 };
 

@@ -75,6 +75,8 @@ Group *makeGroup(XMLNode *scene) {
     int typeAmbi = 0;
     float typeShine = 0.0;
 
+	int nrLight = 0;
+
     while (tag != nullptr) {
 
         string tagName = tag->Value();
@@ -131,6 +133,9 @@ Group *makeGroup(XMLNode *scene) {
 			XMLNode *lights = tag->FirstChild();
 			XMLElement *lightsElement;
 			string type = "";
+
+			glEnable(GL_LIGHTING);
+
 			float x = 0;
 			float y = 0;
 			float z = 0;
@@ -152,12 +157,14 @@ Group *makeGroup(XMLNode *scene) {
 					z = stof(lightsElement->Attribute("Z"));
 				}
 
-				Light* light = new Light(type, x, y, z);
+				Light* light = new Light(nrLight, type, x, y, z);
 
 				g->addLight(light);
 
 				// next
 				lights = lights->NextSibling();
+
+				nrLight++;
 
 			}
 
