@@ -31,7 +31,9 @@ Point bezierPoint(std::vector<int> patch, std::vector<Point *> points, float u, 
     float y = (1-v)*(1-v)*(1-v)*y1 +  3*(1-v)*(1-v)*v*y2 + 3*(1-v)*v*v*y3 +  v*v*v*y4;
     float z = (1-v)*(1-v)*(1-v)*z1 +  3*(1-v)*(1-v)*v*z2 + 3*(1-v)*v*v*z3 +  v*v*v*z4;
 
-    return Point(x, y, z);
+    return Point(x, y, z,
+                 0.0, 0.0, 0.0,
+                 u, v);
     #undef P
 }
 
