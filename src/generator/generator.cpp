@@ -14,6 +14,28 @@ using namespace tinyxml2;
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+void cross(double *a, double *b, double *res) {
+
+    res[0] = a[1] * b[2] - a[2] * b[1];
+    res[1] = a[2] * b[0] - a[0] * b[2];
+    res[2] = a[0] * b[1] - a[1] * b[0];
+}
+
+void normalize(double *a) {
+
+    double l = sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]);
+    a[0] = a[0] / l;
+    a[1] = a[1] / l;
+    a[2] = a[2] / l;
+}
+
+double length(double *v) {
+
+    double res = sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
+    return res;
+
+}
+
 #define TI(a)           ((a)/(2*M_PI))
 #define TJ(b)           (((b)+(M_PI/2))/M_PI)
 
@@ -433,20 +455,45 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
             // base
 			vertices.push_back(Point(0, 0, 0,
-									 0, 0, 0,
+                                     0.0, -1.0, 0.0,
 									 centroX, centroY));
 
             vertices.push_back(Point(r * sin(a * (i + 1)), 0, r * cos(a * (i + 1)),
-                                         sin(a * (i + 1)), 0, cos(a * (i + 1)),
+                                         0.0, -1.0, 0.0,
                      centroX + centroX * sin(a * (i + 1)), centroY + centroY * cos(a * (i + 1))));
 
 			vertices.push_back(Point(r * sin(a * i), 0, r *  cos(a * i),
-									     sin(a * i), 0, cos(a * i),
+                                         0.0, -1.0, 0.0,
 					 centroX + centroX * sin(a * i), centroY + centroY * cos(a * i)));
 
 
             float oldRadius = r;
             float oldHeight = 0;
+
+            double p1[3], p2[3], p3[3], v1[3], v2[3], n[3];
+
+            p1[0] = 0.0;
+            p1[1] = h;
+            p1[2] = 0.0;
+
+            p2[0] = r * sin(a * i);
+            p2[1] = 0.0;
+            p2[2] = r * cos(a * i);
+
+            p3[0] = r * sin(a * (i + 1));
+            p3[1] = 0.0;
+            p3[2] = r * cos(a * (i + 1));
+
+            v1[0] = p3[0]-p2[0];
+            v1[1] = p3[1]-p2[1];
+            v1[2] = p3[2]-p2[2];
+
+            v2[0] = p1[0]-p2[0];
+            v2[1] = p1[1]-p2[1];
+            v2[2] = p1[2]-p2[2];
+
+            cross(v1, v2, n);
+            normalize(n);
 
             // sides
             for (int j = 0; j < stacks; j++) {
@@ -456,28 +503,28 @@ void drawCone(float r, float h, int slices, int stacks, string fileName) {
 
                 // triangle1
                 vertices.push_back(Point(newRadius * sin(a * i),   newHeight, newRadius * cos(a * i),
-                                                     sin(a * i),   newHeight,             cos(a * i),
+                                                     n[0], n[1], n[2],
                            (newRadius/r)*(2.0/3)*sin(a * i / 4), 1-((newRadius/r)*(2.0/3)*cos(a * i / 4))));
 
                 vertices.push_back(Point(oldRadius * sin(a * i),   oldHeight, oldRadius * cos(a * i),
-                                                     sin(a * i),   oldHeight,             cos(a * i),
+                                                     n[0], n[1], n[2],
                            (oldRadius/r)*(2.0/3)*sin(a * i / 4), 1-((oldRadius/r)*(2.0/3)*cos(a * i / 4))));
 
                 vertices.push_back(Point(oldRadius * sin(a * (i + 1)),  oldHeight, oldRadius * cos(a * (i + 1)),
-                                                     sin(a * (i + 1)),  oldHeight,             cos(a * (i + 1)),
+                                                     n[0], n[1], n[2],
                            (oldRadius/r)*(2.0/3)*sin(a * (i + 1) / 4), 1-(oldRadius/r)*(2.0/3)*cos(a * (i + 1) / 4)));
 
                 // triangle 2
                 vertices.push_back(Point(newRadius * sin(a * i),   newHeight, newRadius * cos(a * i),
-                                                     sin(a * i),   newHeight,             cos(a * i),
+                                                     n[0], n[1], n[2],
                            (newRadius/r)*(2.0/3)*sin(a * i / 4), 1-((newRadius/r)*(2.0/3)*cos(a * i / 4))));
 
                 vertices.push_back(Point(oldRadius * sin(a * (i + 1)),  oldHeight, oldRadius * cos(a * (i + 1)),
-                                                     sin(a * (i + 1)),  oldHeight,             cos(a * (i + 1)),
+                                                     n[0], n[1], n[2],
                            (oldRadius/r)*(2.0/3)*sin(a * (i + 1) / 4), 1-(oldRadius/r)*(2.0/3)*cos(a * (i + 1) / 4)));
 
                 vertices.push_back(Point(newRadius * sin(a * (i + 1)),  newHeight, newRadius * cos(a * (i + 1)),
-                                                     sin(a * (i + 1)),  newHeight,             cos(a * (i + 1)),
+                                                     n[0], n[1], n[2],
                            (newRadius/r)*(2.0/3)*sin(a * (i + 1) / 4), 1-(newRadius/r)*(2.0/3)*cos(a * (i + 1) / 4)));
 
                 oldRadius = newRadius;
@@ -574,28 +621,28 @@ void drawPyramid(float height, float width, float length, string fileName) {
 
         // Debaixo    
         vertices.push_back(Point(-comprimento, 0.0, -largura,
-                                 -comprimento, 0.0, -largura,
+                                 0.0, -1.0, 0.0,
                                  0.0, 0.0));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
-                                 comprimento, 0.0, largura,
+                                 0.0, -1.0, 0.0,
                                  ladoX, ladoY));
 
         vertices.push_back(Point(-comprimento, 0.0, largura,
-                                 -comprimento, 0.0, largura,
+                                 0.0, -1.0, 0.0,
                                  0.0, ladoY));
 
         // Debaixo      
         vertices.push_back(Point(comprimento, 0.0, -largura,
-                                 comprimento, 0.0, -largura,
+                                 0.0, -1.0, 0.0,
                                  ladoX, 0.0));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
-                                 comprimento, 0.0, largura,
+                                 0.0, -1.0, 0.0,
                                  ladoX, ladoY));
 
         vertices.push_back(Point(-comprimento, 0.0, -largura,
-                                 -comprimento, 0.0, -largura,
+                                 0.0, -1.0, 0.0,
                                  0.0, 0.0));
 
         sendVertices(out, vertices);
