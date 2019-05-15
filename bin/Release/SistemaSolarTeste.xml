@@ -6,10 +6,10 @@
                 <light type="POINT" X="0" Y="0" Z="0" />
             </lights>
             <models>
-                <model file="sol.3d" texture="sun.jpg"  diffR="0.0" diffG="1.0" diffB="0.0"
-                                                        specR="1.0" specG="0.0" specB="0.0"
-                                                        emisR="0.0" emisG="1.0" emisB="1.0"
-                                                        ambiR="1.0" ambiG="0.0" ambiB="1.0"
+                <model file="sol.3d" texture="sun.jpg"  diffR="0.8" diffG="0.8" diffB="0.8"
+                                                        specR="0.7" specG="0.7" specB="0.7"
+                                                        emisR="0.6" emisG="0.6" emisB="0.6"
+                                                        ambiR="0.4" ambiG="0.4" ambiB="0.4"
                                                         shine="90.0" />
             </models>
         </group>
