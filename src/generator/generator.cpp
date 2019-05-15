@@ -559,62 +559,144 @@ void drawPyramid(float height, float width, float length, string fileName) {
         float trianguloY = 0.25;
         float step = 0.25;
 
+        double p1[3], p2[3], p3[3], v1[3], v2[3], n[3];
+
+        p1[0] = 0.0;
+        p1[1] = height;
+        p1[2] = 0.0;
+
+        p2[0] = -comprimento;
+        p2[1] = 0.0;
+        p2[2] = largura;
+
+        p3[0] = comprimento;
+        p3[1] = 0.0;
+        p3[2] = largura;
+
+        v1[0] = p3[0]-p2[0];
+        v1[1] = p3[1]-p2[1];
+        v1[2] = p3[2]-p2[2];
+
+        v2[0] = p1[0]-p2[0];
+        v2[1] = p1[1]-p2[1];
+        v2[2] = p1[2]-p2[2];
+
+        cross(v1, v2, n);
+        normalize(n);
+
         // Triângulo da Frente
         vertices.push_back(Point(0.0, height, 0.0,
-                                 0.0, height, 0.0,
+                                 n[0], n[1], n[2],
                                  trianguloX + step/2, altura));
 
         vertices.push_back(Point(-comprimento, 0.0, largura,
-                                 -comprimento, 0.0, largura,
+                                 n[0], n[1], n[2],
                                  trianguloX, trianguloY));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
-                                 comprimento, 0.0, largura,
+                                 n[0], n[1], n[2],
                                  trianguloX + step, trianguloY));
 
         trianguloX += step;
+
+        p2[0] = comprimento;
+        p2[1] = 0.0;
+        p2[2] = largura;
+
+        p3[0] = comprimento;
+        p3[1] = 0.0;
+        p3[2] = -largura;
+
+        v1[0] = p3[0]-p2[0];
+        v1[1] = p3[1]-p2[1];
+        v1[2] = p3[2]-p2[2];
+
+        v2[0] = p1[0]-p2[0];
+        v2[1] = p1[1]-p2[1];
+        v2[2] = p1[2]-p2[2];
+
+        cross(v1, v2, n);
+        normalize(n);
 
         // Right
         vertices.push_back(Point(0.0, height, 0.0,
-                                 0.0, height, 0.0,
+                                 n[0], n[1], n[2],
                                  trianguloX + step/2, altura));
 
         vertices.push_back(Point(comprimento, 0.0, largura,
-                                 comprimento, 0.0, largura,
+                                 n[0], n[1], n[2],
                                  trianguloX, trianguloY));
 
         vertices.push_back(Point(comprimento, 0.0, -largura,
-                                 comprimento, 0.0, -largura,
+                                 n[0], n[1], n[2],
                                  trianguloX + step, trianguloY));
 
         trianguloX += step;
+
+        p2[0] = comprimento;
+        p2[1] = 0.0;
+        p2[2] = -largura;
+
+        p3[0] = -comprimento;
+        p3[1] = 0.0;
+        p3[2] = -largura;
+
+        v1[0] = p3[0]-p2[0];
+        v1[1] = p3[1]-p2[1];
+        v1[2] = p3[2]-p2[2];
+
+        v2[0] = p1[0]-p2[0];
+        v2[1] = p1[1]-p2[1];
+        v2[2] = p1[2]-p2[2];
+
+        cross(v1, v2, n);
+        normalize(n);
 
         // Back
         vertices.push_back(Point(0.0, height, 0.0,
-                                 0.0, height, 0.0,
+                                 n[0], n[1], n[2],
                                  trianguloX + step/2, altura));
 
         vertices.push_back(Point(comprimento, 0.0, -largura,
-                                 comprimento, 0.0, -largura,
+                                 n[0], n[1], n[2],
                                  trianguloX, trianguloY));
 
         vertices.push_back(Point(-comprimento, 0.0, -largura,
-                                 -comprimento, 0.0, -largura,
+                                 n[0], n[1], n[2],
                                  trianguloX + step, trianguloY));
 
         trianguloX += step;
 
+        p2[0] = -comprimento;
+        p2[1] = 0.0;
+        p2[2] = -largura;
+
+        p3[0] = -comprimento;
+        p3[1] = 0.0;
+        p3[2] = largura;
+
+        v1[0] = p3[0]-p2[0];
+        v1[1] = p3[1]-p2[1];
+        v1[2] = p3[2]-p2[2];
+
+        v2[0] = p1[0]-p2[0];
+        v2[1] = p1[1]-p2[1];
+        v2[2] = p1[2]-p2[2];
+
+        cross(v1, v2, n);
+        normalize(n);
+
         // Left 
         vertices.push_back(Point(0.0, height, 0.0,
-                                 0.0, height, 0.0,
+                                 n[0], n[1], n[2],
                                  trianguloX + step/2, altura));
 
         vertices.push_back(Point(-comprimento, 0.0, -largura,
-                                 -comprimento, 0.0, -largura,
+                                 n[0], n[1], n[2],
                                  trianguloX, trianguloY));
 
         vertices.push_back(Point(-comprimento, 0.0, largura,
-                                 -comprimento, 0.0, largura,
+                                 n[0], n[1], n[2],
                                  trianguloX + step, trianguloY));
 
         // ponteiro dos relógios
