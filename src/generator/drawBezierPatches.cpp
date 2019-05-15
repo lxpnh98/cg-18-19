@@ -157,7 +157,9 @@ void drawBezierPatches(string patchesFile, int tesselation, string fileName) {
 
     // Sending vertices to .3d file
     for (int i = 0; i < vertices.size(); i++) {
-        fprintf(out, "%f %f %f \n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ());
+        fprintf(out, "%f %f %f %f %f %f %f %f\n", vertices[i].getX(), vertices[i].getY(), vertices[i].getZ(),
+                                                  vertices[i].getNX(), vertices[i].getNY(), vertices[i].getNZ(),
+                                                  vertices[i].getTI(), vertices[i].getTJ());
     }
 
 	fclose(out);
